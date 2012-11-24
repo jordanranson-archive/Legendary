@@ -186,9 +186,15 @@ public class Item
 	public static Item roughStone = (new Item(4000)).setIconCoord(7, 0).setItemName("roughStone").setCreativeTab(CreativeTabs.tabMaterials);
 	public static Item hugeGeode = (new Item(4001)).setIconCoord(7, 0).setItemName("hugeGeode").setCreativeTab(CreativeTabs.tabMaterials);
 	public static Item dustyRelic = (new Item(4002)).setIconCoord(7, 0).setItemName("dustyRelic").setCreativeTab(CreativeTabs.tabMaterials);
+    public static Item opal = (new Item(4003)).setIconCoord(7, 3).setItemName("opal").setCreativeTab(CreativeTabs.tabMaterials);
+    public static Item ruby = (new Item(4004)).setIconCoord(7, 3).setItemName("ruby").setCreativeTab(CreativeTabs.tabMaterials);
+    public static Item sapphire = (new Item(4005)).setIconCoord(7, 3).setItemName("sapphire").setCreativeTab(CreativeTabs.tabMaterials);
+    public static Item malachite = (new Item(4006)).setIconCoord(7, 3).setItemName("malachite").setCreativeTab(CreativeTabs.tabMaterials);
+    public static Item amethyst = (new Item(4007)).setIconCoord(7, 3).setItemName("amethyst").setCreativeTab(CreativeTabs.tabMaterials);
+    public static Item opalEssence = (new Item(4008)).setIconCoord(8, 3).setItemName("opalEssence").setCreativeTab(CreativeTabs.tabMaterials);
 	/** end Legendary Mod **/
 	
-    /** Item index + 256 */
+    /** Item index + indexModifier */
     public final int shiftedIndex;
 
     /** Maximum size of the stack. */
@@ -215,14 +221,16 @@ public class Item
 
     protected Item(int par1)
     {
-        this.shiftedIndex = 256 + par1;
+		/** Legendary Mod */
+        this.shiftedIndex = Block.indexModifier + par1;
 
-        if (itemsList[256 + par1] != null)
+        if (itemsList[Block.indexModifier + par1] != null)
         {
             System.out.println("CONFLICT @ " + par1);
         }
 
-        itemsList[256 + par1] = this;
+        itemsList[Block.indexModifier + par1] = this;
+		/** end Legendary Mod */
     }
 
     /**

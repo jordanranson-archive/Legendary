@@ -23,6 +23,9 @@ public class CraftingManager
 
     private CraftingManager()
     {
+		/** Legendary Mod */
+        (new RecipesLegendary()).addRecipes(this);
+		/** end Legendary Mod */
         (new RecipesTools()).addRecipes(this);
         (new RecipesWeapons()).addRecipes(this);
         (new RecipesIngots()).addRecipes(this);

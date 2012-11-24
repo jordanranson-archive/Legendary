@@ -22,28 +22,19 @@ public class Block
     public static final StepSound soundLadderFootstep = new StepSoundSand("ladder", 1.0F, 1.0F);
     public static final StepSound soundAnvilFootstep = new StepSoundAnvil("anvil", 0.3F, 1.0F);
 
-    /** List of ly/ff (BlockType) containing the already registered blocks. */
-    public static final Block[] blocksList = new Block[4096];
+    /** Legendary Mod */
+	public static final int indexModifier = 256;
+	private static final int arrayLength = 3840 + indexModifier;
+	
+    public static final Block[] blocksList = new Block[arrayLength];
+    public static final boolean[] opaqueCubeLookup = new boolean[arrayLength];
+    public static final int[] lightOpacity = new int[arrayLength];
+    public static final boolean[] canBlockGrass = new boolean[arrayLength];
+    public static final int[] lightValue = new int[arrayLength];
+    public static final boolean[] requiresSelfNotify = new boolean[arrayLength];
+    public static boolean[] useNeighborBrightness = new boolean[arrayLength];
+	/** end Legendary Mod */
 
-    /**
-     * An array of 4096 booleans corresponding to the result of the isOpaqueCube() method for each block ID
-     */
-    public static final boolean[] opaqueCubeLookup = new boolean[4096];
-
-    /** How much light is subtracted for going through this block */
-    public static final int[] lightOpacity = new int[4096];
-
-    /** Array of booleans that tells if a block can grass */
-    public static final boolean[] canBlockGrass = new boolean[4096];
-
-    /** Amount of light emitted */
-    public static final int[] lightValue = new int[4096];
-    public static final boolean[] requiresSelfNotify = new boolean[4096];
-
-    /**
-     * Flag if block ID should use the brightest neighbor light value as its own
-     */
-    public static boolean[] useNeighborBrightness = new boolean[4096];
     public static final Block stone = (new BlockStone(1, 1)).setHardness(1.5F).setResistance(10.0F).setStepSound(soundStoneFootstep).setBlockName("stone");
     public static final BlockGrass grass = (BlockGrass)(new BlockGrass(2)).setHardness(0.6F).setStepSound(soundGrassFootstep).setBlockName("grass");
     public static final Block dirt = (new BlockDirt(3, 2)).setHardness(0.5F).setStepSound(soundGravelFootstep).setBlockName("dirt");
@@ -203,10 +194,14 @@ public class Block
     public static final Block anvil = (new BlockAnvil(145)).setHardness(5.0F).setStepSound(soundAnvilFootstep).setResistance(2000.0F).setBlockName("anvil").setRequiresSelfNotify();
 
 	/** Legendary Mod */
-	public static final Block artifactFossil = (new BlockArtifact(400, 34)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundStoneFootstep).setBlockName("artifactFossil");
-	public static final Block artifactCracked = (new BlockArtifact(401, 34)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundStoneFootstep).setBlockName("artifactCracked");
-	public static final Block artifactSmooth = (new BlockArtifact(402, 34)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundStoneFootstep).setBlockName("artifactSmooth");
-	public static final Block artifactSparkling = (new BlockArtifact(403, 34)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundStoneFootstep).setBlockName("artifactSparkling");
+	public static final Block artifactFossil = (new BlockArtifact(255, 34)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundStoneFootstep).setBlockName("artifactFossil");
+	public static final Block artifactCracked = (new BlockArtifact(254, 34)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundStoneFootstep).setBlockName("artifactCracked");
+	public static final Block artifactSmooth = (new BlockArtifact(253, 34)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundStoneFootstep).setBlockName("artifactSmooth");
+	public static final Block artifactSparkling = (new BlockArtifact(252, 34)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundStoneFootstep).setBlockName("artifactSparkling");
+	public static final Block blockRuby = (new BlockOreStorage(251, 24)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockRuby");
+	public static final Block blockSapphire = (new BlockOreStorage(250, 24)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockSapphire");
+	public static final Block blockMalachite = (new BlockOreStorage(249, 24)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockMalachite");
+	public static final Block blockAmethyst = (new BlockOreStorage(248, 24)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockAmethyst");
 	/** end Legendary Mod **/
 	
     /**
@@ -1236,35 +1231,36 @@ public class Block
         return true;
     }
 
+	/** Legendary Mod */
     static
     {
-        Item.itemsList[cloth.blockID] = (new ItemCloth(cloth.blockID - 256)).setItemName("cloth");
-        Item.itemsList[wood.blockID] = (new ItemMultiTextureTile(wood.blockID - 256, wood, BlockLog.woodType)).setItemName("log");
-        Item.itemsList[planks.blockID] = (new ItemMultiTextureTile(planks.blockID - 256, planks, BlockWood.woodType)).setItemName("wood");
-        Item.itemsList[silverfish.blockID] = (new ItemMultiTextureTile(silverfish.blockID - 256, silverfish, BlockSilverfish.silverfishStoneTypes)).setItemName("monsterStoneEgg");
-        Item.itemsList[stoneBrick.blockID] = (new ItemMultiTextureTile(stoneBrick.blockID - 256, stoneBrick, BlockStoneBrick.STONE_BRICK_TYPES)).setItemName("stonebricksmooth");
-        Item.itemsList[sandStone.blockID] = (new ItemMultiTextureTile(sandStone.blockID - 256, sandStone, BlockSandStone.SAND_STONE_TYPES)).setItemName("sandStone");
-        Item.itemsList[stoneSingleSlab.blockID] = (new ItemSlab(stoneSingleSlab.blockID - 256, stoneSingleSlab, stoneDoubleSlab, false)).setItemName("stoneSlab");
-        Item.itemsList[stoneDoubleSlab.blockID] = (new ItemSlab(stoneDoubleSlab.blockID - 256, stoneSingleSlab, stoneDoubleSlab, true)).setItemName("stoneSlab");
-        Item.itemsList[woodSingleSlab.blockID] = (new ItemSlab(woodSingleSlab.blockID - 256, woodSingleSlab, woodDoubleSlab, false)).setItemName("woodSlab");
-        Item.itemsList[woodDoubleSlab.blockID] = (new ItemSlab(woodDoubleSlab.blockID - 256, woodSingleSlab, woodDoubleSlab, true)).setItemName("woodSlab");
-        Item.itemsList[sapling.blockID] = (new ItemMultiTextureTile(sapling.blockID - 256, sapling, BlockSapling.WOOD_TYPES)).setItemName("sapling");
-        Item.itemsList[leaves.blockID] = (new ItemLeaves(leaves.blockID - 256)).setItemName("leaves");
-        Item.itemsList[vine.blockID] = new ItemColored(vine.blockID - 256, false);
-        Item.itemsList[tallGrass.blockID] = (new ItemColored(tallGrass.blockID - 256, true)).setBlockNames(new String[] {"shrub", "grass", "fern"});
-        Item.itemsList[waterlily.blockID] = new ItemLilyPad(waterlily.blockID - 256);
-        Item.itemsList[pistonBase.blockID] = new ItemPiston(pistonBase.blockID - 256);
-        Item.itemsList[pistonStickyBase.blockID] = new ItemPiston(pistonStickyBase.blockID - 256);
-        Item.itemsList[cobblestoneWall.blockID] = (new ItemMultiTextureTile(cobblestoneWall.blockID - 256, cobblestoneWall, BlockWall.types)).setItemName("cobbleWall");
+        Item.itemsList[cloth.blockID] = (new ItemCloth(cloth.blockID - indexModifier)).setItemName("cloth");
+        Item.itemsList[wood.blockID] = (new ItemMultiTextureTile(wood.blockID - indexModifier, wood, BlockLog.woodType)).setItemName("log");
+        Item.itemsList[planks.blockID] = (new ItemMultiTextureTile(planks.blockID - indexModifier, planks, BlockWood.woodType)).setItemName("wood");
+        Item.itemsList[silverfish.blockID] = (new ItemMultiTextureTile(silverfish.blockID - indexModifier, silverfish, BlockSilverfish.silverfishStoneTypes)).setItemName("monsterStoneEgg");
+        Item.itemsList[stoneBrick.blockID] = (new ItemMultiTextureTile(stoneBrick.blockID - indexModifier, stoneBrick, BlockStoneBrick.STONE_BRICK_TYPES)).setItemName("stonebricksmooth");
+        Item.itemsList[sandStone.blockID] = (new ItemMultiTextureTile(sandStone.blockID - indexModifier, sandStone, BlockSandStone.SAND_STONE_TYPES)).setItemName("sandStone");
+        Item.itemsList[stoneSingleSlab.blockID] = (new ItemSlab(stoneSingleSlab.blockID - indexModifier, stoneSingleSlab, stoneDoubleSlab, false)).setItemName("stoneSlab");
+        Item.itemsList[stoneDoubleSlab.blockID] = (new ItemSlab(stoneDoubleSlab.blockID - indexModifier, stoneSingleSlab, stoneDoubleSlab, true)).setItemName("stoneSlab");
+        Item.itemsList[woodSingleSlab.blockID] = (new ItemSlab(woodSingleSlab.blockID - indexModifier, woodSingleSlab, woodDoubleSlab, false)).setItemName("woodSlab");
+        Item.itemsList[woodDoubleSlab.blockID] = (new ItemSlab(woodDoubleSlab.blockID - indexModifier, woodSingleSlab, woodDoubleSlab, true)).setItemName("woodSlab");
+        Item.itemsList[sapling.blockID] = (new ItemMultiTextureTile(sapling.blockID - indexModifier, sapling, BlockSapling.WOOD_TYPES)).setItemName("sapling");
+        Item.itemsList[leaves.blockID] = (new ItemLeaves(leaves.blockID - indexModifier)).setItemName("leaves");
+        Item.itemsList[vine.blockID] = new ItemColored(vine.blockID - indexModifier, false);
+        Item.itemsList[tallGrass.blockID] = (new ItemColored(tallGrass.blockID - indexModifier, true)).setBlockNames(new String[] {"shrub", "grass", "fern"});
+        Item.itemsList[waterlily.blockID] = new ItemLilyPad(waterlily.blockID - indexModifier);
+        Item.itemsList[pistonBase.blockID] = new ItemPiston(pistonBase.blockID - indexModifier);
+        Item.itemsList[pistonStickyBase.blockID] = new ItemPiston(pistonStickyBase.blockID - indexModifier);
+        Item.itemsList[cobblestoneWall.blockID] = (new ItemMultiTextureTile(cobblestoneWall.blockID - indexModifier, cobblestoneWall, BlockWall.types)).setItemName("cobbleWall");
         Item.itemsList[anvil.blockID] = (new ItemAnvilBlock(anvil)).setItemName("anvil");
 
-        for (int var0 = 0; var0 < 256; ++var0)
+        for (int var0 = 0; var0 < indexModifier; ++var0)
         {
             if (blocksList[var0] != null)
             {
                 if (Item.itemsList[var0] == null)
                 {
-                    Item.itemsList[var0] = new ItemBlock(var0 - 256);
+                    Item.itemsList[var0] = new ItemBlock(var0 - indexModifier);
                     blocksList[var0].initializeBlock();
                 }
 
@@ -1302,4 +1298,5 @@ public class Block
         canBlockGrass[0] = true;
         StatList.initBreakableStats();
     }
+	/** end Legendary Mod */
 }
