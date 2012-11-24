@@ -10,8 +10,10 @@ public class ItemBlock extends Item
     public ItemBlock(int par1)
     {
         super(par1);
-        this.blockID = par1 + 256;
-        this.setIconIndex(Block.blocksList[par1 + 256].getBlockTextureFromSide(2));
+		/** Legendary Mod */
+        this.blockID = par1 + Block.indexModifier;
+        this.setIconIndex(Block.blocksList[par1 + Block.indexModifier].getBlockTextureFromSide(2));
+		/** end Legendary Mod */
     }
 
     /**
