@@ -29,13 +29,6 @@ public class BlockArtifact extends Block
 			lootTable.add(Item.bone);
 		}
 		
-		else if(this.blockID == Block.artifactCracked.blockID)
-		{
-			lootTable.add(Item.roughStone);
-			lootTable.add(Item.roughStone);
-			lootTable.add(Item.flint);
-		}
-		
 		else if(this.blockID == Block.artifactSparkling.blockID)
 		{
 			lootTable.add(Item.hugeGeode);

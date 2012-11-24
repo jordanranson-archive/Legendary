@@ -195,13 +195,12 @@ public class Block
 
 	/** Legendary Mod */
 	public static final Block artifactFossil = (new BlockArtifact(255, 34)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundStoneFootstep).setBlockName("artifactFossil");
-	public static final Block artifactCracked = (new BlockArtifact(254, 34)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundStoneFootstep).setBlockName("artifactCracked");
-	public static final Block artifactSmooth = (new BlockArtifact(253, 34)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundStoneFootstep).setBlockName("artifactSmooth");
-	public static final Block artifactSparkling = (new BlockArtifact(252, 34)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundStoneFootstep).setBlockName("artifactSparkling");
-	public static final Block blockRuby = (new BlockOreStorage(251, 24)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockRuby");
-	public static final Block blockSapphire = (new BlockOreStorage(250, 24)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockSapphire");
-	public static final Block blockMalachite = (new BlockOreStorage(249, 24)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockMalachite");
-	public static final Block blockAmethyst = (new BlockOreStorage(248, 24)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockAmethyst");
+	public static final Block artifactSmooth = (new BlockArtifact(254, 34)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundStoneFootstep).setBlockName("artifactSmooth");
+	public static final Block artifactSparkling = (new BlockArtifact(253, 34)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundStoneFootstep).setBlockName("artifactSparkling");
+	public static final Block blockRuby = (new BlockOreStorage(252, 24)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockRuby");
+	public static final Block blockSapphire = (new BlockOreStorage(251, 24)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockSapphire");
+	public static final Block blockMalachite = (new BlockOreStorage(250, 24)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockMalachite");
+	public static final Block blockAmethyst = (new BlockOreStorage(249, 24)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockAmethyst");
 	/** end Legendary Mod **/
 	
     /**

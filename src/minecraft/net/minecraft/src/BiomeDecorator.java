@@ -69,6 +69,12 @@ public class BiomeDecorator
 
     /** The water lily generation! */
     protected WorldGenerator waterlilyGen;
+	
+	/** Legendary Mod */
+	protected WorldGenerator artifactFossilGen;
+	protected WorldGenerator artifactSmoothGen;
+	protected WorldGenerator artifactSparklingGen;
+	/** end Legendary Mod */
 
     /** Amount of waterlilys per chunk. */
     protected int waterlilyPerChunk;
@@ -150,6 +156,11 @@ public class BiomeDecorator
         this.reedGen = new WorldGenReed();
         this.cactusGen = new WorldGenCactus();
         this.waterlilyGen = new WorldGenWaterlily();
+		/** Legendary Mod */
+        this.artifactFossilGen = new WorldGenMinable(Block.artifactFossil.blockID, 4);
+        this.artifactSmoothGen = new WorldGenMinable(Block.oreDiamond.blockID, 4);
+        this.artifactSparklingGen = new WorldGenMinable(Block.oreDiamond.blockID, 4);
+		/** end Legendary Mod */
         this.waterlilyPerChunk = 0;
         this.treesPerChunk = 0;
         this.flowersPerChunk = 2;
@@ -419,5 +430,10 @@ public class BiomeDecorator
         this.genStandardOre1(8, this.redstoneGen, 0, 16);
         this.genStandardOre1(1, this.diamondGen, 0, 16);
         this.genStandardOre2(1, this.lapisGen, 16, 16);
+		/** Legendary Mod */
+        this.genStandardOre1(2, this.artifactFossilGen, 0, 32);
+        this.genStandardOre1(2, this.artifactSmoothGen, 0, 96);
+        this.genStandardOre1(1, this.artifactSparklingGen, 0, 16);
+		/** end Legendary Mod */
     }
 }
