@@ -182,6 +182,12 @@ public class Item
     public static Item record11 = (new ItemRecord(2010, "11")).setIconCoord(10, 15).setItemName("record");
     public static Item field_85180_cf = (new ItemRecord(2011, "wait")).setIconCoord(11, 15).setItemName("record");
 
+	/** Legendary Mod **/
+	public static Item roughStone = (new Item(4000)).setIconCoord(7, 0).setItemName("roughStone").setCreativeTab(CreativeTabs.tabMaterials);
+	public static Item hugeGeode = (new Item(4001)).setIconCoord(7, 0).setItemName("hugeGeode").setCreativeTab(CreativeTabs.tabMaterials);
+	public static Item dustyRelic = (new Item(4002)).setIconCoord(7, 0).setItemName("dustyRelic").setCreativeTab(CreativeTabs.tabMaterials);
+	/** end Legendary Mod **/
+	
     /** Item index + 256 */
     public final int shiftedIndex;
 

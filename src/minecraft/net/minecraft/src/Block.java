@@ -202,6 +202,13 @@ public class Block
     public static final Block skull = (new BlockSkull(144)).setHardness(1.0F).setStepSound(soundStoneFootstep).setBlockName("skull").setRequiresSelfNotify();
     public static final Block anvil = (new BlockAnvil(145)).setHardness(5.0F).setStepSound(soundAnvilFootstep).setResistance(2000.0F).setBlockName("anvil").setRequiresSelfNotify();
 
+	/** Legendary Mod */
+	public static final Block artifactFossil = (new BlockArtifact(400, 34)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundStoneFootstep).setBlockName("artifactFossil");
+	public static final Block artifactCracked = (new BlockArtifact(401, 34)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundStoneFootstep).setBlockName("artifactCracked");
+	public static final Block artifactSmooth = (new BlockArtifact(402, 34)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundStoneFootstep).setBlockName("artifactSmooth");
+	public static final Block artifactSparkling = (new BlockArtifact(403, 34)).setHardness(3.0F).setResistance(5.0F).setStepSound(soundStoneFootstep).setBlockName("artifactSparkling");
+	/** end Legendary Mod **/
+	
     /**
      * The index of the texture to be displayed for this block. May vary based on graphics settings. Mostly seems to
      * come from terrain.png, and the index is 0-based (grass is 0).
