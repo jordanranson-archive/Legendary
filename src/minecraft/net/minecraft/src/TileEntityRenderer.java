@@ -56,6 +56,9 @@ public class TileEntityRenderer
         this.specialRendererMap.put(TileEntityEndPortal.class, new RenderEndPortal());
         this.specialRendererMap.put(TileEntityBeacon.class, new TileEntityBeaconRenderer());
         this.specialRendererMap.put(TileEntitySkull.class, new TileEntitySkullRenderer());
+		/** Legendary Mod */
+		this.specialRendererMap.put(TileEntityProspectingTable.class, new RenderProspectingTable());
+		/** end Legendary Mod */
         Iterator var1 = this.specialRendererMap.values().iterator();
 
         while (var1.hasNext())

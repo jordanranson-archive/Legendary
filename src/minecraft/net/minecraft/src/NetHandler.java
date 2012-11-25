@@ -366,6 +366,8 @@ public abstract class NetHandler
     }
 
     public void handleEnchantItem(Packet108EnchantItem par1Packet108EnchantItem) {}
+	
+    public void handleProspectItem(Packet133ProspectItem par1Packet133ProspectItem) {} // Legendary Mod
 
     public void handleCustomPayload(Packet250CustomPayload par1Packet250CustomPayload) {}
 

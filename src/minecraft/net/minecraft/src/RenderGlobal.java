@@ -1979,6 +1979,12 @@ public class RenderGlobal implements IWorldAccess
                         ((EntityFX)var21).setParticleTextureIndex(82);
                         ((EntityFX)var21).setRBGColorF(1.0F, 1.0F, 1.0F);
                     }
+					/** Legendary Mod */
+					else if (par1Str.equals("prospecttable"))
+                    {
+                        var21 = new EntityProspectingTableFX(this.theWorld, par2, par4, par6, (float)par8, (float)par10, (float)par12);
+                    }
+					/** end Legendary Mod */
                     else if (par1Str.startsWith("iconcrack_"))
                     {
                         int var27 = Integer.parseInt(par1Str.substring(par1Str.indexOf("_") + 1));

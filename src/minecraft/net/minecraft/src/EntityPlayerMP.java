@@ -461,6 +461,17 @@ public class EntityPlayerMP extends EntityPlayer implements ICrafting
         this.openContainer.windowId = this.currentWindowId;
         this.openContainer.addCraftingToCrafters(this);
     }
+	
+	/** Legendary Mod */
+	public void displayGUIProspecting(int par1, int par2, int par3)
+    {
+        this.incrementWindowID();
+        this.playerNetServerHandler.sendPacketToPlayer(new Packet100OpenWindow(this.currentWindowId, 40, "Prospecting", 9));
+        this.openContainer = new ContainerProspecting(this.inventory, this.worldObj, par1, par2, par3);
+        this.openContainer.windowId = this.currentWindowId;
+        this.openContainer.addCraftingToCrafters(this);
+    }
+	/** end Legendary Mod */
 
     /**
      * Displays the GUI for interacting with an anvil.

@@ -421,6 +421,13 @@ public class PlayerControllerMP
     {
         this.netClientHandler.addToSendQueue(new Packet108EnchantItem(par1, par2));
     }
+	
+	/** Legendary Mod */
+	public void sendProspectPacket(int par1, int par2, int par3)
+    {
+        this.netClientHandler.addToSendQueue(new Packet133ProspectItem(par1, par2, par3));
+    }
+	/** end Legendary Mod */
 
     /**
      * Used in PlayerControllerMP to update the server with an ItemStack in a slot.

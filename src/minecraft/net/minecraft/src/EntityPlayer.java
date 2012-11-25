@@ -784,7 +784,8 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
     public void displayGUIChest(IInventory par1IInventory) {}
 
     public void displayGUIEnchantment(int par1, int par2, int par3) {}
-
+	public void displayGUIProspecting(int par1, int par2, int par3) {} // Legendary Mod
+	
     /**
      * Displays the GUI for interacting with an anvil.
      */

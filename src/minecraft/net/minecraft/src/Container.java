@@ -99,7 +99,14 @@ public abstract class Container
     {
         return false;
     }
-
+	
+	/** Legendary Mod */
+	public boolean prospectItem(int itemId, int quantity)
+	{
+		return false;
+	}
+	/** end Legendary Mod */
+	
     public Slot getSlotFromInventory(IInventory par1IInventory, int par2)
     {
         for (int var3 = 0; var3 < this.inventorySlots.size(); ++var3)

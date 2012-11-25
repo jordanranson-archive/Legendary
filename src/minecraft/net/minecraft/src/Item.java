@@ -183,9 +183,9 @@ public class Item
     public static Item field_85180_cf = (new ItemRecord(2011, "wait")).setIconCoord(11, 15).setItemName("record");
 
 	/** Legendary Mod **/
-	public static Item roughStone = (new Item(4000)).setIconCoord(7, 0).setItemName("roughStone").setCreativeTab(CreativeTabs.tabMaterials);
-	public static Item hugeGeode = (new Item(4001)).setIconCoord(7, 0).setItemName("hugeGeode").setCreativeTab(CreativeTabs.tabMaterials);
-	public static Item dustyRelic = (new Item(4002)).setIconCoord(7, 0).setItemName("dustyRelic").setCreativeTab(CreativeTabs.tabMaterials);
+	public static Item roughStone = (new ItemArtifact(4000)).setIconCoord(7, 0).setItemName("roughStone").setCreativeTab(CreativeTabs.tabMaterials);
+	public static Item hugeGeode = (new ItemArtifact(4001)).setIconCoord(7, 0).setItemName("hugeGeode").setCreativeTab(CreativeTabs.tabMaterials);
+	public static Item dustyRelic = (new ItemArtifact(4002)).setIconCoord(7, 0).setItemName("dustyRelic").setCreativeTab(CreativeTabs.tabMaterials);
     public static Item opal = (new Item(4003)).setIconCoord(7, 3).setItemName("opal").setCreativeTab(CreativeTabs.tabMaterials);
     public static Item ruby = (new Item(4004)).setIconCoord(7, 3).setItemName("ruby").setCreativeTab(CreativeTabs.tabMaterials);
     public static Item sapphire = (new Item(4005)).setIconCoord(7, 3).setItemName("sapphire").setCreativeTab(CreativeTabs.tabMaterials);

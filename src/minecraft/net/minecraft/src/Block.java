@@ -24,7 +24,7 @@ public class Block
 
     /** Legendary Mod */
 	public static final int indexModifier = 256;
-	private static final int arrayLength = 3840 + indexModifier;
+	private static final int arrayLength = 4096 + indexModifier;
 	
     public static final Block[] blocksList = new Block[arrayLength];
     public static final boolean[] opaqueCubeLookup = new boolean[arrayLength];
@@ -201,6 +201,7 @@ public class Block
 	public static final Block blockSapphire = (new BlockOreStorage(251, 24)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockSapphire");
 	public static final Block blockMalachite = (new BlockOreStorage(250, 24)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockMalachite");
 	public static final Block blockAmethyst = (new BlockOreStorage(249, 24)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockAmethyst");
+	public static final Block prospectingTable = (new BlockProspectingTable(248)).setHardness(5.0F).setResistance(2000.0F).setBlockName("prospectingTable"); 
 	/** end Legendary Mod **/
 	
     /**

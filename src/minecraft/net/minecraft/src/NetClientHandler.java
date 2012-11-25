@@ -922,6 +922,13 @@ public class NetClientHandler extends NetHandler
             case 8:
                 var2.displayGUIAnvil(MathHelper.floor_double(var2.posX), MathHelper.floor_double(var2.posY), MathHelper.floor_double(var2.posZ));
                 var2.openContainer.windowId = par1Packet100OpenWindow.windowId;
+			
+			/** Legendary Mod */
+			case 40:
+                var2.displayGUIProspecting(MathHelper.floor_double(var2.posX), MathHelper.floor_double(var2.posY), MathHelper.floor_double(var2.posZ));
+                var2.openContainer.windowId = par1Packet100OpenWindow.windowId;
+                break;
+			/** end Legendary Mod */
         }
     }
 

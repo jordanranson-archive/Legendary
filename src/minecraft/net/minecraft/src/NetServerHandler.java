@@ -842,6 +842,17 @@ public class NetServerHandler extends NetHandler
             this.playerEntity.openContainer.updateCraftingResults();
         }
     }
+	
+	/** Legendary Mod */
+	public void handleProspectItem(Packet133ProspectItem par1Packet133ProspectItem)
+    {
+        if (this.playerEntity.openContainer.windowId == par1Packet133ProspectItem.windowId && this.playerEntity.openContainer.isPlayerNotUsingContainer(this.playerEntity))
+        {
+            this.playerEntity.openContainer.prospectItem(par1Packet133ProspectItem.itemId, par1Packet133ProspectItem.quantity);
+            this.playerEntity.openContainer.updateCraftingResults();
+        }
+    }
+	/** end Legendary Mod */
 
     /**
      * Handle a creative slot packet.

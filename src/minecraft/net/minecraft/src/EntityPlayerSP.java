@@ -343,6 +343,13 @@ public class EntityPlayerSP extends EntityPlayer
     {
         this.mc.displayGuiScreen(new GuiEnchantment(this.inventory, this.worldObj, par1, par2, par3));
     }
+	
+	/** Legendary Mod */
+	public void displayGUIProspecting(int par1, int par2, int par3)
+    {
+        this.mc.displayGuiScreen(new GuiProspecting(this.inventory, this.worldObj, par1, par2, par3));
+    }
+	/** end Legendary Mod */
 
     /**
      * Displays the GUI for interacting with an anvil.

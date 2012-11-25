@@ -267,5 +267,8 @@ public class TileEntity
         addMapping(TileEntityCommandBlock.class, "Control");
         addMapping(TileEntityBeacon.class, "Beacon");
         addMapping(TileEntitySkull.class, "Skull");
+		/** Legendary Mod */
+        addMapping(TileEntityProspectingTable.class, "ProspectTable");
+		/** end Legendary Mod */
     }
 }
