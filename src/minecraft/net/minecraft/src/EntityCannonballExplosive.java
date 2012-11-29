@@ -1,18 +1,18 @@
 package net.minecraft.src;
 
-public class EntityCannonball extends EntityThrowable
+public class EntityCannonballExplosive extends EntityThrowable
 {
-    public EntityCannonball(World par1World)
+    public EntityCannonballExplosive(World par1World)
     {
         super(par1World);
     }
 
-    public EntityCannonball(World par1World, EntityLiving par2EntityLiving)
+    public EntityCannonballExplosive(World par1World, EntityLiving par2EntityLiving)
     {
         super(par1World, par2EntityLiving);
     }
 
-    public EntityCannonball(World par1World, double par2, double par4, double par6)
+    public EntityCannonballExplosive(World par1World, double par2, double par4, double par6)
     {
         super(par1World, par2, par4, par6);
     }
@@ -24,7 +24,7 @@ public class EntityCannonball extends EntityThrowable
     {
         if (movingObjPos.entityHit != null)
         {
-            movingObjPos.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_85052_h()) /* thrower */, 6);
+            movingObjPos.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_85052_h()) /* thrower */, 4);
         }
 
         for (int i = 0; i < 4; ++i)
@@ -35,7 +35,14 @@ public class EntityCannonball extends EntityThrowable
         if (!this.worldObj.isRemote)
         {
             this.setDead();
+			this.explode();
         }
+    }
+	
+	private void explode()
+    {
+        float radius = 2.0F;
+        this.worldObj.createExplosion((Entity)null, this.posX, this.posY, this.posZ, radius, true);
     }
 	
 	public void onUpdate() 

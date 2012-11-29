@@ -91,6 +91,8 @@ public class RenderManager
         this.entityRenderMap.put(EntityLightningBolt.class, new RenderLightningBolt());
 		/** Legendary Mod */
         this.entityRenderMap.put(EntityCannonball.class, new RenderSnowball(Item.cannonball.getIconFromDamage(0)));
+        this.entityRenderMap.put(EntityCannonballHeavy.class, new RenderSnowball(Item.cannonballHeavy.getIconFromDamage(0)));
+        this.entityRenderMap.put(EntityCannonballExplosive.class, new RenderSnowball(Item.cannonballExplosive.getIconFromDamage(0)));
 		/** end Legendary Mod **/
         Iterator var1 = this.entityRenderMap.values().iterator();
 

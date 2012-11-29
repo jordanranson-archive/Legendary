@@ -1,18 +1,18 @@
 package net.minecraft.src;
 
-public class EntityCannonball extends EntityThrowable
+public class EntityCannonballHeavy extends EntityThrowable
 {
-    public EntityCannonball(World par1World)
+    public EntityCannonballHeavy(World par1World)
     {
         super(par1World);
     }
 
-    public EntityCannonball(World par1World, EntityLiving par2EntityLiving)
+    public EntityCannonballHeavy(World par1World, EntityLiving par2EntityLiving)
     {
         super(par1World, par2EntityLiving);
     }
 
-    public EntityCannonball(World par1World, double par2, double par4, double par6)
+    public EntityCannonballHeavy(World par1World, double par2, double par4, double par6)
     {
         super(par1World, par2, par4, par6);
     }
@@ -24,7 +24,13 @@ public class EntityCannonball extends EntityThrowable
     {
         if (movingObjPos.entityHit != null)
         {
-            movingObjPos.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_85052_h()) /* thrower */, 6);
+            movingObjPos.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_85052_h()) /* thrower */, 8);
+			
+			float velocity = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
+			if (velocity > 0.0F)
+			{
+				movingObjPos.entityHit.addVelocity(this.motionX * 0.725D / (double)velocity, 0.175D, this.motionZ * 0.725D / (double)velocity);
+			}
         }
 
         for (int i = 0; i < 4; ++i)

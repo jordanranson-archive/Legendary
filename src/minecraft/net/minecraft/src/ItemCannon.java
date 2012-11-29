@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class ItemCannon extends Item
 {
 	private int attackCooldown = 0;
-	private int maxAttackCooldown = 100 / 20;
+	private int maxAttackCooldown = 75;
 	
     public ItemCannon(int par1)
     {
@@ -52,11 +52,15 @@ public class ItemCannon extends Item
 			if (canUseWithoutArrows || hasAmmuntion(player))
 			{
 				Item ammo;
-				itemStack.damageItem(1, player);
+				itemStack.damageItem(3, player);
 				
 				for (int i = 0; i < 4; ++i)
 				{
-					world.spawnParticle("explode", player.posX, player.posY, player.posZ, 0.0D, 0.0D, 0.0D);
+					world.spawnParticle("explode", player.posX + (double)(Math.random() * 0.25 - 0.125), player.posY + 0.15D, player.posZ + (double)(Math.random() * 0.25 - 0.125), 0.0D, 0.0D, 0.0D);
+				}
+				for (int i = 0; i < 3; ++i)
+				{
+					world.spawnParticle("smoke", player.posX + (double)(Math.random() * 0.25 - 0.125), player.posY + 0.15D, player.posZ + (double)(Math.random() * 0.25 - 0.125), 0.0D, 0.0D, 0.0D);
 				}
 				world.playSoundAtEntity(player, "random.explode", 1.0F, 1.0F);
 
@@ -71,27 +75,22 @@ public class ItemCannon extends Item
 					
 					else if(ammo == Item.cannonballHeavy)
 					{
-						world.spawnEntityInWorld(new EntityCannonball(world, player));
+						world.spawnEntityInWorld(new EntityCannonballHeavy(world, player));
 					}
 					
 					else if(ammo == Item.cannonballExplosive)
 					{
-						world.spawnEntityInWorld(new EntityCannonball(world, player));
+						world.spawnEntityInWorld(new EntityCannonballExplosive(world, player));
 					}
 					
 					attackCooldown = maxAttackCooldown;
 					
 					if (!canUseWithoutArrows)
 					{
-						System.out.println(ammo);
 						player.inventory.consumeInventoryItem(ammo.shiftedIndex);
 					}
 				}
 			}
-		}
-		else 
-		{
-			world.playSoundAtEntity(player, "random.click", 1.0F, 1.0F);
 		}
 
         return itemStack;
@@ -102,6 +101,7 @@ public class ItemCannon extends Item
 		if(attackCooldown > 0)
 		{
 			attackCooldown--;
+			world.spawnParticle("smoke", entity.posX + (double)(Math.random() * 0.25 - 0.125), entity.posY + 0.15D, entity.posZ + (double)(Math.random() * 0.25 - 0.125), 0.0D, 0.005D, 0.0D);
 		}
 	}
 	

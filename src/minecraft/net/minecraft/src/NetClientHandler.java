@@ -280,6 +280,14 @@ public class NetClientHandler extends NetHandler
         {
             var8 = new EntityCannonball(this.worldClient, var2, var4, var6);
         }
+		else if (par1Packet23VehicleSpawn.type == 1001)
+        {
+            var8 = new EntityCannonballHeavy(this.worldClient, var2, var4, var6);
+        }
+		else if (par1Packet23VehicleSpawn.type == 1002)
+        {
+            var8 = new EntityCannonballExplosive(this.worldClient, var2, var4, var6);
+        }
 		/** end Legendary Mod */
 
         if (var8 != null)

@@ -214,6 +214,8 @@ public class EntityList
         addMapping(EntityEnderCrystal.class, "EnderCrystal", 200);
 		/** Legendary Mod */
         addMapping(EntityCannonball.class, "Cannonball", 400);
+        addMapping(EntityCannonballHeavy.class, "CannonballHeavy", 401);
+        addMapping(EntityCannonballExplosive.class, "CannonballExplosive", 402);
 		/** end Legendary Mod */
     }
 }

@@ -141,6 +141,14 @@ public class EntityTracker
         {
             this.addEntityToTracker(par1Entity, 64, 10, true);
         }
+		else if (par1Entity instanceof EntityCannonballHeavy)
+        {
+            this.addEntityToTracker(par1Entity, 64, 10, true);
+        }
+		else if (par1Entity instanceof EntityCannonballExplosive)
+        {
+            this.addEntityToTracker(par1Entity, 64, 10, true);
+        }
 		/** end Legendary Mod */
     }
 

@@ -475,6 +475,14 @@ public class EntityTrackerEntry
                 {
                     return new Packet23VehicleSpawn(this.myEntity, 1000);
                 }
+				else if (this.myEntity instanceof EntityCannonballHeavy)
+                {
+                    return new Packet23VehicleSpawn(this.myEntity, 1001);
+                }
+				else if (this.myEntity instanceof EntityCannonballExplosive)
+                {
+                    return new Packet23VehicleSpawn(this.myEntity, 1002);
+                }
 				/** end Legendary Mod */
                 else
                 {
