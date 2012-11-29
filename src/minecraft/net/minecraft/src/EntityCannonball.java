@@ -43,7 +43,7 @@ public class EntityCannonball extends EntityThrowable
 		super.onUpdate();
 		for (int i = 0; i < 4; ++i)
 		{
-			this.worldObj.spawnParticle("reddust", this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
+			this.worldObj.spawnParticle("smoke", this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
 		}
 	}
 }

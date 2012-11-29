@@ -1,11 +1,12 @@
 package net.minecraft.src;
 
 import java.util.Random;
+import java.util.ArrayList;
 
 public class ItemCannon extends Item
 {
 	private int attackCooldown = 0;
-	private int maxAttackCooldown = 100;
+	private int maxAttackCooldown = 100 / 20;
 	
     public ItemCannon(int par1)
     {
@@ -48,8 +49,9 @@ public class ItemCannon extends Item
 			boolean canUseWithoutArrows = player.capabilities.isCreativeMode;
 			float velocity = 1.0F;
 			
-			if (canUseWithoutArrows || player.inventory.hasItem(Item.cannonball.shiftedIndex))
+			if (canUseWithoutArrows || hasAmmuntion(player))
 			{
+				Item ammo;
 				itemStack.damageItem(1, player);
 				
 				for (int i = 0; i < 4; ++i)
@@ -58,15 +60,32 @@ public class ItemCannon extends Item
 				}
 				world.playSoundAtEntity(player, "random.explode", 1.0F, 1.0F);
 
-				if (!canUseWithoutArrows)
-				{
-					player.inventory.consumeInventoryItem(Item.cannonball.shiftedIndex);
-				}
-
 				if (!world.isRemote)
 				{
-					world.spawnEntityInWorld(new EntityCannonball(world, player));
+					ammo = getAmmunition(player, canUseWithoutArrows);
+				
+					if(ammo == Item.cannonball)
+					{
+						world.spawnEntityInWorld(new EntityCannonball(world, player));
+					}
+					
+					else if(ammo == Item.cannonballHeavy)
+					{
+						world.spawnEntityInWorld(new EntityCannonball(world, player));
+					}
+					
+					else if(ammo == Item.cannonballExplosive)
+					{
+						world.spawnEntityInWorld(new EntityCannonball(world, player));
+					}
+					
 					attackCooldown = maxAttackCooldown;
+					
+					if (!canUseWithoutArrows)
+					{
+						System.out.println(ammo);
+						player.inventory.consumeInventoryItem(ammo.shiftedIndex);
+					}
 				}
 			}
 		}
@@ -83,6 +102,43 @@ public class ItemCannon extends Item
 		if(attackCooldown > 0)
 		{
 			attackCooldown--;
+		}
+	}
+	
+	private boolean hasAmmuntion(EntityPlayer player)
+	{
+		return player.inventory.hasItem(Item.cannonball.shiftedIndex) || 
+			   player.inventory.hasItem(Item.cannonballHeavy.shiftedIndex) ||
+			   player.inventory.hasItem(Item.cannonballExplosive.shiftedIndex);
+	}
+	
+	private Item getAmmunition(EntityPlayer player, boolean canUseWithoutArrows) 
+	{
+		if(!canUseWithoutArrows)
+		{
+			ArrayList<Item> ammo = new ArrayList<Item>();
+			Random random = new Random();
+			
+			if(player.inventory.hasItem(Item.cannonball.shiftedIndex))
+			{
+				ammo.add(Item.cannonball);
+			}
+			
+			if(player.inventory.hasItem(Item.cannonballHeavy.shiftedIndex))
+			{
+				ammo.add(Item.cannonballHeavy);
+			}
+			
+			if(player.inventory.hasItem(Item.cannonballExplosive.shiftedIndex))
+			{
+				ammo.add(Item.cannonballExplosive);
+			}
+
+			return ammo.get(random.nextInt(ammo.size()));
+		}
+		else
+		{
+			return Item.cannonball;
 		}
 	}
 

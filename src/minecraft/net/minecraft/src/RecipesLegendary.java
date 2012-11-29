@@ -20,8 +20,8 @@ public class RecipesLegendary
 		craftingManager.addRecipe(new ItemStack(Item.redstoneSprocket), new Object[] {" # ", "#R#", " # ", '#', Item.ingotIron, 'R', Item.redstone});
 		craftingManager.addRecipe(new ItemStack(Item.crossbow), new Object[] {"B", "#", "S", 'B', Item.bow, '#', Item.redstoneSprocket, 'S', Item.stick});
 		craftingManager.addRecipe(new ItemStack(Item.cannonball, 8), new Object[] {" I ", "I#I", " I ", 'I', Item.ingotIron, '#', Block.cobblestone});
-		craftingManager.addRecipe(new ItemStack(Item.cannonball, 8), new Object[] {" I ", "I#I", " I ", 'I', Item.ingotIron, '#', Block.blockSteel});
-		craftingManager.addRecipe(new ItemStack(Item.cannonball, 8), new Object[] {" I ", "I#I", " I ", 'I', Item.ingotIron, '#', Block.tnt});
+		craftingManager.addRecipe(new ItemStack(Item.cannonballHeavy, 8), new Object[] {" I ", "I#I", " I ", 'I', Item.ingotIron, '#', Block.blockSteel});
+		craftingManager.addRecipe(new ItemStack(Item.cannonballExplosive, 8), new Object[] {" I ", "I#I", " I ", 'I', Item.ingotIron, '#', Block.tnt});
 		craftingManager.addRecipe(new ItemStack(Item.cannon), new Object[] {"  I", "P# ", "S I", 'I', Item.ingotIron, '#', Item.redstoneSprocket, 'S', Item.stick, 'P', Block.planks});
     }
 }
