@@ -213,7 +213,7 @@ public class RenderBiped extends RenderLiving
                 GL11.glRotatef(45.0F, 0.0F, 1.0F, 0.0F);
                 GL11.glScalef(-var6, -var6, var6);
             }
-            else if (var4.itemID == Item.bow.shiftedIndex || var4.itemID == Item.crossbow.shiftedIndex) // Legendary Mod
+            else if (var4.itemID == Item.bow.shiftedIndex || var4.itemID == Item.crossbow.shiftedIndex || var4.itemID == Item.cannon.shiftedIndex) // Legendary Mod
             {
                 var6 = 0.625F;
                 GL11.glTranslatef(0.0F, 0.125F, 0.3125F);
