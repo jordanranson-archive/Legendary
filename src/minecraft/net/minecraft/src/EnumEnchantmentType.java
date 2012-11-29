@@ -35,6 +35,7 @@ public enum EnumEnchantmentType
         }
         else
         {
+			// Legendary Mod
             return par1Item instanceof ItemSword ? this == weapon : (par1Item instanceof ItemTool ? this == digger : (par1Item instanceof ItemBow || par1Item instanceof ItemCrossbow ? this == bow : false));
         }
     }
