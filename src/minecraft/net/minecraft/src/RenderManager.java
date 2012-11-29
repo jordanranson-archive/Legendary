@@ -89,6 +89,9 @@ public class RenderManager
         this.entityRenderMap.put(EntityBoat.class, new RenderBoat());
         this.entityRenderMap.put(EntityFishHook.class, new RenderFish());
         this.entityRenderMap.put(EntityLightningBolt.class, new RenderLightningBolt());
+		/** Legendary Mod */
+        this.entityRenderMap.put(EntityCannonball.class, new RenderSnowball(Item.cannonball.getIconFromDamage(0)));
+		/** end Legendary Mod **/
         Iterator var1 = this.entityRenderMap.values().iterator();
 
         while (var1.hasNext())

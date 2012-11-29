@@ -1984,6 +1984,10 @@ public class RenderGlobal implements IWorldAccess
                     {
                         var21 = new EntityProspectingTableFX(this.theWorld, par2, par4, par6, (float)par8, (float)par10, (float)par12);
                     }
+					else if (par1Str.equals("cannonballImpact"))
+                    {
+                        var21 = new EntityBreakingFX(this.theWorld, par2, par4, par6, Item.cannonball);
+                    }
 					/** end Legendary Mod */
                     else if (par1Str.startsWith("iconcrack_"))
                     {

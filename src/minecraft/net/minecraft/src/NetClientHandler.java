@@ -275,6 +275,12 @@ public class NetClientHandler extends NetHandler
             var8 = new EntityFallingSand(this.worldClient, var2, var4, var6, par1Packet23VehicleSpawn.throwerEntityId & 65535, par1Packet23VehicleSpawn.throwerEntityId >> 16);
             par1Packet23VehicleSpawn.throwerEntityId = 0;
         }
+		/** Legendary Mod */
+		else if (par1Packet23VehicleSpawn.type == 1000)
+        {
+            var8 = new EntityCannonball(this.worldClient, var2, var4, var6);
+        }
+		/** end Legendary Mod */
 
         if (var8 != null)
         {

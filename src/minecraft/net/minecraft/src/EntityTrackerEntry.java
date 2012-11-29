@@ -470,6 +470,12 @@ public class EntityTrackerEntry
                 {
                     return new Packet23VehicleSpawn(this.myEntity, 72);
                 }
+				/** Legendary Mod */
+				else if (this.myEntity instanceof EntityCannonball)
+                {
+                    return new Packet23VehicleSpawn(this.myEntity, 1000);
+                }
+				/** end Legendary Mod */
                 else
                 {
                     Packet23VehicleSpawn var2;
