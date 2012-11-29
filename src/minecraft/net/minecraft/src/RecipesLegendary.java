@@ -23,5 +23,6 @@ public class RecipesLegendary
 		craftingManager.addRecipe(new ItemStack(Item.cannonballHeavy, 8), new Object[] {" I ", "I#I", " I ", 'I', Item.ingotIron, '#', Block.blockSteel});
 		craftingManager.addRecipe(new ItemStack(Item.cannonballExplosive, 8), new Object[] {" I ", "I#I", " I ", 'I', Item.ingotIron, '#', Block.tnt});
 		craftingManager.addRecipe(new ItemStack(Item.cannon), new Object[] {"  I", "P# ", "S I", 'I', Item.ingotIron, '#', Item.redstoneSprocket, 'S', Item.stick, 'P', Block.planks});
+		craftingManager.addRecipe(new ItemStack(Item.hangGlider), new Object[] {"LLL", "L#L", "S S", 'L', Item.leather, '#', Item.redstoneSprocket, 'S', Item.stick});
     }
 }
