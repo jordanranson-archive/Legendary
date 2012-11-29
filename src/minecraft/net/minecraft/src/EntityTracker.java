@@ -137,7 +137,7 @@ public class EntityTracker
             this.addEntityToTracker(par1Entity, 160, Integer.MAX_VALUE, false);
         }
 		/** Legendary Mod */
-		else if (par1Entity instanceof EntitySnowball)
+		else if (par1Entity instanceof EntityCannonball)
         {
             this.addEntityToTracker(par1Entity, 64, 10, true);
         }

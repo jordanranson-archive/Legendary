@@ -24,10 +24,10 @@ public class EntityCannonball extends EntityThrowable
     {
         if (movingObjPos.entityHit != null)
         {
-            movingObjPos.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_85052_h()) /* thrower */, 6);
+            movingObjPos.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_85052_h()) /* thrower */, 8);
         }
 
-        for (int var3 = 0; var3 < 8; ++var3)
+        for (int i = 0; i < 4; ++i)
         {
             this.worldObj.spawnParticle("cannonballImpact", this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
         }
@@ -40,7 +40,8 @@ public class EntityCannonball extends EntityThrowable
 	
 	public void onUpdate() 
 	{
-		for (var9 = 0; var9 < 4; ++var9)
+		super.onUpdate();
+		for (int i = 0; i < 4; ++i)
 		{
 			this.worldObj.spawnParticle("reddust", this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
 		}

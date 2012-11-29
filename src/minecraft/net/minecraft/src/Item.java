@@ -197,6 +197,7 @@ public class Item
     public static Item cannonball = (new Item(4011)).setIconCoord(9, 3).setItemName("cannonball").setCreativeTab(CreativeTabs.tabCombat);
     public static Item cannonballHeavy = (new Item(4012)).setIconCoord(9, 3).setItemName("cannonballHeavy").setCreativeTab(CreativeTabs.tabCombat);
     public static Item cannonballExplosive = (new Item(4013)).setIconCoord(9, 3).setItemName("cannonballExplosive").setCreativeTab(CreativeTabs.tabCombat);
+	public static Item cannon = (new ItemCannon(4014)).setIconCoord(5, 1).setItemName("handheldCannon");
 	/** end Legendary Mod **/
 	
     /** Item index + indexModifier */
