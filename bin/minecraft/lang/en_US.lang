@@ -14,6 +14,8 @@ item.sapphire.name=Sapphire
 item.malachite.name=Malachite
 item.amethyst.name=Amethyst
 item.opalEssence.name=Opal Essence
+item.redstoneSprocket.name=Redstone Sprocket
+item.crossbow.name=Crossbow
 
 tile.artifactFossil.name=Fossil
 tile.artifactSmooth.name=Stone Ore

@@ -61,7 +61,7 @@ public class RenderWitch extends RenderLiving
                 GL11.glRotatef(45.0F, 0.0F, 1.0F, 0.0F);
                 GL11.glScalef(var5, -var5, var5);
             }
-            else if (var4.itemID == Item.bow.shiftedIndex)
+            else if (var4.itemID == Item.bow.shiftedIndex || var4.itemID == Item.crossbow.shiftedIndex) // Legendary Mod
             {
                 var5 = 0.625F;
                 GL11.glTranslatef(0.0F, 0.125F, 0.3125F);

@@ -192,6 +192,8 @@ public class Item
     public static Item malachite = (new Item(4006)).setIconCoord(7, 3).setItemName("malachite").setCreativeTab(CreativeTabs.tabMaterials);
     public static Item amethyst = (new Item(4007)).setIconCoord(7, 3).setItemName("amethyst").setCreativeTab(CreativeTabs.tabMaterials);
     public static Item opalEssence = (new Item(4008)).setIconCoord(8, 3).setItemName("opalEssence").setCreativeTab(CreativeTabs.tabMaterials);
+    public static Item redstoneSprocket = (new Item(4010)).setIconCoord(7, 1).setItemName("redstoneSprocket").setCreativeTab(CreativeTabs.tabMaterials);
+    public static Item crossbow = (new ItemCrossbow(4009)).setIconCoord(5, 1).setItemName("crossbow");
 	/** end Legendary Mod **/
 	
     /** Item index + indexModifier */

@@ -349,7 +349,7 @@ public class RenderPlayer extends RenderLiving
                 GL11.glRotatef(45.0F, 0.0F, 1.0F, 0.0F);
                 GL11.glScalef(-var7, -var7, var7);
             }
-            else if (var21.itemID == Item.bow.shiftedIndex)
+            else if (var21.itemID == Item.bow.shiftedIndex || var21.itemID == Item.crossbow.shiftedIndex) // Legendary Mod
             {
                 var7 = 0.625F;
                 GL11.glTranslatef(0.0F, 0.125F, 0.3125F);

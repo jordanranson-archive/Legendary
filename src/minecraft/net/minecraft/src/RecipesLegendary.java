@@ -17,5 +17,7 @@ public class RecipesLegendary
         craftingManager.addRecipe(new ItemStack(Block.blockMalachite), new Object[] {"###", "###", "###", '#', new ItemStack(Item.malachite)});
         craftingManager.addRecipe(new ItemStack(Block.blockAmethyst), new Object[] {"###", "###", "###", '#', new ItemStack(Item.amethyst)});
 		craftingManager.addRecipe(new ItemStack(Block.prospectingTable), new Object[] {"CGC", "###", 'C', Block.cloth, 'G', Block.glass, '#', Block.cobblestone});
+		craftingManager.addRecipe(new ItemStack(Item.redstoneSprocket), new Object[] {" # ", "#R#", " # ", '#', Item.ingotIron, 'R', Item.redstone});
+		craftingManager.addRecipe(new ItemStack(Item.crossbow), new Object[] {"B", "#", "S", 'B', Item.bow, '#', Item.redstoneSprocket, 'S', Item.stick});
     }
 }
