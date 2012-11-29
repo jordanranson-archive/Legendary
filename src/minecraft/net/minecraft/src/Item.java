@@ -194,6 +194,9 @@ public class Item
     public static Item opalEssence = (new Item(4008)).setIconCoord(8, 3).setItemName("opalEssence").setCreativeTab(CreativeTabs.tabMaterials);
     public static Item redstoneSprocket = (new Item(4010)).setIconCoord(7, 1).setItemName("redstoneSprocket").setCreativeTab(CreativeTabs.tabMaterials);
     public static Item crossbow = (new ItemCrossbow(4009)).setIconCoord(5, 1).setItemName("crossbow");
+    public static Item cannonball = (new Item(4011)).setIconCoord(9, 3).setItemName("cannonball").setCreativeTab(CreativeTabs.tabCombat);
+    public static Item cannonballHeavy = (new Item(4012)).setIconCoord(9, 3).setItemName("cannonballHeavy").setCreativeTab(CreativeTabs.tabCombat);
+    public static Item cannonballExplosive = (new Item(4013)).setIconCoord(9, 3).setItemName("cannonballExplosive").setCreativeTab(CreativeTabs.tabCombat);
 	/** end Legendary Mod **/
 	
     /** Item index + indexModifier */
