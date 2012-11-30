@@ -199,6 +199,9 @@ public class Item
     public static Item cannonballExplosive = (new Item(4013)).setIconCoord(9, 3).setItemName("cannonballExplosive").setCreativeTab(CreativeTabs.tabCombat);
 	public static Item cannon = (new ItemCannon(4014)).setIconCoord(5, 1).setItemName("handheldCannon");
 	public static ItemHangGlider hangGlider = (ItemHangGlider)(new ItemHangGlider(4015)).setIconCoord(8, 1).setItemName("hangGlider");
+	public static Item meatSack = (Item)(new ItemSack(4016, "meat")).setIconCoord(7, 6).setItemName("meatSack");
+	public static Item treasureSack = (Item)(new ItemSack(4017, "treasure")).setIconCoord(7, 6).setItemName("treasureSack");
+	public static Item junkSack = (Item)(new ItemSack(4018, "junk")).setIconCoord(7, 6).setItemName("junkSack");
 	/** end Legendary Mod **/
 	
     /** Item index + indexModifier */

@@ -149,6 +149,18 @@ public class EntityTracker
         {
             this.addEntityToTracker(par1Entity, 64, 10, true);
         }
+		else if (par1Entity instanceof EntitySackMeat)
+        {
+            this.addEntityToTracker(par1Entity, 64, 10, true);
+        }
+		else if (par1Entity instanceof EntitySackJunk)
+        {
+            this.addEntityToTracker(par1Entity, 64, 10, true);
+        }
+		else if (par1Entity instanceof EntitySackTreasure)
+        {
+            this.addEntityToTracker(par1Entity, 64, 10, true);
+        }
 		/** end Legendary Mod */
     }
 

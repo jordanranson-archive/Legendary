@@ -288,6 +288,18 @@ public class NetClientHandler extends NetHandler
         {
             var8 = new EntityCannonballExplosive(this.worldClient, var2, var4, var6);
         }
+		else if (par1Packet23VehicleSpawn.type == 1003)
+        {
+            var8 = new EntitySackMeat(this.worldClient, var2, var4, var6);
+        }
+		else if (par1Packet23VehicleSpawn.type == 1004)
+        {
+            var8 = new EntitySackJunk(this.worldClient, var2, var4, var6);
+        }
+		else if (par1Packet23VehicleSpawn.type == 1005)
+        {
+            var8 = new EntitySackTreasure(this.worldClient, var2, var4, var6);
+        }
 		/** end Legendary Mod */
 
         if (var8 != null)

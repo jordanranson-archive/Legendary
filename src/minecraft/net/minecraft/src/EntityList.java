@@ -216,6 +216,9 @@ public class EntityList
         addMapping(EntityCannonball.class, "Cannonball", 400);
         addMapping(EntityCannonballHeavy.class, "CannonballHeavy", 401);
         addMapping(EntityCannonballExplosive.class, "CannonballExplosive", 402);
+        addMapping(EntitySackMeat.class, "MeatSack", 403);
+        addMapping(EntitySackJunk.class, "JunkSack", 404);
+        addMapping(EntitySackTreasure.class, "TreasureSack", 405);
 		/** end Legendary Mod */
     }
 }

@@ -483,6 +483,18 @@ public class EntityTrackerEntry
                 {
                     return new Packet23VehicleSpawn(this.myEntity, 1002);
                 }
+				else if (this.myEntity instanceof EntitySackMeat)
+                {
+                    return new Packet23VehicleSpawn(this.myEntity, 1003);
+                }
+				else if (this.myEntity instanceof EntitySackJunk)
+                {
+                    return new Packet23VehicleSpawn(this.myEntity, 1004);
+                }
+				else if (this.myEntity instanceof EntitySackTreasure)
+                {
+                    return new Packet23VehicleSpawn(this.myEntity, 1005);
+                }
 				/** end Legendary Mod */
                 else
                 {

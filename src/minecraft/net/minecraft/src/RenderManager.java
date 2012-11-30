@@ -93,6 +93,9 @@ public class RenderManager
         this.entityRenderMap.put(EntityCannonball.class, new RenderSnowball(Item.cannonball.getIconFromDamage(0)));
         this.entityRenderMap.put(EntityCannonballHeavy.class, new RenderSnowball(Item.cannonballHeavy.getIconFromDamage(0)));
         this.entityRenderMap.put(EntityCannonballExplosive.class, new RenderSnowball(Item.cannonballExplosive.getIconFromDamage(0)));
+        this.entityRenderMap.put(EntitySackMeat.class, new RenderSnowball(Item.meatSack.getIconFromDamage(0)));
+        this.entityRenderMap.put(EntitySackJunk.class, new RenderSnowball(Item.junkSack.getIconFromDamage(0)));
+        this.entityRenderMap.put(EntitySackTreasure.class, new RenderSnowball(Item.treasureSack.getIconFromDamage(0)));
 		/** end Legendary Mod **/
         Iterator var1 = this.entityRenderMap.values().iterator();
 

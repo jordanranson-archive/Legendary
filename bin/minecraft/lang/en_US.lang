@@ -21,6 +21,9 @@ item.cannonballHeavy.name=Heavy Cannonball
 item.cannonballExplosive.name=Explosive CannonBall
 item.handheldCannon.name=Handheld Cannon
 item.hangGlider.name=Hang Glider
+item.meatSack.name=Sack o' Meat
+item.junkSack.name=Dusty Bindle
+item.treasureSack.name=Treasure Pouch
 
 tile.artifactFossil.name=Fossil
 tile.artifactSmooth.name=Stone Ore
