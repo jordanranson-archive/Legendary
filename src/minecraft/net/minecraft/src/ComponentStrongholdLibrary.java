@@ -6,7 +6,15 @@ import java.util.Random;
 public class ComponentStrongholdLibrary extends ComponentStronghold
 {
     /** List of items that Stronghold Library chests can contain. */
-    private static final WeightedRandomChestContent[] strongholdLibraryChestContents = new WeightedRandomChestContent[] {new WeightedRandomChestContent(Item.book.shiftedIndex, 0, 1, 3, 20), new WeightedRandomChestContent(Item.paper.shiftedIndex, 0, 2, 7, 20), new WeightedRandomChestContent(Item.emptyMap.shiftedIndex, 0, 1, 1, 1), new WeightedRandomChestContent(Item.compass.shiftedIndex, 0, 1, 1, 1)};
+    private static final WeightedRandomChestContent[] strongholdLibraryChestContents = new WeightedRandomChestContent[] {
+		new WeightedRandomChestContent(Item.book.shiftedIndex, 0, 1, 3, 20), 
+		new WeightedRandomChestContent(Item.paper.shiftedIndex, 0, 2, 7, 20), 
+		new WeightedRandomChestContent(Item.emptyMap.shiftedIndex, 0, 1, 1, 1),
+		new WeightedRandomChestContent(Item.compass.shiftedIndex, 0, 1, 1, 1),
+		/** Legendary Mod */
+		new WeightedRandomChestContent(Item.junkSack.shiftedIndex, 0, 1, 1, 5)
+		/** end Legendary Mod */
+	};
     protected final EnumDoor doorType;
     private final boolean isLargeRoom;
 
