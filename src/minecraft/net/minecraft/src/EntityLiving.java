@@ -1273,7 +1273,17 @@ public abstract class EntityLiving extends Entity
                 this.func_85030_a("damage.fallsmall", 1.0F, 1.0F);
             }
 
-            this.attackEntityFrom(DamageSource.fall, var2);
+			/** Legendary Mod **/
+			if(this instanceof EntityPlayer && ((EntityPlayer)this).inventory.getCurrentItem() != null && ((EntityPlayer)this).inventory.getCurrentItem().getItem() == Item.hangGlider)
+			{
+				;
+			}
+			else
+			{
+				this.attackEntityFrom(DamageSource.fall, var2);
+			}
+			/** end Legendary Mod */
+			
             int var3 = this.worldObj.getBlockId(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY - 0.20000000298023224D - (double)this.yOffset), MathHelper.floor_double(this.posZ));
 
             if (var3 > 0)

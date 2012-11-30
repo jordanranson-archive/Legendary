@@ -30,19 +30,28 @@ public class ItemHangGlider extends Item
 				Item currentItem = player.inventory.getCurrentItem().getItem();
 				if(currentItem == Item.hangGlider && !player.isInWater() && !player.onGround && !player.capabilities.isFlying && !player.isJumping)
 				{
-					player.motionY *= 0.6F;
+					entity.motionY *= 0.6F;
 					
-					if(player.motionX > -0.45F && player.motionX < 0.45F)
+					if(entity.motionX > -0.495F && entity.motionX < 0.495F)
 					{
-						player.motionX *= 1.1F;
+						entity.motionX *= 1.065F;
 					}
 					
-					if(player.motionZ > -0.45F && player.motionZ < 0.45F)
+					if(entity.motionZ > -0.495F && entity.motionZ < 0.495F)
 					{
-						player.motionZ *= 1.1F;
+						entity.motionZ *= 1.065F;
 					}
-
-					itemStack.damageItem(1, player);
+					
+					if(itemStack.getItemDamage() + 1 >= this.getMaxDamage())
+					{
+						itemStack.damageItem(1, player);
+						world.playSoundAtEntity(player, "random.break", 1.0F, 1.0F);
+						player.inventory.decrStackSize(player.inventory.currentItem, 1);
+					}
+					else
+					{
+						itemStack.damageItem(1, player);
+					}
 				}
 			}
 		}
