@@ -2000,6 +2000,10 @@ public class RenderGlobal implements IWorldAccess
                     {
                         var21 = new EntityBreakingFX(this.theWorld, par2, par4, par6, Item.junkSack);
                     }
+					else if (par1Str.equals("lichenGlow"))
+                    {
+                        var21 = new EntityLichenGlowFX(this.theWorld, par2, par4, par6, (float)par8, (float)par10, (float)par12);
+                    }
 					/** end Legendary Mod */
                     else if (par1Str.startsWith("iconcrack_"))
                     {

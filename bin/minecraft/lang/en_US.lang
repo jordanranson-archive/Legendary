@@ -24,6 +24,7 @@ item.hangGlider.name=Hang Glider
 item.meatSack.name=Sack o' Meat
 item.junkSack.name=Dusty Bindle
 item.treasureSack.name=Treasure Pouch
+item.lichenSpores.name=Glowing Spores
 
 tile.artifactFossil.name=Fossil
 tile.artifactSmooth.name=Stone Ore
@@ -33,6 +34,8 @@ tile.blockSapphire.name=Block of Sapphire
 tile.blockMalachite.name=Block of Malachite
 tile.blockAmethyst.name=Block of Amethyst
 tile.prospectingTable.name=Prospecting Table
+tile.lichen.name=Lichen
+tile.lichenGlowing.name=Glowing Lichen
 # end Legendary Mod
 
 gui.done=Done
