@@ -15,6 +15,11 @@ public class WorldGenTrees extends WorldGenerator
 
     /** The metadata value of the leaves to use in tree generation. */
     private final int metaLeaves;
+	
+	/** Legendary Mod */
+	private final boolean lichenGrow;
+	private final int frequency;
+	/** end Legendary Mod */
 
     public WorldGenTrees(boolean par1)
     {
@@ -28,7 +33,22 @@ public class WorldGenTrees extends WorldGenerator
         this.metaWood = par3;
         this.metaLeaves = par4;
         this.vinesGrow = par5;
+		this.lichenGrow = false; // Legendary Mod
+		this.frequency = 0;
     }
+	
+	/** Legendary Mod */
+	public WorldGenTrees(boolean par1, int par2, int par3, int par4, int frequency)
+    {
+        super(par1);
+        this.minTreeHeight = par2;
+        this.metaWood = par3;
+        this.metaLeaves = par4;
+        this.vinesGrow = false;
+		this.lichenGrow = true;
+		this.frequency = frequency;
+    }
+	/** end Legendary Mod */
 
     public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
     {
@@ -145,6 +165,13 @@ public class WorldGenTrees extends WorldGenerator
                                     this.setBlockAndMetadata(par1World, par3, par4 + var11, par5 + 1, Block.vine.blockID, 4);
                                 }
                             }
+							
+							/** Legendary Mod */
+							if(this.lichenGrow)
+							{
+								LegendaryWorldGenHelper.growLichen(par1World, par3, par4, par5, var11, this.frequency, par2Random);
+							}
+							/** end Legendary Mod */
                         }
                     }
 

@@ -17,6 +17,11 @@ public class BiomeGenForest extends BiomeGenBase
      */
     public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
     {
-        return (WorldGenerator)(par1Random.nextInt(5) == 0 ? this.worldGeneratorForest : (par1Random.nextInt(10) == 0 ? this.worldGeneratorBigTree : this.worldGeneratorTrees));
+		/** Legendary Mod */
+        return (WorldGenerator)(par1Random.nextInt(5) == 0 ? this.worldGeneratorForest : 
+		(par1Random.nextInt(10) == 0 ? this.worldGeneratorBigTree : 
+		(par1Random.nextInt(24) == 0 ? new WorldGenTrees(false, 4, 0, 0, 3) : 
+		this.worldGeneratorTrees)));
+		/** end Legendary Mod */
     }
 }
