@@ -402,7 +402,6 @@ public class EntityGrapplingHook extends Entity
 		// Hooked on block
 		if (this.worldObj.isRemote && this.bobber == null && this.inGround)
 		{
-				System.out.println("HOOKED ON GROUND");
 				double posX = this.posX - this.angler.posX;
 				double posY = (this.posY + 4) - this.angler.posY;
 				double posZ = this.posZ - this.angler.posZ;
