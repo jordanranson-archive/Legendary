@@ -300,6 +300,17 @@ public class NetClientHandler extends NetHandler
         {
             var8 = new EntitySackTreasure(this.worldClient, var2, var4, var6);
         }
+		else if (par1Packet23VehicleSpawn.type == 1006)
+        {
+            Entity thrower = this.getEntityByID(par1Packet23VehicleSpawn.throwerEntityId);
+
+            if (thrower instanceof EntityPlayer)
+            {
+                var8 = new EntityGrapplingHook(this.worldClient, var2, var4, var6, (EntityPlayer)thrower);
+            }
+
+            par1Packet23VehicleSpawn.throwerEntityId = 0;
+        }
 		/** end Legendary Mod */
 
         if (var8 != null)

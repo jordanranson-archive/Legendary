@@ -161,6 +161,10 @@ public class EntityTracker
         {
             this.addEntityToTracker(par1Entity, 64, 10, true);
         }
+		else if (par1Entity instanceof EntityGrapplingHook)
+        {
+            this.addEntityToTracker(par1Entity, 64, 5, true);
+        }
 		/** end Legendary Mod */
     }
 

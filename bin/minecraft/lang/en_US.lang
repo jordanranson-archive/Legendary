@@ -25,6 +25,7 @@ item.meatSack.name=Sack o' Meat
 item.junkSack.name=Dusty Bindle
 item.treasureSack.name=Treasure Pouch
 item.lichenSpores.name=Shimmering Spores
+item.grapplingHook.name=Grappling Hook
 
 tile.artifactFossil.name=Fossil
 tile.artifactSmooth.name=Stone Ore

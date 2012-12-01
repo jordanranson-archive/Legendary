@@ -101,6 +101,10 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
      * An instance of a fishing rod's hook. If this isn't null, the icon image of the fishing rod is slightly different
      */
     public EntityFishHook fishEntity = null;
+	
+	/** Legendary Mod */
+    public EntityGrapplingHook grapplingEntity = null;
+	/** end Legendary Mod */
 
     public EntityPlayer(World par1World)
     {
@@ -784,7 +788,10 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
     public void displayGUIChest(IInventory par1IInventory) {}
 
     public void displayGUIEnchantment(int par1, int par2, int par3) {}
-	public void displayGUIProspecting(int par1, int par2, int par3) {} // Legendary Mod
+	
+	/** Legendary Mod */
+	public void displayGUIProspecting(int par1, int par2, int par3) {}
+	/** end Legendary Mod */
 	
     /**
      * Displays the GUI for interacting with an anvil.

@@ -203,6 +203,7 @@ public class Item
 	public static Item treasureSack = (Item)(new ItemSack(4017, "treasure")).setIconCoord(7, 6).setItemName("treasureSack");
 	public static Item junkSack = (Item)(new ItemSack(4018, "junk")).setIconCoord(7, 6).setItemName("junkSack");
 	public static Item lichenSpores = (new ItemLichenSpores(4019)).setIconCoord(12, 8).setItemName("lichenSpores");
+    public static Item grapplingHook = (new ItemGrapplingHook(4020)).setIconCoord(5, 4).setItemName("grapplingHook");
 	/** end Legendary Mod **/
 	
     /** Item index + indexModifier */

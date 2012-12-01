@@ -495,6 +495,11 @@ public class EntityTrackerEntry
                 {
                     return new Packet23VehicleSpawn(this.myEntity, 1005);
                 }
+				else if (this.myEntity instanceof EntityGrapplingHook)
+                {
+                    EntityPlayer player = ((EntityGrapplingHook)this.myEntity).angler;
+                    return new Packet23VehicleSpawn(this.myEntity, 1006, player != null ? player.entityId : this.myEntity.entityId);
+                }
 				/** end Legendary Mod */
                 else
                 {
