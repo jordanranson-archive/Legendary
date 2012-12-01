@@ -34,8 +34,8 @@ public class ItemGrapplingHook extends Item
     {
         if (par3EntityPlayer.grapplingEntity != null)
         {
-            int var4 = par3EntityPlayer.grapplingEntity.catchFish();
-            par1ItemStack.damageItem(var4, par3EntityPlayer);
+            par3EntityPlayer.grapplingEntity.grapple();
+            par1ItemStack.damageItem(1, par3EntityPlayer);
             par3EntityPlayer.swingItem();
         }
         else

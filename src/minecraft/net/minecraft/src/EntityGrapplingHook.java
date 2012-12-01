@@ -19,9 +19,6 @@ public class EntityGrapplingHook extends Entity
     private int ticksInGround;
     private int ticksInAir;
 
-    /** the number of ticks remaining until this fish can no longer be caught */
-    private int ticksCatchable;
-
     /**
      * The entity that the fishing rod is connected to, if any. When you right click on the fishing rod and the hook
      * falls on to an entity, this it that entity.
@@ -47,7 +44,6 @@ public class EntityGrapplingHook extends Entity
         this.inGround = false;
         this.shake = 0;
         this.ticksInAir = 0;
-        this.ticksCatchable = 0;
         this.bobber = null;
         this.setSize(0.25F, 0.25F);
         this.ignoreFrustumCheck = true;
@@ -72,7 +68,6 @@ public class EntityGrapplingHook extends Entity
         this.inGround = false;
         this.shake = 0;
         this.ticksInAir = 0;
-        this.ticksCatchable = 0;
         this.bobber = null;
         this.ignoreFrustumCheck = true;
         this.angler = par2EntityPlayer;
@@ -84,7 +79,7 @@ public class EntityGrapplingHook extends Entity
         this.posZ -= (double)(MathHelper.sin(this.rotationYaw / 180.0F * (float)Math.PI) * 0.16F);
         this.setPosition(this.posX, this.posY, this.posZ);
         this.yOffset = 0.0F;
-        float var3 = 0.4F;
+        float var3 = 0.3F;
         this.motionX = (double)(-MathHelper.sin(this.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float)Math.PI) * var3);
         this.motionZ = (double)(MathHelper.cos(this.rotationYaw / 180.0F * (float)Math.PI) * MathHelper.cos(this.rotationPitch / 180.0F * (float)Math.PI) * var3);
         this.motionY = (double)(-MathHelper.sin(this.rotationPitch / 180.0F * (float)Math.PI) * var3);
@@ -191,10 +186,13 @@ public class EntityGrapplingHook extends Entity
                         this.posX = this.bobber.posX;
                         this.posY = this.bobber.boundingBox.minY + (double)this.bobber.height * 0.8D;
                         this.posZ = this.bobber.posZ;
+						this.inGround = false;
                         return;
                     }
-
-                    this.bobber = null;
+					else
+					{
+						this.bobber = null;
+					}
                 }
             }
 
@@ -203,6 +201,7 @@ public class EntityGrapplingHook extends Entity
                 --this.shake;
             }
 
+			// Stuck in ground
             if (this.inGround)
             {
                 int var19 = this.worldObj.getBlockId(this.xTile, this.yTile, this.zTile);
@@ -247,6 +246,7 @@ public class EntityGrapplingHook extends Entity
             double var6 = 0.0D;
             double var13;
 
+			// Look for entities and hit them
             for (int var8 = 0; var8 < var5.size(); ++var8)
             {
                 Entity var9 = (Entity)var5.get(var8);
@@ -282,6 +282,7 @@ public class EntityGrapplingHook extends Entity
                     if (var3.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.angler), 0))
                     {
                         this.bobber = var3.entityHit;
+						this.inGround = false;
                     }
                 }
                 else
@@ -333,58 +334,6 @@ public class EntityGrapplingHook extends Entity
                     double var14 = this.boundingBox.minY + (this.boundingBox.maxY - this.boundingBox.minY) * (double)(var29 + 0) / (double)var27 - 0.125D + 0.125D;
                     double var16 = this.boundingBox.minY + (this.boundingBox.maxY - this.boundingBox.minY) * (double)(var29 + 1) / (double)var27 - 0.125D + 0.125D;
                     AxisAlignedBB var18 = AxisAlignedBB.getAABBPool().addOrModifyAABBInPool(this.boundingBox.minX, var14, this.boundingBox.minZ, this.boundingBox.maxX, var16, this.boundingBox.maxZ);
-
-                    if (this.worldObj.isAABBInMaterial(var18, Material.water))
-                    {
-                        var26 += 1.0D / (double)var27;
-                    }
-                }
-
-                if (var26 > 0.0D)
-                {
-                    if (this.ticksCatchable > 0)
-                    {
-                        --this.ticksCatchable;
-                    }
-                    else
-                    {
-                        short var28 = 500;
-
-                        if (this.worldObj.canLightningStrikeAt(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY) + 1, MathHelper.floor_double(this.posZ)))
-                        {
-                            var28 = 300;
-                        }
-
-                        if (this.rand.nextInt(var28) == 0)
-                        {
-                            this.ticksCatchable = this.rand.nextInt(30) + 10;
-                            this.motionY -= 0.20000000298023224D;
-                            this.func_85030_a("random.splash", 0.25F, 1.0F + (this.rand.nextFloat() - this.rand.nextFloat()) * 0.4F);
-                            float var30 = (float)MathHelper.floor_double(this.boundingBox.minY);
-                            int var15;
-                            float var17;
-                            float var31;
-
-                            for (var15 = 0; (float)var15 < 1.0F + this.width * 20.0F; ++var15)
-                            {
-                                var31 = (this.rand.nextFloat() * 2.0F - 1.0F) * this.width;
-                                var17 = (this.rand.nextFloat() * 2.0F - 1.0F) * this.width;
-                                this.worldObj.spawnParticle("bubble", this.posX + (double)var31, (double)(var30 + 1.0F), this.posZ + (double)var17, this.motionX, this.motionY - (double)(this.rand.nextFloat() * 0.2F), this.motionZ);
-                            }
-
-                            for (var15 = 0; (float)var15 < 1.0F + this.width * 20.0F; ++var15)
-                            {
-                                var31 = (this.rand.nextFloat() * 2.0F - 1.0F) * this.width;
-                                var17 = (this.rand.nextFloat() * 2.0F - 1.0F) * this.width;
-                                this.worldObj.spawnParticle("splash", this.posX + (double)var31, (double)(var30 + 1.0F), this.posZ + (double)var17, this.motionX, this.motionY, this.motionZ);
-                            }
-                        }
-                    }
-                }
-
-                if (this.ticksCatchable > 0)
-                {
-                    this.motionY -= (double)(this.rand.nextFloat() * this.rand.nextFloat() * this.rand.nextFloat()) * 0.2D;
                 }
 
                 var13 = var26 * 2.0D - 1.0D;
@@ -435,54 +384,40 @@ public class EntityGrapplingHook extends Entity
         return 0.0F;
     }
 
-    public int catchFish()
+    public void grapple()
     {
-        if (this.worldObj.isRemote)
-        {
-            return 0;
-        }
-        else
-        {
-            byte var1 = 0;
-
-            if (this.bobber != null)
-            {
-                double var2 = this.angler.posX - this.posX;
-                double var4 = this.angler.posY - this.posY;
-                double var6 = this.angler.posZ - this.posZ;
-                double var8 = (double)MathHelper.sqrt_double(var2 * var2 + var4 * var4 + var6 * var6);
-                double var10 = 0.1D;
-                this.bobber.motionX += var2 * var10;
-                this.bobber.motionY += var4 * var10 + (double)MathHelper.sqrt_double(var8) * 0.08D;
-                this.bobber.motionZ += var6 * var10;
-                var1 = 3;
-            }
-            else if (this.ticksCatchable > 0)
-            {
-                EntityItem var13 = new EntityItem(this.worldObj, this.posX, this.posY, this.posZ, new ItemStack(Item.fishRaw));
-                double var3 = this.angler.posX - this.posX;
-                double var5 = this.angler.posY - this.posY;
-                double var7 = this.angler.posZ - this.posZ;
-                double var9 = (double)MathHelper.sqrt_double(var3 * var3 + var5 * var5 + var7 * var7);
-                double var11 = 0.1D;
-                var13.motionX = var3 * var11;
-                var13.motionY = var5 * var11 + (double)MathHelper.sqrt_double(var9) * 0.08D;
-                var13.motionZ = var7 * var11;
-                this.worldObj.spawnEntityInWorld(var13);
-                this.angler.addStat(StatList.fishCaughtStat, 1);
-                this.angler.worldObj.spawnEntityInWorld(new EntityXPOrb(this.angler.worldObj, this.angler.posX, this.angler.posY + 0.5D, this.angler.posZ + 0.5D, this.rand.nextInt(3) + 1));
-                var1 = 1;
-            }
-
-            if (this.inGround)
-            {
-                var1 = 2;
-            }
-
-            this.setDead();
-            this.angler.grapplingEntity = null;
-            return var1;
-        }
+		// Hooked on entity
+		if (!this.worldObj.isRemote && this.bobber != null)
+		{
+				double posX = this.angler.posX - this.posX;
+				double posY = (this.angler.posY + 2) - this.posY;
+				double posZ = this.angler.posZ - this.posZ;
+				double velocity = (double)MathHelper.sqrt_double(posX * posX + posY * posY + posZ * posZ);
+				double speed = 0.3D;
+				this.bobber.motionX += posX * speed;
+				this.bobber.motionY += posY * speed /*+ (double)MathHelper.sqrt_double(velocity) * 0.02D*/;
+				this.bobber.motionZ += posZ * speed;
+		}
+		
+		// Hooked on block
+		if (this.worldObj.isRemote && this.bobber == null && this.inGround)
+		{
+				System.out.println("HOOKED ON GROUND");
+				double posX = this.posX - this.angler.posX;
+				double posY = (this.posY + 4) - this.angler.posY;
+				double posZ = this.posZ - this.angler.posZ;
+				double velocity = (double)MathHelper.sqrt_double(posX * posX + posY * posY + posZ * posZ);
+				double speed = 0.2D;
+				this.angler.motionX += posX * speed;
+				this.angler.motionY += posY * speed/* + (double)MathHelper.sqrt_double(velocity) * 0.02D*/;
+				this.angler.motionZ += posZ * speed;
+		}
+		
+		if(!this.worldObj.isRemote) 
+		{
+			this.setDead();
+			this.angler.grapplingEntity = null;
+		}
     }
 
     /**
