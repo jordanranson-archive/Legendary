@@ -37,6 +37,7 @@ tile.blockAmethyst.name=Block of Amethyst
 tile.prospectingTable.name=Prospecting Table
 tile.lichen.name=Lichen
 tile.lichenGlowing.name=Glowing Lichen
+tile.lantern.name=Lantern
 # end Legendary Mod
 
 gui.done=Done
