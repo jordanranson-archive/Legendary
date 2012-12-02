@@ -10,7 +10,6 @@ public class BlockLantern extends BlockSand
     public BlockLantern(int par1, int par2)
     {
         super(par1, par2, Material.iron);
-        this.setCreativeTab(CreativeTabs.tabDecorations);
 		this.setStepSound(soundMetalFootstep);
     }
 
@@ -29,7 +28,9 @@ public class BlockLantern extends BlockSand
 	
     private void tryToFall(World par1World, int par2, int par3, int par4)
     {
-        if (!par1World.doesBlockHaveSolidTopSurface(par2, par3 + 1, par4) && canFallBelow(par1World, par2, par3 - 1, par4) && par3 >= 0)
+		int roofId = par1World.getBlockId(par2, par3 + 1, par4);
+        if ((roofId != Block.fence.blockID && roofId != Block.netherFence.blockID && roofId != Block.glass.blockID && roofId != Block.cobblestoneWall.blockID) &&
+		!par1World.doesBlockHaveSolidTopSurface(par2, par3 + 1, par4) && canFallBelow(par1World, par2, par3 - 1, par4) && par3 >= 0)
         {
             byte var8 = 32;
 			//int roofMeta = par1World.getBlockMetadata(par2, par3 + 1, par4);
@@ -58,5 +59,23 @@ public class BlockLantern extends BlockSand
                 }
             }
         }
+    }
+	
+	public boolean onBlockActivated(World world, int blockX, int blockY, int blockZ, EntityPlayer player, int par6, float par7, float par8, float par9)
+    {
+		ItemStack equippedItem = player.inventory.getCurrentItem();
+		if(equippedItem != null && equippedItem.getItem().shiftedIndex == Item.flintAndSteel.shiftedIndex && !(this instanceof BlockLanternLit))
+		{
+            equippedItem.damageItem(1, player);
+		
+			int meta = world.getBlockMetadata(blockX, blockY, blockZ);
+			world.setBlockAndMetadata(blockX, blockY, blockZ, Block.lanternLit.blockID, meta);
+			
+			return true;
+		}
+		else
+		{
+			return false;
+		}
     }
 }

@@ -204,7 +204,8 @@ public class Block
 	public static final Block prospectingTable = (new BlockProspectingTable(248)).setHardness(5.0F).setResistance(2000.0F).setBlockName("prospectingTable"); 
 	public static final BlockLichen lichen = (BlockLichen)(new BlockLichen(247)).setHardness(0.0F).setStepSound(soundGrassFootstep).setBlockName("lichen").setCreativeTab(CreativeTabs.tabDecorations);
 	public static final BlockLichen lichenGlowing = (BlockLichenGlowing)(new BlockLichenGlowing(246)).setLightValue(0.2F).setHardness(0.0F).setStepSound(soundGrassFootstep).setBlockName("lichenGlowing");
-	public static final Block lantern = (new BlockLantern(245, 211)).setHardness(5.0F).setRequiresSelfNotify().setBlockName("lantern");
+	public static final Block lantern = (new BlockLantern(245, 211)).setHardness(5.0F).setRequiresSelfNotify().setCreativeTab(CreativeTabs.tabDecorations).setBlockName("lantern");
+	public static final Block lanternLit = (new BlockLanternLit(244, 212)).setHardness(5.0F).setRequiresSelfNotify().setBlockName("lantern");
 	/** end Legendary Mod **/
 	
     /**

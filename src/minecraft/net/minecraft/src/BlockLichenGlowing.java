@@ -12,7 +12,7 @@ public class BlockLichenGlowing extends BlockLichen
 	public boolean onBlockActivated(World world, int blockX, int blockY, int blockZ, EntityPlayer player, int par6, float par7, float par8, float par9)
     {
 		ItemStack equippedItem = player.inventory.getCurrentItem();
-		if(equippedItem.getItem().shiftedIndex == Item.glassBottle.shiftedIndex)
+		if(equippedItem != null && equippedItem.getItem().shiftedIndex == Item.glassBottle.shiftedIndex)
 		{
 			player.inventory.decrStackSize(player.inventory.currentItem, 1);
 		
