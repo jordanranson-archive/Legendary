@@ -38,6 +38,9 @@ tile.prospectingTable.name=Prospecting Table
 tile.lichen.name=Lichen
 tile.lichenGlowing.name=Glowing Lichen
 tile.lantern.name=Lantern
+tile.lantern.iron.name=Iron Lantern
+tile.lantern.paper.name=Paper Lantern
+tile.lantern.stone.name=Stone Lantern
 # end Legendary Mod
 
 gui.done=Done

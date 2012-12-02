@@ -204,8 +204,7 @@ public class Block
 	public static final Block prospectingTable = (new BlockProspectingTable(248)).setHardness(5.0F).setResistance(2000.0F).setBlockName("prospectingTable"); 
 	public static final BlockLichen lichen = (BlockLichen)(new BlockLichen(247)).setHardness(0.0F).setStepSound(soundGrassFootstep).setBlockName("lichen").setCreativeTab(CreativeTabs.tabDecorations);
 	public static final BlockLichen lichenGlowing = (BlockLichenGlowing)(new BlockLichenGlowing(246)).setLightValue(0.2F).setHardness(0.0F).setStepSound(soundGrassFootstep).setBlockName("lichenGlowing");
-	public static final Block lantern = (new BlockLantern(245, 211)).setHardness(5.0F).setRequiresSelfNotify().setCreativeTab(CreativeTabs.tabDecorations).setBlockName("lantern");
-	public static final Block lanternLit = (new BlockLanternLit(244, 212)).setHardness(5.0F).setRequiresSelfNotify().setBlockName("lantern");
+	public static final Block lantern = (new BlockLantern(245, 64)).setHardness(5.0F).setRequiresSelfNotify().setCreativeTab(CreativeTabs.tabDecorations).setBlockName("lantern");
 	/** end Legendary Mod **/
 	
     /**
@@ -1257,7 +1256,8 @@ public class Block
         Item.itemsList[pistonStickyBase.blockID] = new ItemPiston(pistonStickyBase.blockID - indexModifier);
         Item.itemsList[cobblestoneWall.blockID] = (new ItemMultiTextureTile(cobblestoneWall.blockID - indexModifier, cobblestoneWall, BlockWall.types)).setItemName("cobbleWall");
         Item.itemsList[anvil.blockID] = (new ItemAnvilBlock(anvil)).setItemName("anvil");
-
+		Item.itemsList[lantern.blockID] = (new ItemLantern(lantern.blockID - indexModifier)).setItemName("lantern");
+		
         for (int var0 = 0; var0 < indexModifier; ++var0)
         {
             if (blocksList[var0] != null)
