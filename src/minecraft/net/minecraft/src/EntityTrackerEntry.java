@@ -584,16 +584,16 @@ public class EntityTrackerEntry
                         var2.zPosition = MathHelper.floor_float((float)(var4.zPosition * 32));
                         return var2;
                     }
+					/** Legendary Mod */
+					else if (this.myEntity instanceof EntityHealthOrb)
+                    {
+                        return new Packet134EntityHealthOrb((EntityHealthOrb)this.myEntity);
+                    }
+					/** end Legendary Mod */
                     else if (this.myEntity instanceof EntityXPOrb)
                     {
                         return new Packet26EntityExpOrb((EntityXPOrb)this.myEntity);
                     }
-					/** Legendary Mod */
-					else if (this.myEntity instanceof EntityHealthOrb)
-                    {
-                        return new Packet26EntityExpOrb((EntityHealthOrb)this.myEntity);
-                    }
-					/** end Legendary Mod */
                     else
                     {
                         throw new IllegalArgumentException("Don\'t know how to add " + this.myEntity.getClass() + "!");

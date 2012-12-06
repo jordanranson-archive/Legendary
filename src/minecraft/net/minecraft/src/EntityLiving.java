@@ -1818,15 +1818,15 @@ public abstract class EntityLiving extends Entity
 			LegendaryEnchantmentHelper.frozenEffect(this);
 		}
 		
-		if(this.dataWatcher.getWatchableObjectInt(8) == Potion.curse.getLiquidColor())
+		/*if(this.dataWatcher.getWatchableObjectInt(8) == Potion.curse.getLiquidColor())
 		{
 			LegendaryEnchantmentHelper.curseEffect(this);
-		}
+		}*/
 		
-		if(this.dataWatcher.getWatchableObjectInt(8) == Potion.affliction.getLiquidColor())
+		/*if(this.dataWatcher.getWatchableObjectInt(8) == Potion.affliction.getLiquidColor())
 		{
 			LegendaryEnchantmentHelper.afflictionEffect(this);
-		}
+		}*/
 		/** end Legendary Mod */
     }
 

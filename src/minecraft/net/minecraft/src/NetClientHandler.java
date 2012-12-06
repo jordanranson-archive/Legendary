@@ -433,7 +433,7 @@ public class NetClientHandler extends NetHandler
     }
 	
 	/** Legendary Mod */
-	public void handleEntityHealthOrb(Packet26EntityExpOrb par1Packet26EntityExpOrb)
+	public void handleEntityHealthOrb(Packet134EntityHealthOrb par1Packet26EntityExpOrb)
     {
         EntityHealthOrb var2 = new EntityHealthOrb(this.worldClient, (double)par1Packet26EntityExpOrb.posX, (double)par1Packet26EntityExpOrb.posY, (double)par1Packet26EntityExpOrb.posZ, par1Packet26EntityExpOrb.xpValue);
         var2.serverPosX = par1Packet26EntityExpOrb.posX;

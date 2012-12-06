@@ -439,5 +439,9 @@ public abstract class Packet
         addIdClassMapping(253, true, false, Packet253ServerAuthData.class);
         addIdClassMapping(254, false, true, Packet254ServerPing.class);
         addIdClassMapping(255, true, true, Packet255KickDisconnect.class);
+		/** Legendary Mod */
+        addIdClassMapping(133, true, false, Packet133ProspectItem.class);
+        addIdClassMapping(134, true, false, Packet134EntityHealthOrb.class);
+		/** Legendary Mod */
     }
 }

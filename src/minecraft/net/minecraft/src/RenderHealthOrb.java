@@ -38,13 +38,13 @@ public class RenderHealthOrb extends Render
         var21 = (int)((MathHelper.sin(var27 + 0.0F) + 1.0F) * 0.5F * var26);
         int var22 = (int)var26;
         int var23 = (int)((MathHelper.sin(var27 + 4.1887903F) + 1.0F) * 0.1F * var26);
-        int var24 = var21 << 16 | var22 << 8 | var23;
+        int color = var23 << 16 | var22 << 8 | var21;
         GL11.glRotatef(180.0F - this.renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
         GL11.glRotatef(-this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
         float var25 = 0.3F;
         GL11.glScalef(var25, var25, var25);
         var11.startDrawingQuads();
-        var11.setColorRGBA(255, 64, 64, 128);
+        var11.setColorRGBA_I(16716563, 128);
         var11.setNormal(0.0F, 1.0F, 0.0F);
         var11.addVertexWithUV((double)(0.0F - var17), (double)(0.0F - var18), 0.0D, (double)var12, (double)var15);
         var11.addVertexWithUV((double)(var16 - var17), (double)(0.0F - var18), 0.0D, (double)var13, (double)var15);

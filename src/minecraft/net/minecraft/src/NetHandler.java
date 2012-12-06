@@ -364,6 +364,13 @@ public abstract class NetHandler
     {
         this.unexpectedPacket(par1Packet26EntityExpOrb);
     }
+	
+	/** Legendary Mod */
+	public void handleEntityHealthOrb(Packet134EntityHealthOrb par1Packet26EntityExpOrb)
+    {
+        this.unexpectedPacket(par1Packet26EntityExpOrb);
+    }
+	/** end Legendary Mod */
 
     public void handleEnchantItem(Packet108EnchantItem par1Packet108EnchantItem) {}
 	

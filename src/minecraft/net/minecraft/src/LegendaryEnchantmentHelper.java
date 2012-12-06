@@ -44,9 +44,10 @@ public class LegendaryEnchantmentHelper
 	public static void curseDamageEffect(EntityLiving entity)
 	{
 		Random random = new Random();
-		if(random.nextInt() == 0) {}
-		
-		entity.worldObj.spawnEntityInWorld(new EntityHealthOrb(entity.worldObj, entity.posX, entity.posY, entity.posZ, 1));
+		if(random.nextInt(3) == 0)
+		{
+			entity.worldObj.spawnEntityInWorld(new EntityHealthOrb(entity.worldObj, entity.posX, entity.posY, entity.posZ, 1));
+		}
 	}
 	
 	// affliction potion effect
