@@ -219,6 +219,7 @@ public class EntityList
         addMapping(EntitySackMeat.class, "MeatSack", 403);
         addMapping(EntitySackJunk.class, "JunkSack", 404);
         addMapping(EntitySackTreasure.class, "TreasureSack", 405);
+        addMapping(EntityHealthOrb.class, "HealthOrb", 406);
 		/** end Legendary Mod */
     }
 }

@@ -431,6 +431,20 @@ public class NetClientHandler extends NetHandler
         var2.entityId = par1Packet26EntityExpOrb.entityId;
         this.worldClient.addEntityToWorld(par1Packet26EntityExpOrb.entityId, var2);
     }
+	
+	/** Legendary Mod */
+	public void handleEntityHealthOrb(Packet26EntityExpOrb par1Packet26EntityExpOrb)
+    {
+        EntityHealthOrb var2 = new EntityHealthOrb(this.worldClient, (double)par1Packet26EntityExpOrb.posX, (double)par1Packet26EntityExpOrb.posY, (double)par1Packet26EntityExpOrb.posZ, par1Packet26EntityExpOrb.xpValue);
+        var2.serverPosX = par1Packet26EntityExpOrb.posX;
+        var2.serverPosY = par1Packet26EntityExpOrb.posY;
+        var2.serverPosZ = par1Packet26EntityExpOrb.posZ;
+        var2.rotationYaw = 0.0F;
+        var2.rotationPitch = 0.0F;
+        var2.entityId = par1Packet26EntityExpOrb.entityId;
+        this.worldClient.addEntityToWorld(par1Packet26EntityExpOrb.entityId, var2);
+    }
+	/** end Legendary Mod */
 
     /**
      * Handles weather packet
@@ -744,7 +758,13 @@ public class NetClientHandler extends NetHandler
 
         if (var2 != null)
         {
-            if (var2 instanceof EntityXPOrb)
+			/** Legendary Mod */
+			if (var2 instanceof EntityHealthOrb)
+            {
+                this.worldClient.playSoundAtEntity(var2, "random.orb", 0.2F, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
+            }
+			/** end Legendary Mod */
+			else if (var2 instanceof EntityXPOrb)
             {
                 this.worldClient.playSoundAtEntity(var2, "random.orb", 0.2F, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
             }

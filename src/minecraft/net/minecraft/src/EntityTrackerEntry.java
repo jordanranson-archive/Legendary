@@ -588,6 +588,12 @@ public class EntityTrackerEntry
                     {
                         return new Packet26EntityExpOrb((EntityXPOrb)this.myEntity);
                     }
+					/** Legendary Mod */
+					else if (this.myEntity instanceof EntityHealthOrb)
+                    {
+                        return new Packet26EntityExpOrb((EntityHealthOrb)this.myEntity);
+                    }
+					/** end Legendary Mod */
                     else
                     {
                         throw new IllegalArgumentException("Don\'t know how to add " + this.myEntity.getClass() + "!");

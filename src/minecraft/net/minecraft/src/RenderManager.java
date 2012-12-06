@@ -101,6 +101,7 @@ public class RenderManager
         this.entityRenderMap.put(EntityArrowFrozen.class, new RenderArrowFrozen());
         this.entityRenderMap.put(EntityArrowCursed.class, new RenderArrowCursed());
         this.entityRenderMap.put(EntityArrowCharged.class, new RenderArrowCharged());
+        this.entityRenderMap.put(EntityHealthOrb.class, new RenderHealthOrb());
 		/** end Legendary Mod **/
         Iterator var1 = this.entityRenderMap.values().iterator();
 

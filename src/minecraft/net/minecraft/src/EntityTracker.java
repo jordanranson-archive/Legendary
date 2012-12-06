@@ -181,6 +181,10 @@ public class EntityTracker
         {
             this.addEntityToTracker(par1Entity, 64, 20, false);
         }
+        else if (par1Entity instanceof EntityHealthOrb)
+        {
+            this.addEntityToTracker(par1Entity, 160, 20, true);
+        }
 		/** end Legendary Mod */
     }
 

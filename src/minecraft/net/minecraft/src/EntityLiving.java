@@ -1024,6 +1024,13 @@ public abstract class EntityLiving extends Entity
                 {
                     this.func_85030_a(this.getHurtSound(), this.getSoundVolume(), this.getSoundPitch());
                 }
+				
+				/** Legendary Mod */
+				if(this.isPotionActive(Potion.curse))
+				{
+					LegendaryEnchantmentHelper.curseDamageEffect(this);
+				}
+				/** end Legendary Mod */
 
                 return true;
             }
@@ -1804,6 +1811,23 @@ public abstract class EntityLiving extends Entity
         }
 
         this.worldObj.theProfiler.endSection();
+		
+		/** Legendary Mod */
+		if(this.dataWatcher.getWatchableObjectInt(8) == Potion.frozen.getLiquidColor())
+		{
+			LegendaryEnchantmentHelper.frozenEffect(this);
+		}
+		
+		if(this.dataWatcher.getWatchableObjectInt(8) == Potion.curse.getLiquidColor())
+		{
+			LegendaryEnchantmentHelper.curseEffect(this);
+		}
+		
+		if(this.dataWatcher.getWatchableObjectInt(8) == Potion.affliction.getLiquidColor())
+		{
+			LegendaryEnchantmentHelper.afflictionEffect(this);
+		}
+		/** end Legendary Mod */
     }
 
     protected void func_85033_bc()
