@@ -41,6 +41,21 @@ tile.lantern.name=Lantern
 tile.lantern.iron.name=Iron Lantern
 tile.lantern.paper.name=Paper Lantern
 tile.lantern.stone.name=Stone Lantern
+
+enchantment.arrowFrost=Frost
+enchantment.arrowCursed=Curse
+enchantment.arrowCharged=Lightning
+enchantment.weaponFrost=Frost Aspect
+enchantment.weaponCursed=Shadow Aspect
+enchantment.weaponCharged=Storm Aspect
+enchantment.armorFlame=Fiery Guardian
+enchantment.armorFrost=Frozen Aura
+enchantment.armorCursed=Affliction
+enchantment.armorCharged=Thunder Charge
+enchantment.feetFlame=Fiery Impact
+enchantment.feetFrost=Frozen Impact
+enchantment.feetCursed=Cursed Impact
+enchantment.feetCharged=Charged Impact
 # end Legendary Mod
 
 gui.done=Done
