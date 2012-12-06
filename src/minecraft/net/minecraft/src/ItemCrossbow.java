@@ -15,14 +15,6 @@ public class ItemCrossbow extends Item
         this.setCreativeTab(CreativeTabs.tabCombat);
     }
 
-    /**
-     * called when the player releases the use item button. Args: itemstack, world, entityplayer, itemInUseCount
-     */
-    public void onPlayerStoppedUsing(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer, int par4)
-    {
-		
-    }
-
     public ItemStack onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
         return par1ItemStack;
@@ -58,38 +50,183 @@ public class ItemCrossbow extends Item
 			
 			if (canUseWithoutArrows || player.inventory.hasItem(Item.arrow.shiftedIndex))
 			{
-				EntityArrow arrow = new EntityArrow(world, player, velocity);
-				arrow.setDamage(1.5F);
-
-				int enchantPower = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, itemStack);
-				if (enchantPower > 0)
+				if(EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, itemStack) > 0)
 				{
-					arrow.setDamage(arrow.getDamage() + (double)enchantPower * 0.5D + 0.5D);
+					EntityArrowFlame arrow = new EntityArrowFlame(world, player, velocity);
+					arrow.setDamage(1.5F);
+					arrow.setFire(100);
+					
+					int enchantPower = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, itemStack);
+					if (enchantPower > 0)
+					{
+						arrow.setDamage(arrow.getDamage() + (double)enchantPower * 0.5D + 0.5D);
+					}
+
+					int enchantPunch = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, itemStack);
+					if (enchantPunch > 0)
+					{
+						arrow.setKnockbackStrength(enchantPunch);
+					}
+
+					itemStack.damageItem(1, player);
+					world.playSoundAtEntity(player, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
+
+					if (canUseWithoutArrows)
+					{
+						arrow.canBePickedUp = 2;
+					}
+					else
+					{
+						player.inventory.consumeInventoryItem(Item.arrow.shiftedIndex);
+					}
+
+					if (!world.isRemote)
+					{
+						world.spawnEntityInWorld(arrow);
+						attackCooldown = maxAttackCooldown;
+					}
 				}
-
-				int enchantPunch = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, itemStack);
-				if (enchantPunch > 0)
+				else if(EnchantmentHelper.getEnchantmentLevel(Enchantment.arrowFrost.effectId, itemStack) > 0)
 				{
-					arrow.setKnockbackStrength(enchantPunch);
+					EntityArrowFrozen arrow = new EntityArrowFrozen(world, player, velocity);
+					arrow.setDamage(1.5F);
+
+					int enchantPower = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, itemStack);
+					if (enchantPower > 0)
+					{
+						arrow.setDamage(arrow.getDamage() + (double)enchantPower * 0.5D + 0.5D);
+					}
+
+					int enchantPunch = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, itemStack);
+					if (enchantPunch > 0)
+					{
+						arrow.setKnockbackStrength(enchantPunch);
+					}
+
+					itemStack.damageItem(1, player);
+					world.playSoundAtEntity(player, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
+
+					if (canUseWithoutArrows)
+					{
+						arrow.canBePickedUp = 2;
+					}
+					else
+					{
+						player.inventory.consumeInventoryItem(Item.arrow.shiftedIndex);
+					}
+
+					if (!world.isRemote)
+					{
+						world.spawnEntityInWorld(arrow);
+						attackCooldown = maxAttackCooldown;
+					}
 				}
-
-				itemStack.damageItem(1, player);
-				world.playSoundAtEntity(player, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
-
-				if (canUseWithoutArrows)
+				else if(EnchantmentHelper.getEnchantmentLevel(Enchantment.arrowCursed.effectId, itemStack) > 0)
 				{
-					arrow.canBePickedUp = 2;
+					EntityArrowCursed arrow = new EntityArrowCursed(world, player, velocity);
+					arrow.setDamage(1.5F);
+
+					int enchantPower = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, itemStack);
+					if (enchantPower > 0)
+					{
+						arrow.setDamage(arrow.getDamage() + (double)enchantPower * 0.5D + 0.5D);
+					}
+
+					int enchantPunch = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, itemStack);
+					if (enchantPunch > 0)
+					{
+						arrow.setKnockbackStrength(enchantPunch);
+					}
+
+					itemStack.damageItem(1, player);
+					world.playSoundAtEntity(player, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
+
+					if (canUseWithoutArrows)
+					{
+						arrow.canBePickedUp = 2;
+					}
+					else
+					{
+						player.inventory.consumeInventoryItem(Item.arrow.shiftedIndex);
+					}
+
+					if (!world.isRemote)
+					{
+						world.spawnEntityInWorld(arrow);
+						attackCooldown = maxAttackCooldown;
+					}
+				}
+				else if(EnchantmentHelper.getEnchantmentLevel(Enchantment.arrowCharged.effectId, itemStack) > 0)
+				{
+					EntityArrowCharged arrow = new EntityArrowCharged(world, player, velocity);
+					arrow.setDamage(1.5F);
+
+					int enchantPower = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, itemStack);
+					if (enchantPower > 0)
+					{
+						arrow.setDamage(arrow.getDamage() + (double)enchantPower * 0.5D + 0.5D);
+					}
+
+					int enchantPunch = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, itemStack);
+					if (enchantPunch > 0)
+					{
+						arrow.setKnockbackStrength(enchantPunch);
+					}
+
+					itemStack.damageItem(1, player);
+					world.playSoundAtEntity(player, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
+
+					if (canUseWithoutArrows)
+					{
+						arrow.canBePickedUp = 2;
+					}
+					else
+					{
+						player.inventory.consumeInventoryItem(Item.arrow.shiftedIndex);
+					}
+
+					if (!world.isRemote)
+					{
+						world.spawnEntityInWorld(arrow);
+						attackCooldown = maxAttackCooldown;
+					}
 				}
 				else
 				{
-					player.inventory.consumeInventoryItem(Item.arrow.shiftedIndex);
+					EntityArrow arrow = new EntityArrow(world, player, velocity);
+					arrow.setDamage(1.5F);
+
+					int enchantPower = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, itemStack);
+					if (enchantPower > 0)
+					{
+						arrow.setDamage(arrow.getDamage() + (double)enchantPower * 0.5D + 0.5D);
+					}
+
+					int enchantPunch = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, itemStack);
+					if (enchantPunch > 0)
+					{
+						arrow.setKnockbackStrength(enchantPunch);
+					}
+
+					itemStack.damageItem(1, player);
+					world.playSoundAtEntity(player, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + velocity * 0.5F);
+
+					if (canUseWithoutArrows)
+					{
+						arrow.canBePickedUp = 2;
+					}
+					else
+					{
+						player.inventory.consumeInventoryItem(Item.arrow.shiftedIndex);
+					}
+
+					if (!world.isRemote)
+					{
+						world.spawnEntityInWorld(arrow);
+						attackCooldown = maxAttackCooldown;
+					}
 				}
 
-				if (!world.isRemote)
-				{
-					world.spawnEntityInWorld(arrow);
-					attackCooldown = maxAttackCooldown;
-				}
 			}
 		}
 
