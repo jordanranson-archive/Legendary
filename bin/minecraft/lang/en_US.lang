@@ -56,6 +56,10 @@ enchantment.feetFlame=Fiery Impact
 enchantment.feetFrost=Frozen Impact
 enchantment.feetCursed=Cursed Impact
 enchantment.feetCharged=Charged Impact
+
+potion.frozen=Frozen
+potion.cursed=Cursed
+potion.affliction=Afflicted
 # end Legendary Mod
 
 gui.done=Done

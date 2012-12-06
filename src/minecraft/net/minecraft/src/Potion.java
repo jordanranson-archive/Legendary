@@ -45,6 +45,13 @@ public class Potion
 
     /** The wither Potion object. */
     public static final Potion wither = (new Potion(20, true, 3484199)).setPotionName("potion.wither").setIconIndex(1, 2).setEffectiveness(0.25D);
+	
+	/** Legendary Mod */
+    public static final Potion frozen = (new Potion(31, true, 4550353)).setPotionName("potion.frozen").setIconIndex(5, 0);
+    public static final Potion curse = (new Potion(30, true, 7614642)).setPotionName("potion.curse").setIconIndex(5, 0);
+    public static final Potion affliction = (new Potion(29, true, 14165379)).setPotionName("potion.affliction").setIconIndex(5, 0);
+	/** end Legendary Mod */
+	
     public static final Potion field_76434_w = null;
     public static final Potion field_76444_x = null;
     public static final Potion field_76443_y = null;
