@@ -80,6 +80,27 @@ public abstract class Enchantment
      * arrow on inventory use the bow.
      */
     public static final Enchantment infinity = new EnchantmentArrowInfinite(51, 1);
+	
+	/** Legendary Mod */
+	public static final Enchantment arrowFrost = new EnchantmentElemental(200, 2, EnumEnchantmentType.bow, "arrowFrost");
+	public static final Enchantment arrowCursed = new EnchantmentElemental(201, 2, EnumEnchantmentType.bow, "arrowCursed");
+	public static final Enchantment arrowCharged = new EnchantmentElemental(202, 2, EnumEnchantmentType.bow, "arrowCharged");
+	
+	public static final Enchantment weaponFrost = new EnchantmentElemental(203, 2, EnumEnchantmentType.weapon, "weaponFrost");
+	public static final Enchantment weaponCursed = new EnchantmentElemental(204, 2, EnumEnchantmentType.weapon, "weaponCursed");
+	public static final Enchantment weaponCharged = new EnchantmentElemental(205, 2, EnumEnchantmentType.weapon, "weaponCharged");
+	
+	public static final Enchantment armorFlame = new EnchantmentElemental(206, 2, EnumEnchantmentType.armor_torso, "armorFlame");
+	public static final Enchantment armorFrost = new EnchantmentElemental(207, 2, EnumEnchantmentType.armor_torso, "armorFrost");
+	public static final Enchantment armorCursed = new EnchantmentElemental(208, 2, EnumEnchantmentType.armor_torso, "armorCursed");
+	public static final Enchantment armorCharged = new EnchantmentElemental(209, 2, EnumEnchantmentType.armor_torso, "armorCharged");
+	
+	public static final Enchantment feetFlame = new EnchantmentElemental(210, 2, EnumEnchantmentType.armor_feet, "feetFlame");
+	public static final Enchantment feetFrost = new EnchantmentElemental(211, 2, EnumEnchantmentType.armor_feet, "feetFrost");
+	public static final Enchantment feetCursed = new EnchantmentElemental(212, 2, EnumEnchantmentType.armor_feet, "feetCursed");
+	public static final Enchantment feetCharged = new EnchantmentElemental(213, 2, EnumEnchantmentType.armor_feet, "feetCharged");
+	/** end Legendary Mod */
+	
     public final int effectId;
     private final int weight;
 
