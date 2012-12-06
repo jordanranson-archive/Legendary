@@ -32,49 +32,209 @@ public class ItemBow extends Item
             {
                 var7 = 1.0F;
             }
+			
+			if(EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, par1ItemStack) > 0)
+			{
+				EntityArrowFlame var8 = new EntityArrowFlame(par2World, par3EntityPlayer, var7 * 2.0F);
 
-            EntityArrow var8 = new EntityArrow(par2World, par3EntityPlayer, var7 * 2.0F);
+				if (var7 == 1.0F)
+				{
+					var8.setIsCritical(true);
+				}
 
-            if (var7 == 1.0F)
-            {
-                var8.setIsCritical(true);
-            }
+				int var9 = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, par1ItemStack);
 
-            int var9 = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, par1ItemStack);
+				if (var9 > 0)
+				{
+					var8.setDamage(var8.getDamage() + (double)var9 * 0.5D + 0.5D);
+				}
 
-            if (var9 > 0)
-            {
-                var8.setDamage(var8.getDamage() + (double)var9 * 0.5D + 0.5D);
-            }
+				int var10 = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, par1ItemStack);
 
-            int var10 = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, par1ItemStack);
+				if (var10 > 0)
+				{
+					var8.setKnockbackStrength(var10);
+				}
+				
+				var8.setFire(100);
 
-            if (var10 > 0)
-            {
-                var8.setKnockbackStrength(var10);
-            }
+				par1ItemStack.damageItem(1, par3EntityPlayer);
+				par2World.playSoundAtEntity(par3EntityPlayer, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + var7 * 0.5F);
 
-            if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, par1ItemStack) > 0)
-            {
-                var8.setFire(100);
-            }
+				if (var5)
+				{
+					var8.canBePickedUp = 2;
+				}
+				else
+				{
+					par3EntityPlayer.inventory.consumeInventoryItem(Item.arrow.shiftedIndex);
+				}
 
-            par1ItemStack.damageItem(1, par3EntityPlayer);
-            par2World.playSoundAtEntity(par3EntityPlayer, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + var7 * 0.5F);
+				if (!par2World.isRemote)
+				{
+					par2World.spawnEntityInWorld(var8);
+				}
+			}
+			else if(EnchantmentHelper.getEnchantmentLevel(Enchantment.arrowFrost.effectId, par1ItemStack) > 0)
+			{
+				EntityArrowFrozen var8 = new EntityArrowFrozen(par2World, par3EntityPlayer, var7 * 2.0F);
 
-            if (var5)
-            {
-                var8.canBePickedUp = 2;
-            }
-            else
-            {
-                par3EntityPlayer.inventory.consumeInventoryItem(Item.arrow.shiftedIndex);
-            }
+				if (var7 == 1.0F)
+				{
+					var8.setIsCritical(true);
+				}
 
-            if (!par2World.isRemote)
-            {
-                par2World.spawnEntityInWorld(var8);
-            }
+				int var9 = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, par1ItemStack);
+
+				if (var9 > 0)
+				{
+					var8.setDamage(var8.getDamage() + (double)var9 * 0.5D + 0.5D);
+				}
+
+				int var10 = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, par1ItemStack);
+
+				if (var10 > 0)
+				{
+					var8.setKnockbackStrength(var10);
+				}
+
+				par1ItemStack.damageItem(1, par3EntityPlayer);
+				par2World.playSoundAtEntity(par3EntityPlayer, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + var7 * 0.5F);
+
+				if (var5)
+				{
+					var8.canBePickedUp = 2;
+				}
+				else
+				{
+					par3EntityPlayer.inventory.consumeInventoryItem(Item.arrow.shiftedIndex);
+				}
+
+				if (!par2World.isRemote)
+				{
+					par2World.spawnEntityInWorld(var8);
+				}
+			}
+			else if(EnchantmentHelper.getEnchantmentLevel(Enchantment.arrowCursed.effectId, par1ItemStack) > 0)
+			{
+				EntityArrowCursed var8 = new EntityArrowCursed(par2World, par3EntityPlayer, var7 * 2.0F);
+
+				if (var7 == 1.0F)
+				{
+					var8.setIsCritical(true);
+				}
+
+				int var9 = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, par1ItemStack);
+
+				if (var9 > 0)
+				{
+					var8.setDamage(var8.getDamage() + (double)var9 * 0.5D + 0.5D);
+				}
+
+				int var10 = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, par1ItemStack);
+
+				if (var10 > 0)
+				{
+					var8.setKnockbackStrength(var10);
+				}
+
+				par1ItemStack.damageItem(1, par3EntityPlayer);
+				par2World.playSoundAtEntity(par3EntityPlayer, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + var7 * 0.5F);
+
+				if (var5)
+				{
+					var8.canBePickedUp = 2;
+				}
+				else
+				{
+					par3EntityPlayer.inventory.consumeInventoryItem(Item.arrow.shiftedIndex);
+				}
+
+				if (!par2World.isRemote)
+				{
+					par2World.spawnEntityInWorld(var8);
+				}
+			}
+			else if(EnchantmentHelper.getEnchantmentLevel(Enchantment.arrowCharged.effectId, par1ItemStack) > 0)
+			{
+				EntityArrowCharged var8 = new EntityArrowCharged(par2World, par3EntityPlayer, var7 * 2.0F);
+
+				if (var7 == 1.0F)
+				{
+					var8.setIsCritical(true);
+				}
+
+				int var9 = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, par1ItemStack);
+
+				if (var9 > 0)
+				{
+					var8.setDamage(var8.getDamage() + (double)var9 * 0.5D + 0.5D);
+				}
+
+				int var10 = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, par1ItemStack);
+
+				if (var10 > 0)
+				{
+					var8.setKnockbackStrength(var10);
+				}
+
+				par1ItemStack.damageItem(1, par3EntityPlayer);
+				par2World.playSoundAtEntity(par3EntityPlayer, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + var7 * 0.5F);
+
+				if (var5)
+				{
+					var8.canBePickedUp = 2;
+				}
+				else
+				{
+					par3EntityPlayer.inventory.consumeInventoryItem(Item.arrow.shiftedIndex);
+				}
+
+				if (!par2World.isRemote)
+				{
+					par2World.spawnEntityInWorld(var8);
+				}
+			}
+			else
+			{
+				EntityArrow var8 = new EntityArrow(par2World, par3EntityPlayer, var7 * 2.0F);
+
+				if (var7 == 1.0F)
+				{
+					var8.setIsCritical(true);
+				}
+
+				int var9 = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, par1ItemStack);
+
+				if (var9 > 0)
+				{
+					var8.setDamage(var8.getDamage() + (double)var9 * 0.5D + 0.5D);
+				}
+
+				int var10 = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, par1ItemStack);
+
+				if (var10 > 0)
+				{
+					var8.setKnockbackStrength(var10);
+				}
+
+				par1ItemStack.damageItem(1, par3EntityPlayer);
+				par2World.playSoundAtEntity(par3EntityPlayer, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + var7 * 0.5F);
+
+				if (var5)
+				{
+					var8.canBePickedUp = 2;
+				}
+				else
+				{
+					par3EntityPlayer.inventory.consumeInventoryItem(Item.arrow.shiftedIndex);
+				}
+
+				if (!par2World.isRemote)
+				{
+					par2World.spawnEntityInWorld(var8);
+				}
+			}
         }
     }
 
