@@ -53,6 +53,13 @@ public class DamageSource
     {
         return (new EntityDamageSourceIndirect("arrow", par0EntityArrow, par1Entity)).setProjectile();
     }
+	
+	/** Legendary Mod */
+	public static DamageSource causeGenericArrowDamage(Entity par0EntityArrow, Entity par1Entity)
+    {
+        return (new EntityDamageSourceIndirect("arrow", par0EntityArrow, par1Entity)).setProjectile();
+    }
+	/** end Legendary Mod */
 
     /**
      * returns EntityDamageSourceIndirect of a fireball

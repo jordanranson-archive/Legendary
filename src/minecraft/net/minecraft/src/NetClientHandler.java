@@ -311,6 +311,22 @@ public class NetClientHandler extends NetHandler
 
             par1Packet23VehicleSpawn.throwerEntityId = 0;
         }
+		else if (par1Packet23VehicleSpawn.type == 1007)
+        {
+            var8 = new EntityArrowFlame(this.worldClient, var2, var4, var6);
+        }
+		else if (par1Packet23VehicleSpawn.type == 1008)
+        {
+            var8 = new EntityArrowFrozen(this.worldClient, var2, var4, var6);
+        }
+		else if (par1Packet23VehicleSpawn.type == 1009)
+        {
+            var8 = new EntityArrowCursed(this.worldClient, var2, var4, var6);
+        }
+		else if (par1Packet23VehicleSpawn.type == 1010)
+        {
+            var8 = new EntityArrowCharged(this.worldClient, var2, var4, var6);
+        }
 		/** end Legendary Mod */
 
         if (var8 != null)
@@ -352,6 +368,49 @@ public class NetClientHandler extends NetHandler
                         var15.shootingEntity = var13;
                     }
                 }
+				
+				/** Legendary Mod */
+				if (par1Packet23VehicleSpawn.type == 1007)
+                {
+                    Entity var13 = this.getEntityByID(par1Packet23VehicleSpawn.throwerEntityId);
+
+                    if (var13 instanceof EntityLiving)
+                    {
+                        EntityArrowFlame var15 = (EntityArrowFlame)var8;
+                        var15.shootingEntity = var13;
+                    }
+                }
+				if (par1Packet23VehicleSpawn.type == 1008)
+                {
+                    Entity var13 = this.getEntityByID(par1Packet23VehicleSpawn.throwerEntityId);
+
+                    if (var13 instanceof EntityLiving)
+                    {
+                        EntityArrowFrozen var15 = (EntityArrowFrozen)var8;
+                        var15.shootingEntity = var13;
+                    }
+                }
+				if (par1Packet23VehicleSpawn.type == 1009)
+                {
+                    Entity var13 = this.getEntityByID(par1Packet23VehicleSpawn.throwerEntityId);
+
+                    if (var13 instanceof EntityLiving)
+                    {
+                        EntityArrowCursed var15 = (EntityArrowCursed)var8;
+                        var15.shootingEntity = var13;
+                    }
+                }
+				if (par1Packet23VehicleSpawn.type == 1010)
+                {
+                    Entity var13 = this.getEntityByID(par1Packet23VehicleSpawn.throwerEntityId);
+
+                    if (var13 instanceof EntityLiving)
+                    {
+                        EntityArrowCharged var15 = (EntityArrowCharged)var8;
+                        var15.shootingEntity = var13;
+                    }
+                }
+				/** end Legendary Mod */
 
                 ((Entity)var8).setVelocity((double)par1Packet23VehicleSpawn.speedX / 8000.0D, (double)par1Packet23VehicleSpawn.speedY / 8000.0D, (double)par1Packet23VehicleSpawn.speedZ / 8000.0D);
             }

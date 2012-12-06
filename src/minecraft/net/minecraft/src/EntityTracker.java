@@ -165,6 +165,22 @@ public class EntityTracker
         {
             this.addEntityToTracker(par1Entity, 64, 5, true);
         }
+		else if (par1Entity instanceof EntityArrowFlame)
+        {
+            this.addEntityToTracker(par1Entity, 64, 20, false);
+        }
+		else if (par1Entity instanceof EntityArrowFrozen)
+        {
+            this.addEntityToTracker(par1Entity, 64, 20, false);
+        }
+		else if (par1Entity instanceof EntityArrowCursed)
+        {
+            this.addEntityToTracker(par1Entity, 64, 20, false);
+        }
+		else if (par1Entity instanceof EntityArrowCharged)
+        {
+            this.addEntityToTracker(par1Entity, 64, 20, false);
+        }
 		/** end Legendary Mod */
     }
 

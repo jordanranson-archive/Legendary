@@ -2016,6 +2016,10 @@ public class RenderGlobal implements IWorldAccess
                     {
                         var21 = new EntityCursedEnchantFX(this.theWorld, par2, par4, par6, (float)par8, (float)par10, (float)par12);
                     }
+					else if (par1Str.equals("chargedEnchant"))
+                    {
+                        var21 = new EntityHeartFX(this.theWorld, par2, par4, par6, par8, par10, par12);
+                    }
 					/** end Legendary Mod */
                     else if (par1Str.startsWith("iconcrack_"))
                     {

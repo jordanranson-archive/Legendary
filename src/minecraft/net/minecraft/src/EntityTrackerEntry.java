@@ -500,6 +500,26 @@ public class EntityTrackerEntry
                     EntityPlayer player = ((EntityGrapplingHook)this.myEntity).angler;
                     return new Packet23VehicleSpawn(this.myEntity, 1006, player != null ? player.entityId : this.myEntity.entityId);
                 }
+				else if (this.myEntity instanceof EntityArrowFlame)
+                {
+                    Entity var7 = ((EntityArrowFlame)this.myEntity).shootingEntity;
+                    return new Packet23VehicleSpawn(this.myEntity, 1007, var7 != null ? var7.entityId : this.myEntity.entityId);
+                }
+				else if (this.myEntity instanceof EntityArrowFrozen)
+                {
+                    Entity var7 = ((EntityArrowFrozen)this.myEntity).shootingEntity;
+                    return new Packet23VehicleSpawn(this.myEntity, 1008, var7 != null ? var7.entityId : this.myEntity.entityId);
+                }
+				else if (this.myEntity instanceof EntityArrowCursed)
+                {
+                    Entity var7 = ((EntityArrowCursed)this.myEntity).shootingEntity;
+                    return new Packet23VehicleSpawn(this.myEntity, 1009, var7 != null ? var7.entityId : this.myEntity.entityId);
+                }
+				else if (this.myEntity instanceof EntityArrowCharged)
+                {
+                    Entity var7 = ((EntityArrowCharged)this.myEntity).shootingEntity;
+                    return new Packet23VehicleSpawn(this.myEntity, 1010, var7 != null ? var7.entityId : this.myEntity.entityId);
+                }
 				/** end Legendary Mod */
                 else
                 {
