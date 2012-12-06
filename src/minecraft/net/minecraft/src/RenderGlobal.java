@@ -2004,6 +2004,18 @@ public class RenderGlobal implements IWorldAccess
                     {
                         var21 = new EntityLichenGlowFX(this.theWorld, par2, par4, par6, (float)par8, (float)par10, (float)par12);
                     }
+					else if (par1Str.equals("flameEnchant"))
+                    {
+                        var21 = new EntityFlameEnchantFX(this.theWorld, par2, par4, par6, (float)par8, (float)par10, (float)par12);
+                    }
+					else if (par1Str.equals("frozenEnchant"))
+                    {
+                        var21 = new EntityFrozenEnchantFX(this.theWorld, par2, par4, par6, (float)par8, (float)par10, (float)par12);
+                    }
+					else if (par1Str.equals("cursedEnchant"))
+                    {
+                        var21 = new EntityCursedEnchantFX(this.theWorld, par2, par4, par6, (float)par8, (float)par10, (float)par12);
+                    }
 					/** end Legendary Mod */
                     else if (par1Str.startsWith("iconcrack_"))
                     {
