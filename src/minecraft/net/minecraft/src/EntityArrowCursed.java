@@ -281,11 +281,6 @@ public class EntityArrowCursed extends Entity implements IProjectile
                         var21 = DamageSource.causeGenericArrowDamage((Entity)this, (Entity)this.shootingEntity);
                     }
 
-                    if (this.isBurning())
-                    {
-                        var4.entityHit.setFire(5);
-                    }
-
                     if (var4.entityHit.attackEntityFrom(var21, var23))
                     {
                         if (var4.entityHit instanceof EntityLiving)
@@ -305,6 +300,8 @@ public class EntityArrowCursed extends Entity implements IProjectile
                                     var4.entityHit.addVelocity(this.motionX * (double)this.knockbackStrength * 0.6000000238418579D / (double)var25, 0.1D, this.motionZ * (double)this.knockbackStrength * 0.6000000238418579D / (double)var25);
                                 }
                             }
+							EntityLiving entity = (EntityLiving)var4.entityHit;
+							entity.addPotionEffect(new PotionEffect(Potion.curse.id, 20 * 15, 0));
                         }
 
                         this.func_85030_a("random.bowhit", 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
