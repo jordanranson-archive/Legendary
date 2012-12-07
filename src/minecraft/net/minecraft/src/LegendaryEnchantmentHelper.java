@@ -186,6 +186,40 @@ public class LegendaryEnchantmentHelper
 		}
 	}
 	
+	public static void chargedAuraAttack(EntityLiving entity, EntityLiving target)
+	{
+		Random random = new Random();
+		
+		if(random.nextInt(9) == 0)
+		{
+			entity.worldObj.playSoundAtEntity(entity, "ambient.weather.thunder", 1.0F, 0.8F + random.nextFloat() * 0.2F);
+			entity.worldObj.playSoundAtEntity(entity, "random.explode", 1.0F, 0.8F + random.nextFloat() * 0.2F);
+			
+			for(int j = 0; j < 4; j++)
+			{
+				LegendaryEnchantmentHelper.spawnParticle(target, "chargedEnchant");
+			}
+			
+			double posX = target.posX - entity.posX;
+			double posY = target.posY + (double)target.getEyeHeight() - entity.posY;
+			double posZ = target.posZ - entity.posZ;
+			double velocity = (double)MathHelper.sqrt_double(posX * posX + posY * posY + posZ * posZ);
+			double amplifier = 3.0D;
+			
+			if (velocity != 0.0D)
+			{
+				posX /= velocity;
+				posY /= velocity;
+				posZ /= velocity;
+				target.motionX += posX * amplifier;
+				target.motionY += posY * (amplifier / 1.5D);
+				target.motionZ += posZ * amplifier;
+			}
+			
+			target.setFire(1);
+		}
+	}
+	
 	public static List getEntitiesInRange(Entity target, int radius)
 	{
 		int aabbPosX = MathHelper.floor_double(target.posX - (double)radius - 1.0D);

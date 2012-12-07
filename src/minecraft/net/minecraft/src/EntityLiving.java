@@ -1043,6 +1043,11 @@ public abstract class EntityLiving extends Entity
 					if(EnchantmentHelper.getImpactModifier((EntityLiving)var4, Enchantment.armorCursed.effectId) > 0)
 					{
 						LegendaryEnchantmentHelper.afflictionDamageEffect(this);
+					} 
+					
+					if(EnchantmentHelper.getImpactModifier((EntityLiving)var4, Enchantment.armorCharged.effectId) > 0)
+					{
+						LegendaryEnchantmentHelper.chargedAuraAttack((EntityLiving)var4, this);
 					}
 					
 					if(EnchantmentHelper.getImpactModifier(this, Enchantment.armorFrost.effectId) > 0)
