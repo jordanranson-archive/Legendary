@@ -41,12 +41,18 @@ public class LegendaryEnchantmentHelper
 			entity.worldObj.spawnEntityInWorld(new EntityHealthOrb(entity.worldObj, entity.posX, entity.posY, entity.posZ, 1));
 		}
 	}
-	
-	public static void afflictionEffect(EntityLiving entity)
+
+	public static void afflictionDamageEffect(EntityLiving entity)
 	{
-		for(int i = 0; i < 4; i++)
+		for(int i = 0; i < 11; i++)
 		{
 			LegendaryEnchantmentHelper.spawnParticle(entity, "cursedEnchant");
+		}
+		
+		Random random = new Random();
+		if(random.nextInt(5) == 0)
+		{
+			entity.addPotionEffect(new PotionEffect(Potion.curse.id, 20 * 5, 0));
 		}
 	}
 	
@@ -120,7 +126,7 @@ public class LegendaryEnchantmentHelper
 		}
 	}
 	
-	/*public static boolean hurlFireball(EntityLiving entity, int radius)
+	public static void fieryAuraAttack(EntityLiving entity, int radius)
 	{
 		List entities = getEntitiesInRange(entity, radius);
 		
@@ -163,6 +169,12 @@ public class LegendaryEnchantmentHelper
 				arrow.setFire(100);
 				arrow.canBePickedUp = 0;
 				
+				double x = attackTarget.posX - entity.posX;
+				double y = attackTarget.posY + (double)attackTarget.getEyeHeight() - 1.100000023841858D - arrow.posY;
+				double z = attackTarget.posZ - entity.posZ;
+				float dist = MathHelper.sqrt_double(x * x + z * z) * 0.2F;
+				arrow.setThrowableHeading(x, y + (double)dist, z, 1.6F, 12.0F);
+				
 				entity.worldObj.playSoundAtEntity(entity, "random.bow", 1.0F, 1.0F / (random.nextFloat() * 0.4F + 1.2F) + 0.5F * 0.5F);
 
 				if (!entity.worldObj.isRemote)
@@ -171,12 +183,8 @@ public class LegendaryEnchantmentHelper
 					entity.attackCooldown = entity.maxAttackCooldown;
 				}
 			}
-			
-			return true;
 		}
-		
-		return false;
-	}*/
+	}
 	
 	public static List getEntitiesInRange(Entity target, int radius)
 	{

@@ -1033,9 +1033,22 @@ public abstract class EntityLiving extends Entity
                 }
 				
 				/** Legendary Mod */
-				if(this.isPotionActive(Potion.curse))
+				if (var4 instanceof EntityLiving)
 				{
-					LegendaryEnchantmentHelper.curseDamageEffect(this);
+					if(this.isPotionActive(Potion.curse))
+					{
+						LegendaryEnchantmentHelper.curseDamageEffect(this);
+					}
+					 
+					if(EnchantmentHelper.getImpactModifier((EntityLiving)var4, Enchantment.armorCursed.effectId) > 0)
+					{
+						LegendaryEnchantmentHelper.afflictionDamageEffect(this);
+					}
+					
+					if(EnchantmentHelper.getImpactModifier(this, Enchantment.armorFrost.effectId) > 0)
+					{
+						((EntityLiving)var4).addPotionEffect(new PotionEffect(Potion.frozen.id, 20 * 2, 0));
+					}
 				}
 				/** end Legendary Mod */
 
@@ -1894,6 +1907,21 @@ public abstract class EntityLiving extends Entity
 		if(this.impactRadiusTicks < 0)
 		{
 			this.impactRadiusTicks = 0;
+		}
+		
+		if(this.attackCooldown == 0 && EnchantmentHelper.getImpactModifier(this, Enchantment.armorFlame.effectId) > 0)
+		{
+			LegendaryEnchantmentHelper.fieryAuraAttack(this, 6);
+		}
+		
+		if(this.attackCooldown > 0)
+		{
+			this.attackCooldown--;
+		}
+		
+		if(this.attackCooldown < 0)
+		{
+			this.attackCooldown = 0;
 		}
 		/** end Legendary Mod */
     }
