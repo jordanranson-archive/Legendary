@@ -1158,6 +1158,32 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
                         var6 = true;
                         par1Entity.setFire(1);
                     }
+					
+					/** Legendary Mod */
+					if (par1Entity instanceof EntityLiving)
+                    {
+						EntityLiving entity = (EntityLiving)par1Entity;
+						ItemStack itemStack = this.getCurrentEquippedItem();
+						
+						int modifier = EnchantmentHelper.getEnchantmentLevel(Enchantment.weaponFrost.effectId, itemStack);
+						if(modifier > 0)
+						{
+							entity.addPotionEffect(new PotionEffect(Potion.frozen.id, 20 * (3 * modifier), 0));
+						}
+						
+						modifier = EnchantmentHelper.getEnchantmentLevel(Enchantment.weaponCursed.effectId, itemStack);
+						if(modifier > 0)
+						{
+							entity.addPotionEffect(new PotionEffect(Potion.curse.id, 20 * ((int)7.5 * modifier), 0));
+						}
+						
+						modifier = EnchantmentHelper.getEnchantmentLevel(Enchantment.weaponCharged.effectId, itemStack);
+						if(modifier > 0)
+						{
+							System.out.println("CHARGED ATTACK");
+						}
+                    }
+					/** Legendary Mod */
 
                     boolean var8 = par1Entity.attackEntityFrom(DamageSource.causePlayerDamage(this), var2);
 

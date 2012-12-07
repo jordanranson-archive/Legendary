@@ -4,7 +4,6 @@ import java.util.Random;
 
 public class LegendaryEnchantmentHelper 
 {
-	// frozen potion effect
 	public static void frozenEffect(EntityLiving entity) 
 	{
 		entity.motionX *= 0.5D;
@@ -29,15 +28,6 @@ public class LegendaryEnchantmentHelper
 					entity.worldObj.setBlockWithNotify(var2, var3, var4, Block.snow.blockID);
 				}
 			}
-		}
-	}
-		
-	// cursed potion effect
-	public static void curseEffect(EntityLiving entity)
-	{
-		for(int i = 0; i < 4; i++)
-		{
-			LegendaryEnchantmentHelper.spawnParticle(entity, "cursedEnchant");
 		}
 	}
 	

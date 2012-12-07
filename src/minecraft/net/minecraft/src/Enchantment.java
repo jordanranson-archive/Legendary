@@ -86,9 +86,9 @@ public abstract class Enchantment
 	public static final Enchantment arrowCursed = new EnchantmentElemental(201, 2, EnumEnchantmentType.bow, "arrowCursed");
 	public static final Enchantment arrowCharged = new EnchantmentElemental(202, 2, EnumEnchantmentType.bow, "arrowCharged");
 	
-	public static final Enchantment weaponFrost = new EnchantmentElemental(203, 2, EnumEnchantmentType.weapon, "weaponFrost");
-	public static final Enchantment weaponCursed = new EnchantmentElemental(204, 2, EnumEnchantmentType.weapon, "weaponCursed");
-	public static final Enchantment weaponCharged = new EnchantmentElemental(205, 2, EnumEnchantmentType.weapon, "weaponCharged");
+	public static final Enchantment weaponFrost = new EnchantmentElementalWeapon(203, 2, EnumEnchantmentType.weapon, "weaponFrost");
+	public static final Enchantment weaponCursed = new EnchantmentElementalWeapon(204, 2, EnumEnchantmentType.weapon, "weaponCursed");
+	public static final Enchantment weaponCharged = new EnchantmentElementalWeapon(205, 2, EnumEnchantmentType.weapon, "weaponCharged");
 	
 	public static final Enchantment armorFlame = new EnchantmentElemental(206, 2, EnumEnchantmentType.armor_torso, "armorFlame");
 	public static final Enchantment armorFrost = new EnchantmentElemental(207, 2, EnumEnchantmentType.armor_torso, "armorFrost");
