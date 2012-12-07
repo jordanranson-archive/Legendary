@@ -207,6 +207,13 @@ public abstract class EntityLiving extends Entity
 
     /** How long to keep a specific target entity */
     protected int numTicksToChaseTarget = 0;
+	
+	/** Legendary Mod */
+	public int attackCooldown = 0;
+	public int maxAttackCooldown = 20 * 7;
+	public int impactRadiusTicks = 0;
+	public int maxImpactRadiusTicks = 5;
+	/** end Legendary Mod */
 
     public EntityLiving(World par1World)
     {
@@ -1289,15 +1296,48 @@ public abstract class EntityLiving extends Entity
 			{
 				this.attackEntityFrom(DamageSource.fall, var2);
 			}
-			/** end Legendary Mod */
-			
-            int var3 = this.worldObj.getBlockId(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY - 0.20000000298023224D - (double)this.yOffset), MathHelper.floor_double(this.posZ));
 
-            if (var3 > 0)
-            {
-                StepSound var4 = Block.blocksList[var3].stepSound;
-                this.func_85030_a(var4.getStepSound(), var4.getVolume() * 0.5F, var4.getPitch() * 0.75F);
-            }
+			if(this.impactRadiusTicks == 0)
+			{
+				int modifier = EnchantmentHelper.getImpactModifier(this, Enchantment.feetFlame.effectId);
+				int radius = 4;
+				
+				if(modifier > 0)
+				{
+					LegendaryEnchantmentHelper.impact(this, radius, "flameEnchant");
+					this.impactRadiusTicks = this.maxImpactRadiusTicks;
+				}
+				
+				modifier = EnchantmentHelper.getImpactModifier(this, Enchantment.feetFrost.effectId);
+				if(modifier > 0)
+				{
+					LegendaryEnchantmentHelper.impact(this, radius, "frozenEnchant");
+					this.impactRadiusTicks = this.maxImpactRadiusTicks;
+				}
+				
+				modifier = EnchantmentHelper.getImpactModifier(this, Enchantment.feetCursed.effectId);
+				if(modifier > 0)
+				{
+					LegendaryEnchantmentHelper.impact(this, radius, "cursedEnchant");
+					this.impactRadiusTicks = this.maxImpactRadiusTicks;
+				}
+				
+				modifier = EnchantmentHelper.getImpactModifier(this, Enchantment.feetCharged.effectId);
+				if(modifier > 0)
+				{
+					LegendaryEnchantmentHelper.impact(this, radius, "chargedEnchant");
+					this.impactRadiusTicks = this.maxImpactRadiusTicks;
+				}
+			}
+			/** end Legendary Mod */
+				
+			int var3 = this.worldObj.getBlockId(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY - 0.20000000298023224D - (double)this.yOffset), MathHelper.floor_double(this.posZ));
+
+			if (var3 > 0)
+			{
+				StepSound var4 = Block.blocksList[var3].stepSound;
+				this.func_85030_a(var4.getStepSound(), var4.getVolume() * 0.5F, var4.getPitch() * 0.75F);
+			}
         }
     }
 
@@ -1816,6 +1856,44 @@ public abstract class EntityLiving extends Entity
 		if(this.dataWatcher.getWatchableObjectInt(8) == Potion.frozen.getLiquidColor())
 		{
 			LegendaryEnchantmentHelper.frozenEffect(this);
+		}
+		
+		if(this.impactRadiusTicks > 0)
+		{
+			double radius = 1.0D + (4.0D - (4.0D * ((double)this.impactRadiusTicks / (double)this.maxImpactRadiusTicks)));
+			
+			System.out.println((double)this.impactRadiusTicks + ", " + ((double)this.impactRadiusTicks / (double)this.maxImpactRadiusTicks));
+			
+			int modifier = EnchantmentHelper.getImpactModifier(this, Enchantment.feetFlame.effectId);
+			if(modifier > 0)
+			{
+				LegendaryEnchantmentHelper.impactEffect(this, radius, "flameEnchant");
+			}
+			
+			modifier = EnchantmentHelper.getImpactModifier(this, Enchantment.feetFrost.effectId);
+			if(modifier > 0)
+			{
+				LegendaryEnchantmentHelper.impactEffect(this, radius, "frozenEnchant");
+			}
+			
+			modifier = EnchantmentHelper.getImpactModifier(this, Enchantment.feetCursed.effectId);
+			if(modifier > 0)
+			{
+				LegendaryEnchantmentHelper.impactEffect(this, radius, "cursedEnchant");
+			}
+			
+			modifier = EnchantmentHelper.getImpactModifier(this, Enchantment.feetCharged.effectId);
+			if(modifier > 0)
+			{
+				LegendaryEnchantmentHelper.impactEffect(this, radius, "chargedEnchant");
+			}
+			
+			this.impactRadiusTicks--;
+		}
+		
+		if(this.impactRadiusTicks < 0)
+		{
+			this.impactRadiusTicks = 0;
 		}
 		/** end Legendary Mod */
     }

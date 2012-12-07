@@ -265,6 +265,13 @@ public class EnchantmentHelper
     {
         return getMaxEnchantmentLevel(Enchantment.aquaAffinity.effectId, par0EntityLiving.getLastActiveItems()) > 0;
     }
+	
+	/** Legendary Mod */
+	public static int getImpactModifier(EntityLiving par0EntityLiving, int enchantment)
+    {
+        return getMaxEnchantmentLevel(enchantment, par0EntityLiving.getLastActiveItems());
+    }
+	/** end Legendary Mod */
 
     /**
      * Returns the enchantability of itemstack, it's uses a singular formula for each index (2nd parameter: 0, 1 and 2),
