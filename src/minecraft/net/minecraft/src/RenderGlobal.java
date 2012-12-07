@@ -2346,6 +2346,32 @@ public class RenderGlobal implements IWorldAccess
                     this.theWorld.spawnParticle("smoke", var22, var24, var26, 0.0D, 0.0D, 0.0D);
                     this.theWorld.spawnParticle("flame", var22, var24, var26, 0.0D, 0.0D, 0.0D);
                 }
+			/** Legendary Mod */	
+			case 4000:
+                var8 = (double)par3;
+                var10 = (double)par4;
+                var12 = (double)par5;
+
+				var19 = "chargedEnchant";
+
+                for (var20 = 0; var20 < 100; ++var20)
+                {
+                    var39 = var7.nextDouble() * 4.0D;
+                    var23 = var7.nextDouble() * Math.PI * 2.0D;
+                    var25 = Math.cos(var23) * var39;
+                    var27 = 0.01D + var7.nextDouble() * 0.5D;
+                    var29 = Math.sin(var23) * var39;
+                    EntityFX var31 = this.func_72726_b(var19, var8 + var25 * 0.1D, var10 + 0.3D, var12 + var29 * 0.1D, var25, var27, var29);
+
+                    if (var31 != null)
+                    {
+                        float var32 = 0.75F + var7.nextFloat() * 0.25F;
+                        var31.multiplyVelocity((float)var39);
+                    }
+                }
+
+                break;
+			/** end Legendary Mod */
         }
     }
 

@@ -2,6 +2,7 @@ package net.minecraft.src;
 
 import java.util.Random;
 import java.util.List;
+import java.util.ArrayList;
 import java.lang.Math;
 
 public class LegendaryEnchantmentHelper 
@@ -218,6 +219,78 @@ public class LegendaryEnchantmentHelper
 			
 			target.setFire(1);
 		}
+	}
+	
+	public static void chainLightning(EntityLiving entity, EntityLiving attacker, List attackers, int radius, int numTargets, int step)
+	{
+		attackers.add(attacker);
+		List entities = getEntitiesInRange(entity, radius);
+		
+		Random random = new Random();
+		Entity attackTarget = null;
+		double targetDistance;
+		Entity curTarget = null;
+		double curDistance;
+
+		if (!entity.worldObj.isRemote)
+		{
+			entity.recentlyShocked = entity.maxRecentlyShocked;
+			entity.attackEntityFrom(DamageSource.chainLightning, 1);
+			// TODO: do stuff to 'entity'
+		}
+		
+		entity.worldObj.playAuxSFX(4000, (int)Math.round(entity.posX), (int)Math.round(entity.posY), (int)Math.round(entity.posZ), 0);
+		
+		for (int i = 0; i < entities.size(); ++i)
+		{	
+			curTarget = (Entity)entities.get(i);
+			
+			if(curTarget instanceof EntityLiving && LegendaryEnchantmentHelper.isViableLightningTarget(attackers, (EntityLiving)curTarget))
+			{
+				if(attackTarget != null)
+				{
+					curDistance = curTarget.getDistance(entity.posX, entity.posY, entity.posZ) / (double)radius;
+					targetDistance = attackTarget.getDistance(entity.posX, entity.posY, entity.posZ) / (double)radius;
+					
+					if(curDistance < targetDistance)
+					{
+						attackTarget = curTarget;
+					}
+				}
+				else
+				{
+					attackTarget = curTarget;
+				}
+			}
+		}
+		
+		if(attackTarget != null)
+		{
+			if(step < numTargets)
+			{
+				if(((EntityLiving)attackTarget).recentlyShocked == 0)
+				{
+					LegendaryEnchantmentHelper.chainLightning((EntityLiving)attackTarget, entity, attackers, radius, numTargets, step + 1);
+				}
+			}
+		}
+	}
+	
+	public static boolean isViableLightningTarget(List attackers, EntityLiving target)
+	{
+		for(int i = 0; i < attackers.size(); i++)
+		{
+			if(attackers.get(i) == target) { return false; }
+		}
+		
+		return true;
+	}
+	
+	public static void chainLightningEffect(EntityLiving entity)
+	{
+		Random random = new Random();
+		//entity.worldObj.playSoundAtEntity(entity, "ambient.weather.thunder", 1.0F, 0.5F);
+		entity.worldObj.playSoundAtEntity(entity, "random.explode", 1.0F, 0.5F);
 	}
 	
 	public static List getEntitiesInRange(Entity target, int radius)

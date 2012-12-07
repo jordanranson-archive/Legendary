@@ -18,6 +18,9 @@ public class DamageSource
     public static DamageSource wither = (new DamageSource("wither")).setDamageBypassesArmor();
     public static DamageSource anvil = new DamageSource("anvil");
     public static DamageSource fallingBlock = new DamageSource("fallingBlock");
+	/** Legendary Mod */
+    public static DamageSource chainLightning = (new DamageSource("chainLightning")).setDamageBypassesArmor().setMagicDamage();
+	/** end Legendary Mod */
 
     /** This kind of damage can be blocked or not. */
     private boolean isUnblockable = false;

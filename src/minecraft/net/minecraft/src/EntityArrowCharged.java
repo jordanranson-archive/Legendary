@@ -1,6 +1,7 @@
 package net.minecraft.src;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class EntityArrowCharged extends Entity implements IProjectile
 {
@@ -281,11 +282,6 @@ public class EntityArrowCharged extends Entity implements IProjectile
                         var21 = DamageSource.causeGenericArrowDamage((Entity)this, (Entity)this.shootingEntity);
                     }
 
-                    if (this.isBurning())
-                    {
-                        var4.entityHit.setFire(5);
-                    }
-
                     if (var4.entityHit.attackEntityFrom(var21, var23))
                     {
                         if (var4.entityHit instanceof EntityLiving)
@@ -305,6 +301,9 @@ public class EntityArrowCharged extends Entity implements IProjectile
                                     var4.entityHit.addVelocity(this.motionX * (double)this.knockbackStrength * 0.6000000238418579D / (double)var25, 0.1D, this.motionZ * (double)this.knockbackStrength * 0.6000000238418579D / (double)var25);
                                 }
                             }
+							
+							LegendaryEnchantmentHelper.chainLightning((EntityLiving)var4.entityHit, (EntityLiving)shootingEntity, new ArrayList(), 6, 2, 0);
+							LegendaryEnchantmentHelper.chainLightningEffect((EntityLiving)var4.entityHit);
                         }
 
                         this.func_85030_a("random.bowhit", 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));

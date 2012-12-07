@@ -57,9 +57,13 @@ enchantment.feetFrost=Frozen Impact
 enchantment.feetCursed=Cursed Impact
 enchantment.feetCharged=Charged Impact
 
+entity.SuperSheep.name=Super Sheep
+
 potion.frozen=Frozen
 potion.cursed=Cursed
 potion.affliction=Afflicted
+
+death.chainLightning=%1$s was vaporized
 # end Legendary Mod
 
 gui.done=Done

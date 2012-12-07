@@ -220,6 +220,7 @@ public class EntityList
         addMapping(EntitySackJunk.class, "JunkSack", 404);
         addMapping(EntitySackTreasure.class, "TreasureSack", 405);
         addMapping(EntityHealthOrb.class, "HealthOrb", 406);
+        addMapping(EntitySuperSheep.class, "SuperSheep", 127, 14057471, 7028607);
 		/** end Legendary Mod */
     }
 }

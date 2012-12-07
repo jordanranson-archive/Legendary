@@ -2,6 +2,7 @@ package net.minecraft.src;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.ArrayList;
 
 public abstract class EntityPlayer extends EntityLiving implements ICommandSender
 {
@@ -1180,7 +1181,8 @@ public abstract class EntityPlayer extends EntityLiving implements ICommandSende
 						modifier = EnchantmentHelper.getEnchantmentLevel(Enchantment.weaponCharged.effectId, itemStack);
 						if(modifier > 0)
 						{
-							System.out.println("CHARGED ATTACK");
+							LegendaryEnchantmentHelper.chainLightning(entity, this, new ArrayList(), 3 + (modifier * 2), 1 + modifier, 0);
+							LegendaryEnchantmentHelper.chainLightningEffect(entity);
 						}
                     }
 					/** Legendary Mod */

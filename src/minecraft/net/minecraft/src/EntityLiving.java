@@ -213,6 +213,8 @@ public abstract class EntityLiving extends Entity
 	public int maxAttackCooldown = 20 * 7;
 	public int impactRadiusTicks = 0;
 	public int maxImpactRadiusTicks = 5;
+	public int recentlyShocked = 0;
+	public int maxRecentlyShocked = 10;
 	/** end Legendary Mod */
 
     public EntityLiving(World par1World)
@@ -1927,6 +1929,16 @@ public abstract class EntityLiving extends Entity
 		if(this.attackCooldown < 0)
 		{
 			this.attackCooldown = 0;
+		}
+		
+		if(this.recentlyShocked > 0)
+		{
+			this.recentlyShocked--;
+		}
+		
+		if(this.recentlyShocked < 0)
+		{
+			this.recentlyShocked = 0;
 		}
 		/** end Legendary Mod */
     }
