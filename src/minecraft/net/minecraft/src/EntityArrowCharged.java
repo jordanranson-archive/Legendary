@@ -354,9 +354,14 @@ public class EntityArrowCharged extends Entity implements IProjectile
                 }
             }
 			
-			for (var9 = 0; var9 < 4; ++var9)
+			for (var9 = 0; var9 < 2; ++var9)
 			{
 				this.worldObj.spawnParticle("chargedEnchant", this.posX + this.motionX * (double)var9 / 4.0D, this.posY + this.motionY * (double)var9 / 4.0D, this.posZ + this.motionZ * (double)var9 / 4.0D, -this.motionX, -this.motionY + 0.2D, -this.motionZ);
+			}
+			
+			for (var9 = 0; var9 < 3; ++var9)
+			{
+				this.worldObj.spawnParticle("smokeEnchant", this.posX + this.motionX * (double)var9 / 4.0D, this.posY + this.motionY * (double)var9 / 4.0D, this.posZ + this.motionZ * (double)var9 / 4.0D, -this.motionX, -this.motionY + 0.2D, -this.motionZ);
 			}
 
             this.posX += this.motionX;

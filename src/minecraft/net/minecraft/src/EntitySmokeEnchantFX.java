@@ -1,16 +1,16 @@
 package net.minecraft.src;
 
-public class EntityFlameEnchantFX extends EntityFX
+public class EntitySmokeEnchantFX extends EntityFX
 {
     float flameEnchantParticleScale;
 	boolean isSmoke = false;
 	
-    public EntityFlameEnchantFX(World par1World, double par2, double par4, double par6, float par8, float par9, float par10)
+    public EntitySmokeEnchantFX(World par1World, double par2, double par4, double par6, float par8, float par9, float par10)
     {
         this(par1World, par2, par4, par6, 1.0F, par8, par9, par10);
     }
 
-    public EntityFlameEnchantFX(World par1World, double par2, double par4, double par6, float par8, float par9, float par10, float par11)
+    public EntitySmokeEnchantFX(World par1World, double par2, double par4, double par6, float par8, float par9, float par10, float par11)
     {
         super(par1World, par2, par4, par6, 0.0D, 0.0D, 0.0D);
         this.motionX *= 0.10000000149011612D;
@@ -32,9 +32,9 @@ public class EntityFlameEnchantFX extends EntityFX
 		}
 		else
 		{
-			this.particleRed = 1.0F;
-			this.particleGreen = 0.6F;
-			this.particleBlue = 0.0F;
+			this.particleRed = 0.5F;
+			this.particleGreen = 0.5F;
+			this.particleBlue = 0.5F;
 		}
         
         this.particleScale *= 0.75F;
@@ -59,11 +59,6 @@ public class EntityFlameEnchantFX extends EntityFX
             var8 = 1.0F;
         }
 
-		if(!this.isSmoke)
-		{
-			par1Tessellator.setBrightness(196);
-		}
-		
         this.particleScale = this.flameEnchantParticleScale * var8;
         super.renderParticle(par1Tessellator, par2, par3, par4, par5, par6, par7);
     }
@@ -90,24 +85,10 @@ public class EntityFlameEnchantFX extends EntityFX
             this.motionX *= 1.1D;
             this.motionZ *= 1.1D;
         }
-		
-		if(!this.isSmoke)
-		{
-			float percentDone = ((float)this.particleAge / (float)this.particleMaxAge) * 1.0F;
-			if(percentDone > (float)Math.random() * 0.2)
-			{
-				percentDone = ((float)this.particleAge / (float)this.particleMaxAge - 0.15F) * 1.0F;
-				this.particleRed = (1.0F - percentDone <= 0.0F) ? 0.0F : 1.0F - percentDone;
-				this.particleGreen = (0.6F - (percentDone + (percentDone / 2.0F)) <= 0.0F) ? 0.0F : 0.6F - (percentDone + (percentDone / 2.0F));
-				this.particleBlue = 0.0F;
-			}
-		}
-		else
-		{
-			this.particleRed = (this.particleRed <= 0.0F) ? 0.0F : this.particleRed - (float)0.0125D;
-			this.particleGreen = this.particleRed;
-			this.particleBlue = this.particleRed;
-		}
+
+		this.particleRed = (this.particleRed <= 0.0F) ? 0.0F : this.particleRed - (float)0.0125D;
+		this.particleGreen = this.particleRed;
+		this.particleBlue = this.particleRed;
 		
 		this.motionX *= 0.9599999785423279D;
 		this.motionY *= 1.0D;
@@ -163,7 +144,8 @@ public class EntityFlameEnchantFX extends EntityFX
         {
             var2 = 1.0F;
         }
-		
-        return 1.0F - var2;
+
+        float var3 = super.getBrightness(par1);
+        return var3 * var2 + (1.0F - var2);
     }
 }
