@@ -203,8 +203,9 @@ public class Block
 	public static final Block blockAmethyst = (new BlockOreStorage(249, 24)).setHardness(5.0F).setResistance(10.0F).setStepSound(soundMetalFootstep).setBlockName("blockAmethyst");
 	public static final Block prospectingTable = (new BlockProspectingTable(248)).setHardness(5.0F).setResistance(2000.0F).setBlockName("prospectingTable"); 
 	public static final BlockLichen lichen = (BlockLichen)(new BlockLichen(247)).setHardness(0.0F).setStepSound(soundGrassFootstep).setBlockName("lichen").setCreativeTab(CreativeTabs.tabDecorations);
-	public static final BlockLichen lichenGlowing = (BlockLichenGlowing)(new BlockLichenGlowing(246)).setLightValue(0.2F).setHardness(0.0F).setStepSound(soundGrassFootstep).setBlockName("lichenGlowing");
+	public static final BlockLichen lichenGlowing = (BlockLichenGlowing)(new BlockLichenGlowing(246)).setLightValue(0.4F).setHardness(0.0F).setStepSound(soundGrassFootstep).setBlockName("lichenGlowing");
 	public static final Block lantern = (new BlockLantern(245, 64)).setHardness(5.0F).setRequiresSelfNotify().setBlockName("lantern");
+	public static final BlockIcyFire icyFire = (BlockIcyFire)(new BlockIcyFire(244, 26)).setHardness(0.0F).setLightValue(0.6F).setStepSound(soundWoodFootstep).setBlockName("icyFire").disableStats();
 	/** end Legendary Mod **/
 	
     /**

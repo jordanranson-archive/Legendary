@@ -1,35 +1,32 @@
 package net.minecraft.src;
 
-public class EntityLichenGlowFX extends EntityFX
-{
-    float reddustParticleScale;
+import java.util.Random;
 
-    public EntityLichenGlowFX(World par1World, double par2, double par4, double par6, float par8, float par9, float par10)
+public class EntityFrozenSmokeFX extends EntityFX
+{
+    float smokeParticleScale;
+
+    public EntityFrozenSmokeFX(World par1World, double par2, double par4, double par6, double par8, double par10, double par12)
     {
-        this(par1World, par2, par4, par6, 1.0F, par8, par9, par10);
+        this(par1World, par2, par4, par6, par8, par10, par12, 1.0F);
     }
 
-    public EntityLichenGlowFX(World par1World, double par2, double par4, double par6, float par8, float par9, float par10, float par11)
+    public EntityFrozenSmokeFX(World par1World, double par2, double par4, double par6, double par8, double par10, double par12, float par14)
     {
         super(par1World, par2, par4, par6, 0.0D, 0.0D, 0.0D);
-        this.motionX *= 0.03D;
-        this.motionY *= 0.03D;
-        this.motionZ *= 0.03D;
-
-        if (par9 == 0.0F)
-        {
-            par9 = 1.0F;
-        }
-
-        float var12 = (float)Math.random() * 0.4F + 0.6F;
-        this.particleRed = 0.5F + (float)Math.random() * 0.1F - 0.2F;
-        this.particleGreen = 1.0F;
-        this.particleBlue = 0.5F + (float)Math.random() * 0.1F - 0.2F;
-        this.particleScale *= 0.5F;
-        this.particleScale *= par8;
-        this.reddustParticleScale = this.particleScale;
-        this.particleMaxAge = (int)(24.0D / (Math.random() * 0.8D + 0.2D));
-        this.particleMaxAge = (int)((float)this.particleMaxAge * par8);
+        this.motionX *= 0.10000000149011612D;
+        this.motionY *= 0.10000000149011612D;
+        this.motionZ *= 0.10000000149011612D;
+        this.motionX += par8;
+        this.motionY += par10;
+        this.motionZ += par12;
+		this.particleGreen = this.particleRed = (float)Math.random() + 0.4F * 0.6F;
+        this.particleBlue = 0.8F;
+        this.particleScale *= 0.75F;
+        this.particleScale *= par14;
+        this.smokeParticleScale = this.particleScale;
+        this.particleMaxAge = (int)(8.0D / (Math.random() * 0.8D + 0.2D));
+        this.particleMaxAge = (int)((float)this.particleMaxAge * par14);
         this.noClip = false;
     }
 
@@ -47,8 +44,7 @@ public class EntityLichenGlowFX extends EntityFX
             var8 = 1.0F;
         }
 
-		par1Tessellator.setBrightness(0xF000F0);
-        this.particleScale = this.reddustParticleScale * var8;
+        this.particleScale = this.smokeParticleScale * var8;
         super.renderParticle(par1Tessellator, par2, par3, par4, par5, par6, par7);
     }
 
@@ -67,6 +63,7 @@ public class EntityLichenGlowFX extends EntityFX
         }
 
         this.setParticleTextureIndex(7 - this.particleAge * 8 / this.particleMaxAge);
+        this.motionY += 0.004D;
         this.moveEntity(this.motionX, this.motionY, this.motionZ);
 
         if (this.posY == this.prevPosY)
@@ -75,9 +72,9 @@ public class EntityLichenGlowFX extends EntityFX
             this.motionZ *= 1.1D;
         }
 
-        this.motionX *= 0.94D;
-        this.motionY *= 0.94D;
-        this.motionZ *= 0.94D;
+        this.motionX *= 0.9599999785423279D;
+        this.motionY *= 0.9599999785423279D;
+        this.motionZ *= 0.9599999785423279D;
 
         if (this.onGround)
         {

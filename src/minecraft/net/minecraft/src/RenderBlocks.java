@@ -438,7 +438,7 @@ public class RenderBlocks
 				var5 == 23 ? this.renderBlockLilyPad(par1Block, par2, par3, par4) : (
 				var5 == 6 ? this.renderBlockCrops(par1Block, par2, par3, par4) : (
 				var5 == 2 ? this.renderBlockTorch(par1Block, par2, par3, par4) : (
-				var5 == 3 ? this.renderBlockFire(par1Block, par2, par3, par4) : (
+				var5 == 3 ? this.renderBlockIcyFire(par1Block, par2, par3, par4) : ( // Legendary Mod
 				var5 == 5 ? this.renderBlockRedstoneWire(par1Block, par2, par3, par4) : (
 				var5 == 8 ? this.renderBlockLadder(par1Block, par2, par3, par4) : (
 				var5 == 7 ? this.renderBlockDoor(par1Block, par2, par3, par4) : (
@@ -466,7 +466,8 @@ public class RenderBlocks
 				var5 == 34 ? this.renderBlockBeacon((BlockBeacon)par1Block, par2, par3, par4) : (
 				/** Legendary Mod */
 				var5 == 100 ? this.renderBlockLichen((BlockLichen)par1Block, par2, par3, par4) : (
-				var5 == 101 ? this.renderBlockLichenGlowing((BlockLichenGlowing)par1Block, par2, par3, par4) : false))))))))))))))))))))))))))))))))))));
+				var5 == 101 ? this.renderBlockLichenGlowing((BlockLichenGlowing)par1Block, par2, par3, par4) : (
+				var5 == 102 ? this.renderBlockIcyFire(par1Block, par2, par3, par4) : false))))))))))))))))))))))))))))))))))))); 
 				/** end Legendary Mod */
     }
 
@@ -2967,7 +2968,7 @@ public class RenderBlocks
         }
 
         float var7 = 1.0F;
-        var5.setBrightness(196);
+        var5.setBrightness(0xF000F0);
         int var8 = par1Block.colorMultiplier(this.blockAccess, par2, par3, par4); // 8454016;
         float var9 = (float)(var8 >> 16 & 255) / 255.0F;
         float var10 = (float)(var8 >> 8 & 255) / 255.0F;
@@ -3032,6 +3033,213 @@ public class RenderBlocks
 
         return true;
 	}
+	
+	public boolean renderBlockIcyFire(Block par1Block, int par2, int par3, int par4)
+    {
+        Tessellator var5 = Tessellator.instance;
+        int var6 = par1Block.getBlockTextureFromSide(0);
+
+        if (this.overrideBlockTexture >= 0)
+        {
+            var6 = this.overrideBlockTexture;
+        }
+
+        var5.setColorOpaque_F(1.0F, 1.0F, 1.0F);
+        var5.setBrightness(0xF000F0);
+        int var7 = (var6 & 15) << 4;
+        int var8 = var6 & 240;
+        double var9 = (double)((float)var7 / 256.0F);
+        double var11 = (double)(((float)var7 + 15.99F) / 256.0F);
+        double var13 = (double)((float)var8 / 256.0F);
+        double var15 = (double)(((float)var8 + 15.99F) / 256.0F);
+        float var17 = 1.4F;
+        double var20;
+        double var22;
+        double var24;
+        double var26;
+        double var28;
+        double var30;
+        double var32;
+
+        if (!this.blockAccess.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4) && !Block.fire.canBlockCatchFire(this.blockAccess, par2, par3 - 1, par4))
+        {
+            float var36 = 0.2F;
+            float var19 = 0.0625F;
+
+            if ((par2 + par3 + par4 & 1) == 1)
+            {
+                var9 = (double)((float)var7 / 256.0F);
+                var11 = (double)(((float)var7 + 15.99F) / 256.0F);
+                var13 = (double)((float)(var8 + 16) / 256.0F);
+                var15 = (double)(((float)var8 + 15.99F + 16.0F) / 256.0F);
+            }
+
+            if ((par2 / 2 + par3 / 2 + par4 / 2 & 1) == 1)
+            {
+                var20 = var11;
+                var11 = var9;
+                var9 = var20;
+            }
+
+            if (Block.fire.canBlockCatchFire(this.blockAccess, par2 - 1, par3, par4))
+            {
+                var5.addVertexWithUV((double)((float)par2 + var36), (double)((float)par3 + var17 + var19), (double)(par4 + 1), var11, var13);
+                var5.addVertexWithUV((double)(par2 + 0), (double)((float)(par3 + 0) + var19), (double)(par4 + 1), var11, var15);
+                var5.addVertexWithUV((double)(par2 + 0), (double)((float)(par3 + 0) + var19), (double)(par4 + 0), var9, var15);
+                var5.addVertexWithUV((double)((float)par2 + var36), (double)((float)par3 + var17 + var19), (double)(par4 + 0), var9, var13);
+                var5.addVertexWithUV((double)((float)par2 + var36), (double)((float)par3 + var17 + var19), (double)(par4 + 0), var9, var13);
+                var5.addVertexWithUV((double)(par2 + 0), (double)((float)(par3 + 0) + var19), (double)(par4 + 0), var9, var15);
+                var5.addVertexWithUV((double)(par2 + 0), (double)((float)(par3 + 0) + var19), (double)(par4 + 1), var11, var15);
+                var5.addVertexWithUV((double)((float)par2 + var36), (double)((float)par3 + var17 + var19), (double)(par4 + 1), var11, var13);
+            }
+
+            if (Block.fire.canBlockCatchFire(this.blockAccess, par2 + 1, par3, par4))
+            {
+                var5.addVertexWithUV((double)((float)(par2 + 1) - var36), (double)((float)par3 + var17 + var19), (double)(par4 + 0), var9, var13);
+                var5.addVertexWithUV((double)(par2 + 1 - 0), (double)((float)(par3 + 0) + var19), (double)(par4 + 0), var9, var15);
+                var5.addVertexWithUV((double)(par2 + 1 - 0), (double)((float)(par3 + 0) + var19), (double)(par4 + 1), var11, var15);
+                var5.addVertexWithUV((double)((float)(par2 + 1) - var36), (double)((float)par3 + var17 + var19), (double)(par4 + 1), var11, var13);
+                var5.addVertexWithUV((double)((float)(par2 + 1) - var36), (double)((float)par3 + var17 + var19), (double)(par4 + 1), var11, var13);
+                var5.addVertexWithUV((double)(par2 + 1 - 0), (double)((float)(par3 + 0) + var19), (double)(par4 + 1), var11, var15);
+                var5.addVertexWithUV((double)(par2 + 1 - 0), (double)((float)(par3 + 0) + var19), (double)(par4 + 0), var9, var15);
+                var5.addVertexWithUV((double)((float)(par2 + 1) - var36), (double)((float)par3 + var17 + var19), (double)(par4 + 0), var9, var13);
+            }
+
+            if (Block.fire.canBlockCatchFire(this.blockAccess, par2, par3, par4 - 1))
+            {
+                var5.addVertexWithUV((double)(par2 + 0), (double)((float)par3 + var17 + var19), (double)((float)par4 + var36), var11, var13);
+                var5.addVertexWithUV((double)(par2 + 0), (double)((float)(par3 + 0) + var19), (double)(par4 + 0), var11, var15);
+                var5.addVertexWithUV((double)(par2 + 1), (double)((float)(par3 + 0) + var19), (double)(par4 + 0), var9, var15);
+                var5.addVertexWithUV((double)(par2 + 1), (double)((float)par3 + var17 + var19), (double)((float)par4 + var36), var9, var13);
+                var5.addVertexWithUV((double)(par2 + 1), (double)((float)par3 + var17 + var19), (double)((float)par4 + var36), var9, var13);
+                var5.addVertexWithUV((double)(par2 + 1), (double)((float)(par3 + 0) + var19), (double)(par4 + 0), var9, var15);
+                var5.addVertexWithUV((double)(par2 + 0), (double)((float)(par3 + 0) + var19), (double)(par4 + 0), var11, var15);
+                var5.addVertexWithUV((double)(par2 + 0), (double)((float)par3 + var17 + var19), (double)((float)par4 + var36), var11, var13);
+            }
+
+            if (Block.fire.canBlockCatchFire(this.blockAccess, par2, par3, par4 + 1))
+            {
+                var5.addVertexWithUV((double)(par2 + 1), (double)((float)par3 + var17 + var19), (double)((float)(par4 + 1) - var36), var9, var13);
+                var5.addVertexWithUV((double)(par2 + 1), (double)((float)(par3 + 0) + var19), (double)(par4 + 1 - 0), var9, var15);
+                var5.addVertexWithUV((double)(par2 + 0), (double)((float)(par3 + 0) + var19), (double)(par4 + 1 - 0), var11, var15);
+                var5.addVertexWithUV((double)(par2 + 0), (double)((float)par3 + var17 + var19), (double)((float)(par4 + 1) - var36), var11, var13);
+                var5.addVertexWithUV((double)(par2 + 0), (double)((float)par3 + var17 + var19), (double)((float)(par4 + 1) - var36), var11, var13);
+                var5.addVertexWithUV((double)(par2 + 0), (double)((float)(par3 + 0) + var19), (double)(par4 + 1 - 0), var11, var15);
+                var5.addVertexWithUV((double)(par2 + 1), (double)((float)(par3 + 0) + var19), (double)(par4 + 1 - 0), var9, var15);
+                var5.addVertexWithUV((double)(par2 + 1), (double)((float)par3 + var17 + var19), (double)((float)(par4 + 1) - var36), var9, var13);
+            }
+
+            if (Block.fire.canBlockCatchFire(this.blockAccess, par2, par3 + 1, par4))
+            {
+                var20 = (double)par2 + 0.5D + 0.5D;
+                var22 = (double)par2 + 0.5D - 0.5D;
+                var24 = (double)par4 + 0.5D + 0.5D;
+                var26 = (double)par4 + 0.5D - 0.5D;
+                var28 = (double)par2 + 0.5D - 0.5D;
+                var30 = (double)par2 + 0.5D + 0.5D;
+                var32 = (double)par4 + 0.5D - 0.5D;
+                double var34 = (double)par4 + 0.5D + 0.5D;
+                var9 = (double)((float)var7 / 256.0F);
+                var11 = (double)(((float)var7 + 15.99F) / 256.0F);
+                var13 = (double)((float)var8 / 256.0F);
+                var15 = (double)(((float)var8 + 15.99F) / 256.0F);
+                ++par3;
+                var17 = -0.2F;
+
+                if ((par2 + par3 + par4 & 1) == 0)
+                {
+                    var5.addVertexWithUV(var28, (double)((float)par3 + var17), (double)(par4 + 0), var11, var13);
+                    var5.addVertexWithUV(var20, (double)(par3 + 0), (double)(par4 + 0), var11, var15);
+                    var5.addVertexWithUV(var20, (double)(par3 + 0), (double)(par4 + 1), var9, var15);
+                    var5.addVertexWithUV(var28, (double)((float)par3 + var17), (double)(par4 + 1), var9, var13);
+                    var9 = (double)((float)var7 / 256.0F);
+                    var11 = (double)(((float)var7 + 15.99F) / 256.0F);
+                    var13 = (double)((float)(var8 + 16) / 256.0F);
+                    var15 = (double)(((float)var8 + 15.99F + 16.0F) / 256.0F);
+                    var5.addVertexWithUV(var30, (double)((float)par3 + var17), (double)(par4 + 1), var11, var13);
+                    var5.addVertexWithUV(var22, (double)(par3 + 0), (double)(par4 + 1), var11, var15);
+                    var5.addVertexWithUV(var22, (double)(par3 + 0), (double)(par4 + 0), var9, var15);
+                    var5.addVertexWithUV(var30, (double)((float)par3 + var17), (double)(par4 + 0), var9, var13);
+                }
+                else
+                {
+                    var5.addVertexWithUV((double)(par2 + 0), (double)((float)par3 + var17), var34, var11, var13);
+                    var5.addVertexWithUV((double)(par2 + 0), (double)(par3 + 0), var26, var11, var15);
+                    var5.addVertexWithUV((double)(par2 + 1), (double)(par3 + 0), var26, var9, var15);
+                    var5.addVertexWithUV((double)(par2 + 1), (double)((float)par3 + var17), var34, var9, var13);
+                    var9 = (double)((float)var7 / 256.0F);
+                    var11 = (double)(((float)var7 + 15.99F) / 256.0F);
+                    var13 = (double)((float)(var8 + 16) / 256.0F);
+                    var15 = (double)(((float)var8 + 15.99F + 16.0F) / 256.0F);
+                    var5.addVertexWithUV((double)(par2 + 1), (double)((float)par3 + var17), var32, var11, var13);
+                    var5.addVertexWithUV((double)(par2 + 1), (double)(par3 + 0), var24, var11, var15);
+                    var5.addVertexWithUV((double)(par2 + 0), (double)(par3 + 0), var24, var9, var15);
+                    var5.addVertexWithUV((double)(par2 + 0), (double)((float)par3 + var17), var32, var9, var13);
+                }
+            }
+        }
+        else
+        {
+            double var18 = (double)par2 + 0.5D + 0.2D;
+            var20 = (double)par2 + 0.5D - 0.2D;
+            var22 = (double)par4 + 0.5D + 0.2D;
+            var24 = (double)par4 + 0.5D - 0.2D;
+            var26 = (double)par2 + 0.5D - 0.3D;
+            var28 = (double)par2 + 0.5D + 0.3D;
+            var30 = (double)par4 + 0.5D - 0.3D;
+            var32 = (double)par4 + 0.5D + 0.3D;
+            var5.addVertexWithUV(var26, (double)((float)par3 + var17), (double)(par4 + 1), var11, var13);
+            var5.addVertexWithUV(var18, (double)(par3 + 0), (double)(par4 + 1), var11, var15);
+            var5.addVertexWithUV(var18, (double)(par3 + 0), (double)(par4 + 0), var9, var15);
+            var5.addVertexWithUV(var26, (double)((float)par3 + var17), (double)(par4 + 0), var9, var13);
+            var5.addVertexWithUV(var28, (double)((float)par3 + var17), (double)(par4 + 0), var11, var13);
+            var5.addVertexWithUV(var20, (double)(par3 + 0), (double)(par4 + 0), var11, var15);
+            var5.addVertexWithUV(var20, (double)(par3 + 0), (double)(par4 + 1), var9, var15);
+            var5.addVertexWithUV(var28, (double)((float)par3 + var17), (double)(par4 + 1), var9, var13);
+            var9 = (double)((float)var7 / 256.0F);
+            var11 = (double)(((float)var7 + 15.99F) / 256.0F);
+            var13 = (double)((float)(var8 + 16) / 256.0F);
+            var15 = (double)(((float)var8 + 15.99F + 16.0F) / 256.0F);
+            var5.addVertexWithUV((double)(par2 + 1), (double)((float)par3 + var17), var32, var11, var13);
+            var5.addVertexWithUV((double)(par2 + 1), (double)(par3 + 0), var24, var11, var15);
+            var5.addVertexWithUV((double)(par2 + 0), (double)(par3 + 0), var24, var9, var15);
+            var5.addVertexWithUV((double)(par2 + 0), (double)((float)par3 + var17), var32, var9, var13);
+            var5.addVertexWithUV((double)(par2 + 0), (double)((float)par3 + var17), var30, var11, var13);
+            var5.addVertexWithUV((double)(par2 + 0), (double)(par3 + 0), var22, var11, var15);
+            var5.addVertexWithUV((double)(par2 + 1), (double)(par3 + 0), var22, var9, var15);
+            var5.addVertexWithUV((double)(par2 + 1), (double)((float)par3 + var17), var30, var9, var13);
+            var18 = (double)par2 + 0.5D - 0.5D;
+            var20 = (double)par2 + 0.5D + 0.5D;
+            var22 = (double)par4 + 0.5D - 0.5D;
+            var24 = (double)par4 + 0.5D + 0.5D;
+            var26 = (double)par2 + 0.5D - 0.4D;
+            var28 = (double)par2 + 0.5D + 0.4D;
+            var30 = (double)par4 + 0.5D - 0.4D;
+            var32 = (double)par4 + 0.5D + 0.4D;
+            var5.addVertexWithUV(var26, (double)((float)par3 + var17), (double)(par4 + 0), var9, var13);
+            var5.addVertexWithUV(var18, (double)(par3 + 0), (double)(par4 + 0), var9, var15);
+            var5.addVertexWithUV(var18, (double)(par3 + 0), (double)(par4 + 1), var11, var15);
+            var5.addVertexWithUV(var26, (double)((float)par3 + var17), (double)(par4 + 1), var11, var13);
+            var5.addVertexWithUV(var28, (double)((float)par3 + var17), (double)(par4 + 1), var9, var13);
+            var5.addVertexWithUV(var20, (double)(par3 + 0), (double)(par4 + 1), var9, var15);
+            var5.addVertexWithUV(var20, (double)(par3 + 0), (double)(par4 + 0), var11, var15);
+            var5.addVertexWithUV(var28, (double)((float)par3 + var17), (double)(par4 + 0), var11, var13);
+            var9 = (double)((float)var7 / 256.0F);
+            var11 = (double)(((float)var7 + 15.99F) / 256.0F);
+            var13 = (double)((float)var8 / 256.0F);
+            var15 = (double)(((float)var8 + 15.99F) / 256.0F);
+            var5.addVertexWithUV((double)(par2 + 0), (double)((float)par3 + var17), var32, var9, var13);
+            var5.addVertexWithUV((double)(par2 + 0), (double)(par3 + 0), var24, var9, var15);
+            var5.addVertexWithUV((double)(par2 + 1), (double)(par3 + 0), var24, var11, var15);
+            var5.addVertexWithUV((double)(par2 + 1), (double)((float)par3 + var17), var32, var11, var13);
+            var5.addVertexWithUV((double)(par2 + 1), (double)((float)par3 + var17), var30, var9, var13);
+            var5.addVertexWithUV((double)(par2 + 1), (double)(par3 + 0), var22, var9, var15);
+            var5.addVertexWithUV((double)(par2 + 0), (double)(par3 + 0), var22, var11, var15);
+            var5.addVertexWithUV((double)(par2 + 0), (double)((float)par3 + var17), var30, var11, var13);
+        }
+
+        return true;
+    }
 	/** end Legendary Mod */
 	
 	/**

@@ -11,7 +11,6 @@ public class LegendaryEnchantmentHelper
 	{
 		entity.motionX *= 0.5D;
 		entity.motionZ *= 0.5D;
-		entity.motionY *= 0.5D;
 
 		for(int i = 0; i < 4; i++)
 		{

@@ -120,6 +120,9 @@ import net.minecraft.src.WorldClient;
 import net.minecraft.src.WorldInfo;
 import net.minecraft.src.WorldRenderer;
 import net.minecraft.src.WorldSettings;
+/** Legendary Mod */
+import net.minecraft.src.TextureIcyFlamesFX;
+/** end Legendary Mod */
 import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
@@ -447,6 +450,10 @@ public abstract class Minecraft implements Runnable, IPlayerUsage
         this.renderEngine.registerTextureFX(new TextureLavaFlowFX());
         this.renderEngine.registerTextureFX(new TextureFlamesFX(0));
         this.renderEngine.registerTextureFX(new TextureFlamesFX(1));
+		/** Legendary Mod */
+        this.renderEngine.registerTextureFX(new TextureIcyFlamesFX(0));
+        this.renderEngine.registerTextureFX(new TextureIcyFlamesFX(1));
+		/** end Legendary Mod */
         this.renderGlobal = new RenderGlobal(this, this.renderEngine);
         GL11.glViewport(0, 0, this.displayWidth, this.displayHeight);
         this.effectRenderer = new EffectRenderer(this.theWorld, this.renderEngine);

@@ -62,7 +62,7 @@ public class EntityChargedEnchantFX extends EntityFX
         }
 
 		Random random = new Random();
-		par1Tessellator.setBrightness(random.nextInt(132) + 64);
+		par1Tessellator.setBrightness(0xF000F0);
         this.particleScale = this.reddustParticleScale * var8;
         super.renderParticle(par1Tessellator, par2, par3, par4, par5, par6, par7);
     }

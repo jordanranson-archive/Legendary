@@ -61,7 +61,7 @@ public class EntityFlameEnchantFX extends EntityFX
 
 		if(!this.isSmoke)
 		{
-			par1Tessellator.setBrightness(196);
+			par1Tessellator.setBrightness(0xF000F0);
 		}
 		
         this.particleScale = this.flameEnchantParticleScale * var8;
