@@ -2890,13 +2890,13 @@ public class RenderBlocks
             var6 = this.overrideBlockTexture;
         }
 
-        float var7 = 1.0F;
+         float var7 = 1.0F;
         var5.setBrightness(par1Block.getMixedBrightnessForBlock(this.blockAccess, par2, par3, par4));
-        int var8 = par1Block.colorMultiplier(this.blockAccess, par2, par3, par4); // 8454016;
+        int var8 = par1Block.colorMultiplier(this.blockAccess, par2, par3, par4);
         float var9 = (float)(var8 >> 16 & 255) / 255.0F;
         float var10 = (float)(var8 >> 8 & 255) / 255.0F;
         float var11 = (float)(var8 & 255) / 255.0F;
-        var5.setColorOpaque_F(1.0F, 1.0F, 1.0F);
+        var5.setColorOpaque_F(var7 * var9, var7 * var10, var7 * var11);
         var8 = (var6 & 15) << 4;
         int var21 = var6 & 240;
         double var22 = (double)((float)var8 / 256.0F);
@@ -2969,13 +2969,16 @@ public class RenderBlocks
 
         float var7 = 1.0F;
         var5.setBrightness(0xF000F0);
-        int var8 = par1Block.colorMultiplier(this.blockAccess, par2, par3, par4); // 8454016;
+		
+		int var8 = 8454016;
         float var9 = (float)(var8 >> 16 & 255) / 255.0F;
         float var10 = (float)(var8 >> 8 & 255) / 255.0F;
         float var11 = (float)(var8 & 255) / 255.0F;
-        var5.setColorOpaque_F(1.0F, 1.0F, 1.0F);
+        var5.setColorOpaque_F(var7 * var9, var7 * var10, var7 * var11);
+		
         var8 = (var6 & 15) << 4;
         int var21 = var6 & 240;
+
         double var22 = (double)((float)var8 / 256.0F);
         double var12 = (double)(((float)var8 + 15.99F) / 256.0F);
         double var14 = (double)((float)var21 / 256.0F);

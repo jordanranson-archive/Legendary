@@ -42,6 +42,15 @@ public class BlockLichenGlowing extends BlockLichen
         return 101;
     }
 	
+	public void onNeighborBlockChange(World world, int blockX, int blockY, int blockZ, int par4)
+    {
+        if(world.getBlockLightValue(blockX, blockY, blockZ) >= 12)
+		{
+			int meta = world.getBlockMetadata(blockX, blockY, blockZ);
+			world.setBlockAndMetadata(blockX, blockY, blockZ, Block.lichen.blockID, meta);
+		}
+    }
+	
 	public void updateTick(World world, int blockX, int blockY, int blockZ, Random random)
 	{
 		if(world.getBlockLightValue(blockX, blockY, blockZ) >= 12)

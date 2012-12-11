@@ -6,7 +6,7 @@ public class BlockLichen extends Block
 {
     public BlockLichen(int par1)
     {
-        super(par1, 143, Material.vine);
+        super(par1, 52, Material.vine);
         this.setTickRandomly(true);
     }
 
@@ -234,4 +234,19 @@ public class BlockLichen extends Block
 			world.setBlockAndMetadata(blockX, blockY, blockZ, Block.lichenGlowing.blockID, meta);
 		}
 	}
+	
+	    public int getBlockColor()
+    {
+        return ColorizerFoliage.getFoliageColorBasic();
+    }
+
+    public int getRenderColor(int par1)
+    {
+        return ColorizerFoliage.getFoliageColorBasic();
+    }
+
+    public int colorMultiplier(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
+    {
+        return par1IBlockAccess.getBiomeGenForCoords(par2, par4).getBiomeFoliageColor();
+    }
 }
