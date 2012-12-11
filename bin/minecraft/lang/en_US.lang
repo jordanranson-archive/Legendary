@@ -26,6 +26,8 @@ item.junkSack.name=Dusty Bindle
 item.treasureSack.name=Treasure Pouch
 item.lichenSpores.name=Shimmering Spores
 item.grapplingHook.name=Grappling Hook
+item.magicRodFlame.name=Magic Rod (Flame)
+item.magicRodFrozen.name=Magic Rod (Frozen)
 
 tile.artifactFossil.name=Fossil
 tile.artifactSmooth.name=Stone Ore
