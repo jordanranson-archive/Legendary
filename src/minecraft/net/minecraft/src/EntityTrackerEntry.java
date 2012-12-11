@@ -520,6 +520,10 @@ public class EntityTrackerEntry
                     Entity var7 = ((EntityArrowCharged)this.myEntity).shootingEntity;
                     return new Packet23VehicleSpawn(this.myEntity, 1010, var7 != null ? var7.entityId : this.myEntity.entityId);
                 }
+                else if (this.myEntity instanceof EntityFrozenOrb)
+                {
+                    return new Packet23VehicleSpawn(this.myEntity, 1011);
+                }
 				/** end Legendary Mod */
                 else
                 {

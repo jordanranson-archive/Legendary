@@ -185,6 +185,10 @@ public class EntityTracker
         {
             this.addEntityToTracker(par1Entity, 160, 20, true);
         }
+        else if (par1Entity instanceof EntityFrozenOrb)
+        {
+            this.addEntityToTracker(par1Entity, 64, 10, true);
+        }
 		/** end Legendary Mod */
     }
 

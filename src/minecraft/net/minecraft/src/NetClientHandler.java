@@ -327,6 +327,10 @@ public class NetClientHandler extends NetHandler
         {
             var8 = new EntityArrowCharged(this.worldClient, var2, var4, var6);
         }
+        else if (par1Packet23VehicleSpawn.type == 1011)
+        {
+            var8 = new EntityFrozenOrb(this.worldClient, var2, var4, var6);
+        }
 		/** end Legendary Mod */
 
         if (var8 != null)
