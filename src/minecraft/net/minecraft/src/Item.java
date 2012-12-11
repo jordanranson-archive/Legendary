@@ -205,7 +205,7 @@ public class Item
 	public static Item lichenSpores = (new ItemLichenSpores(4019)).setIconCoord(12, 8).setItemName("lichenSpores");
     public static Item grapplingHook = (new ItemGrapplingHook(4020)).setIconCoord(5, 4).setItemName("grapplingHook");
 	public static Item magicRodFlame = (new ItemMagicRod(4021)).setIconCoord(5, 3).setItemName("magicRodFlame");
-	public static Item magicRodFrozen = (new ItemMagicRod(4022)).setIconCoord(5, 3).setItemName("magicRodFrozen");
+	public static Item magicRodFrozen = (new ItemMagicRodFrozen(4022)).setIconCoord(5, 3).setItemName("magicRodFrozen");
 	/** end Legendary Mod **/
 	
     /** Item index + indexModifier */

@@ -4,7 +4,8 @@ import java.util.Random;
 
 public class BlockIcyFire extends Block
 {
-	private int burnLength = 5;
+	private int timeAlive = 0;
+	private int burnLength = 4;
 	
     protected BlockIcyFire(int par1, int par2)
     {
@@ -37,19 +38,6 @@ public class BlockIcyFire extends Block
         return 0;
     }
 
-    public int tickRate()
-    {
-        return 30;
-    }
-
-    public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random)
-    {
-		if(par5Random.nextInt(4) == 0) 
-		{
-			par1World.setBlockWithNotify(par2, par3, par4, 0);
-		}
-    }
-
     public boolean func_82506_l()
     {
         return false;
@@ -71,11 +59,25 @@ public class BlockIcyFire extends Block
         {
             par1World.setBlockWithNotify(par2, par3, par4, 0);
         }
+		if(this.timeAlive > this.burnLength)
+		{
+			par1World.setBlock(par2, par3, par4, 0);
+		}
     }
+	
+	public int tickRate()
+	{
+		return 1;
+	}
+	
+	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random)
+	{
+		par1World.setBlock(par2, par3, par4, 0);
+	}	
 
     public void onBlockAdded(World par1World, int par2, int par3, int par4)
     {
-		this.burnLength = (new Random()).nextInt(3 * 20) + (5 * 20);
+		this.burnLength = (6 - par1World.rand.nextInt(3)) * 20;
         if (par1World.provider.dimensionId > 0)
         {
             if (!par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4))

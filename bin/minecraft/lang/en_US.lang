@@ -26,8 +26,8 @@ item.junkSack.name=Dusty Bindle
 item.treasureSack.name=Treasure Pouch
 item.lichenSpores.name=Shimmering Spores
 item.grapplingHook.name=Grappling Hook
-item.magicRodFlame.name=Magic Rod (Flame)
-item.magicRodFrozen.name=Magic Rod (Frozen)
+item.magicRodFlame.name=Magic Rod
+item.magicRodFrozen.name=Magic Rod
 
 tile.artifactFossil.name=Fossil
 tile.artifactSmooth.name=Stone Ore
@@ -43,6 +43,7 @@ tile.lantern.name=Lantern
 tile.lantern.iron.name=Iron Lantern
 tile.lantern.paper.name=Paper Lantern
 tile.lantern.stone.name=Stone Lantern
+tile.icyFire.name=Blue Fire
 
 enchantment.arrowFrost=Frost
 enchantment.arrowCursed=Curse
