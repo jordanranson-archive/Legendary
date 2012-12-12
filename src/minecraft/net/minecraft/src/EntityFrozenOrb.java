@@ -12,7 +12,7 @@ public class EntityFrozenOrb extends EntityThrowable
     public EntityFrozenOrb(World par1World, EntityLiving par2EntityLiving, float velocity)
     {
         super(par1World, par2EntityLiving);
-		this.setThrowableHeading(this.motionX, this.motionY, this.motionZ, velocity, 1.0F);
+		this.setThrowableHeading(this.motionX, this.motionY, this.motionZ, velocity + 0.2F, 1.0F);
     }
 
     public EntityFrozenOrb(World par1World, double par2, double par4, double par6)
