@@ -310,6 +310,27 @@ public class LegendaryEnchantmentHelper
 		return entities;
 	}
 	
+	public static List getEntitiesInRange(Entity target, double distance, double radius)
+	{
+		double x = distance * Math.cos(Math.toRadians((double)target.rotationYaw + 90.0F));
+		double z = distance * Math.sin(Math.toRadians((double)target.rotationYaw + 90.0F));
+	
+		int aabbPosX = MathHelper.floor_double(target.posX + x - radius - 1.0D);
+		int aabbMotionX = MathHelper.floor_double(target.posX + x + radius + 1.0D);
+		int aabbPosY = MathHelper.floor_double(target.posY - radius - 1.0D);
+		int aabbMotionY = MathHelper.floor_double(target.posY + radius + 1.0D);
+		int aabbPosZ = MathHelper.floor_double(target.posZ + z - radius - 1.0D);
+		int aabbMotionZ = MathHelper.floor_double(target.posZ + z + radius + 1.0D);
+		List entities = target.worldObj.getEntitiesWithinAABBExcludingEntity(
+			target, AxisAlignedBB.getAABBPool().addOrModifyAABBInPool(
+				(double)aabbPosX, (double)aabbPosY, (double)aabbPosZ, 
+				(double)aabbMotionX, (double)aabbMotionY, (double)aabbMotionZ
+			)
+		);
+		
+		return entities;
+	}
+	
 	public static void spawnParticle(Entity entity, String particle)
 	{
 		entity.worldObj.spawnParticle(

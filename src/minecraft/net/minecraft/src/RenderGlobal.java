@@ -2028,6 +2028,14 @@ public class RenderGlobal implements IWorldAccess
                     {
                         var21 = new EntityFrozenSmokeFX(this.theWorld, par2, par4, par6, par8, par10, par12, 2.5F);
                     }
+					else if (par1Str.equals("flameJet"))
+                    {
+                        var21 = new EntityFlameJetFX(this.theWorld, par2, par4, par6, (float)par8, (float)par10, (float)par12);
+                    }
+                    else if (par1Str.equals("flameJet2"))
+                    {
+                        var21 = new EntityFlameJet2FX(this.theWorld, par2, par4, par6, par8, par10, par12);
+                    }
 					/** end Legendary Mod */
                     else if (par1Str.startsWith("iconcrack_"))
                     {
