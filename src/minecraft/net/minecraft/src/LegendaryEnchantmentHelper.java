@@ -186,23 +186,23 @@ public class LegendaryEnchantmentHelper
 		}
 	}
 	
-	public static void chargedAuraAttack(EntityLiving entity, EntityLiving target)
+	public static void chargedAuraAttack(EntityLiving attacker, EntityLiving target)
 	{
 		Random random = new Random();
 		
 		if(random.nextInt(9) == 0)
 		{
-			entity.worldObj.playSoundAtEntity(entity, "ambient.weather.thunder", 1.0F, 0.8F + random.nextFloat() * 0.2F);
-			entity.worldObj.playSoundAtEntity(entity, "random.explode", 1.0F, 0.8F + random.nextFloat() * 0.2F);
+			attacker.worldObj.playSoundAtEntity(target, "ambient.weather.thunder", 1.0F, 0.8F + random.nextFloat() * 0.2F);
+			attacker.worldObj.playSoundAtEntity(target, "random.explode", 1.0F, 0.8F + random.nextFloat() * 0.2F);
 			
 			for(int j = 0; j < 4; j++)
 			{
 				LegendaryEnchantmentHelper.spawnParticle(target, "chargedEnchant");
 			}
 			
-			double posX = target.posX - entity.posX;
-			double posY = target.posY + (double)target.getEyeHeight() - entity.posY;
-			double posZ = target.posZ - entity.posZ;
+			double posX = target.posX - attacker.posX;
+			double posY = target.posY + (double)target.getEyeHeight() - attacker.posY;
+			double posZ = target.posZ - attacker.posZ;
 			double velocity = (double)MathHelper.sqrt_double(posX * posX + posY * posY + posZ * posZ);
 			double amplifier = 3.0D;
 			
@@ -237,9 +237,7 @@ public class LegendaryEnchantmentHelper
 			entity.attackEntityFrom(DamageSource.chainLightning, 1);
 			// TODO: do stuff to 'entity'
 		}
-		
-		entity.worldObj.playAuxSFX(4000, (int)Math.round(entity.posX), (int)Math.round(entity.posY), (int)Math.round(entity.posZ), 0);
-		
+
 		for (int i = 0; i < entities.size(); ++i)
 		{	
 			curTarget = (Entity)entities.get(i);
@@ -269,6 +267,7 @@ public class LegendaryEnchantmentHelper
 			{
 				if(((EntityLiving)attackTarget).recentlyShocked == 0)
 				{
+					LegendaryEnchantmentHelper.lightingBoltEffect((EntityLiving)attackTarget, entity);
 					LegendaryEnchantmentHelper.chainLightning((EntityLiving)attackTarget, entity, attackers, radius, numTargets, step + 1);
 				}
 			}
@@ -288,8 +287,19 @@ public class LegendaryEnchantmentHelper
 	public static void chainLightningEffect(EntityLiving entity)
 	{
 		Random random = new Random();
-		//entity.worldObj.playSoundAtEntity(entity, "ambient.weather.thunder", 1.0F, 0.5F);
 		entity.worldObj.playSoundAtEntity(entity, "random.explode", 1.0F, 0.5F);
+	}	
+	
+	public static void lightingBoltEffect(EntityLiving entity, EntityLiving target)
+	{
+		EntityChainLightningBolt bolt = new EntityChainLightningBolt(entity.worldObj, entity, target);
+
+		if (!entity.worldObj.isRemote)
+		{
+			entity.worldObj.spawnEntityInWorld(bolt);
+		}
+		
+		System.out.println("BOOM");
 	}
 	
 	public static List getEntitiesInRange(Entity target, int radius)

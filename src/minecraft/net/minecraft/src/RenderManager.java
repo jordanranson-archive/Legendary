@@ -104,6 +104,7 @@ public class RenderManager
         this.entityRenderMap.put(EntityHealthOrb.class, new RenderHealthOrb());
         this.entityRenderMap.put(EntityFrozenOrb.class, new RenderSnowball(Item.snowball.getIconFromDamage(0)));
         this.entityRenderMap.put(EntitySuperSheep.class, new RenderSheep(new ModelSheep2(), new ModelSheep1(), 0.7F));
+        this.entityRenderMap.put(EntityChainLightningBolt.class, new RenderChainLightningBolt());
 		/** end Legendary Mod **/
         Iterator var1 = this.entityRenderMap.values().iterator();
 
