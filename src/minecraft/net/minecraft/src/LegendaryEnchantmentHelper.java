@@ -220,10 +220,10 @@ public class LegendaryEnchantmentHelper
 		}
 	}
 	
-	public static void chainLightning(EntityLiving entity, EntityLiving attacker, List attackers, int radius, int numTargets, int step)
+	public static void chainLightning(EntityLiving target, EntityLiving attacker, List attackers, int radius, int numTargets, int step)
 	{
 		attackers.add(attacker);
-		List entities = getEntitiesInRange(entity, radius);
+		List entities = getEntitiesInRange(target, radius);
 		
 		Random random = new Random();
 		Entity attackTarget = null;
@@ -231,11 +231,11 @@ public class LegendaryEnchantmentHelper
 		Entity curTarget = null;
 		double curDistance;
 
-		if (!entity.worldObj.isRemote)
+		if (!target.worldObj.isRemote)
 		{
-			entity.recentlyShocked = entity.maxRecentlyShocked;
-			entity.attackEntityFrom(DamageSource.chainLightning, 1);
-			// TODO: do stuff to 'entity'
+			target.recentlyShocked = target.maxRecentlyShocked;
+			target.attackEntityFrom(DamageSource.chainLightning, 1);
+			// TODO: do stuff to 'target'
 		}
 
 		for (int i = 0; i < entities.size(); ++i)
@@ -246,8 +246,8 @@ public class LegendaryEnchantmentHelper
 			{
 				if(attackTarget != null)
 				{
-					curDistance = curTarget.getDistance(entity.posX, entity.posY, entity.posZ) / (double)radius;
-					targetDistance = attackTarget.getDistance(entity.posX, entity.posY, entity.posZ) / (double)radius;
+					curDistance = curTarget.getDistance(target.posX, target.posY, target.posZ) / (double)radius;
+					targetDistance = attackTarget.getDistance(target.posX, target.posY, target.posZ) / (double)radius;
 					
 					if(curDistance < targetDistance)
 					{
@@ -263,12 +263,17 @@ public class LegendaryEnchantmentHelper
 		
 		if(attackTarget != null)
 		{
+			if(target != null)
+			{
+				LegendaryEnchantmentHelper.lightingBoltEffect(target, (EntityLiving)attackTarget);
+				LegendaryEnchantmentHelper.lightingBoltEffect(target, (EntityLiving)attackTarget);
+			}
+		
 			if(step < numTargets)
 			{
 				if(((EntityLiving)attackTarget).recentlyShocked == 0)
 				{
-					LegendaryEnchantmentHelper.lightingBoltEffect((EntityLiving)attackTarget, entity);
-					LegendaryEnchantmentHelper.chainLightning((EntityLiving)attackTarget, entity, attackers, radius, numTargets, step + 1);
+					LegendaryEnchantmentHelper.chainLightning((EntityLiving)attackTarget, target, attackers, radius, numTargets, step + 1);
 				}
 			}
 		}
@@ -292,14 +297,68 @@ public class LegendaryEnchantmentHelper
 	
 	public static void lightingBoltEffect(EntityLiving entity, EntityLiving target)
 	{
-		EntityChainLightningBolt bolt = new EntityChainLightningBolt(entity.worldObj, entity, target);
+		EntityLiving entityStart = entity;
+		EntityLiving entityEnd = target;
 
-		if (!entity.worldObj.isRemote)
+		Random random = new Random();
+
+		double x1 = entityStart.posX;
+		double y1 = entityStart.posY + (entityStart.height / 2.0D);
+		double z1 = entityStart.posZ;
+		double x2 = entityEnd.posX;
+		double y2 = entityEnd.posY + (entityEnd.height / 2.0D);
+		double z2 = entityEnd.posZ;
+		double x = x2 - x1;
+		double y = y2 - y1;
+		double z = z2 - z1;
+		double segments = 7;
+		double distance = Math.sqrt(x * x + z * z + y * y);
+		double width = distance / segments;
+		double prevX = x1;
+		double prevY = y1;
+		double prevZ = z1;
+		double vertexWidth = 0.1D;
+
+		for(int i = 0; i <= segments; i++) 
 		{
-			entity.worldObj.spawnEntityInWorld(bolt);
-		}
+			double magnitude = (width * i) / distance;
+
+			double x3 = magnitude * x2 + (1 - magnitude) * x1;
+			double y3 = magnitude * y2 + (1 - magnitude) * y1;
+			double z3 = magnitude * z2 + (1 - magnitude) * z1;
+			
+			if(i != 0 && i != segments) 
+			{
+				x3 += (random.nextDouble() * width) - (width / 1.75);
+				y3 += (random.nextDouble() * width) - (width / 1.75);
+				z3 += (random.nextDouble() * width) - (width / 1.75);
+			}
+			
+			double x4 = x3 - prevX;
+			double y4 = y3 - prevY;
+			double z4 = z3 - prevZ;
 		
-		System.out.println("BOOM");
+			double distance2 = Math.sqrt(x4 * x4 + z4 * z4 + y4 * y4);
+			int res = (int)distance2 * 7;
+			double width2 = distance2 / res;
+				
+			for(int k = 0; k < res; k++)
+			{
+				double magnitude2 = (width2 * k) / distance2;
+
+				double x5 = magnitude2 * x3 + (1 - magnitude2) * prevX;
+				double y5 = magnitude2 * y3 + (1 - magnitude2) * prevY;
+				double z5 = magnitude2 * z3 + (1 - magnitude2) * prevZ;
+				
+				entityStart.worldObj.spawnParticle("chainLightning", x5, y5, z5, 0.0D, 0.0D, 0.0D);
+			}
+			
+			entityStart.worldObj.spawnParticle("chainLightning", x3, y3, z3, 0.0D, 0.0D, 0.0D);
+			
+			prevX = x3;
+			prevY = y3;
+			prevZ = z3;
+		}
 	}
 	
 	public static List getEntitiesInRange(Entity target, int radius)

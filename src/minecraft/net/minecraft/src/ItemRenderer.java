@@ -39,18 +39,24 @@ public class ItemRenderer
 
         if (var4 != null && RenderBlocks.renderItemIn3d(var4.getRenderType()))
         {
-            GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/terrain.png"));
+			GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/terrain.png"));
             this.renderBlocksInstance.renderBlockAsItem(var4, par2ItemStack.getItemDamage(), 1.0F);
         }
         else
         {
             if (var4 != null)
             {
-                GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/terrain.png"));
+				GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/terrain.png"));
             }
             else
             {
-                GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/gui/items.png"));
+				/** Legendary Mod */
+				if(par2ItemStack.itemID >= 4000) {
+					GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/legendary/items.png"));
+				} else {
+					GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/gui/items.png"));
+				}
+				/** end Legendary Mod */
             }
 
             Tessellator var5 = Tessellator.instance;
@@ -493,9 +499,13 @@ public class ItemRenderer
             var2 = MathHelper.floor_double(this.mc.thePlayer.posX);
             int var3 = MathHelper.floor_double(this.mc.thePlayer.posY);
             int var4 = MathHelper.floor_double(this.mc.thePlayer.posZ);
-            int var5 = this.mc.renderEngine.getTexture("/terrain.png");
-            GL11.glBindTexture(GL11.GL_TEXTURE_2D, var5);
+			
+			/** Legendary Mod */
+            int var5;
             int var6 = this.mc.theWorld.getBlockId(var2, var3, var4);
+			var5 = this.mc.renderEngine.getTexture("/terrain.png");
+			GL11.glBindTexture(GL11.GL_TEXTURE_2D, var5);
+			/** end Legendary Mod */
 
             if (this.mc.theWorld.isBlockNormalCube(var2, var3, var4))
             {

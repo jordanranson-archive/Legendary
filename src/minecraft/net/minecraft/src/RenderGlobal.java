@@ -2036,6 +2036,10 @@ public class RenderGlobal implements IWorldAccess
                     {
                         var21 = new EntityFlameJet2FX(this.theWorld, par2, par4, par6, par8, par10, par12);
                     }
+                    else if (par1Str.equals("chainLightning"))
+                    {
+                        var21 = new EntityChainLightningFX(this.theWorld, par2, par4, par6, (float)par8, (float)par10, (float)par12);
+                    }
 					/** end Legendary Mod */
                     else if (par1Str.startsWith("iconcrack_"))
                     {

@@ -72,7 +72,8 @@ public class RenderItem extends Render
                     GL11.glRotatef(-90.0F, 0.0F, 1.0F, 0.0F);
                 }
 
-                this.loadTexture("/terrain.png");
+				this.loadTexture("/terrain.png");
+				
                 float var22 = 0.25F;
                 var16 = var14.getRenderType();
 
@@ -118,7 +119,13 @@ public class RenderItem extends Render
                         GL11.glScalef(0.5F, 0.5F, 0.5F);
                     }
 
-                    this.loadTexture("/gui/items.png");
+					/** Legendary Mod */
+					if(var10.itemID >= 4000) {
+						this.loadTexture("/legendary/items.png");
+					} else {
+						this.loadTexture("/gui/items.png");
+					}
+					/** end Legendary Mod */
 
                     for (var15 = 0; var15 <= 1; ++var15)
                     {
@@ -154,11 +161,17 @@ public class RenderItem extends Render
 
                     if (var14 != null)
                     {
-                        this.loadTexture("/terrain.png");
+						this.loadTexture("/terrain.png");
                     }
                     else
                     {
-                        this.loadTexture("/gui/items.png");
+                        /** Legendary Mod */
+						if(var10.itemID >= 4000) {
+							this.loadTexture("/legendary/items.png");
+						} else {
+							this.loadTexture("/gui/items.png");
+						}
+						/** end Legendary Mod */
                     }
 
                     if (this.field_77024_a)
@@ -230,7 +243,7 @@ public class RenderItem extends Render
 
         if (var6 < 256 && RenderBlocks.renderItemIn3d(Block.blocksList[var6].getRenderType()))
         {
-            par2RenderEngine.bindTexture(par2RenderEngine.getTexture("/terrain.png"));
+			par2RenderEngine.bindTexture(par2RenderEngine.getTexture("/terrain.png"));
             Block var15 = Block.blocksList[var6];
             GL11.glPushMatrix();
             GL11.glTranslatef((float)(par4 - 2), (float)(par5 + 3), -3.0F + this.zLevel);
@@ -262,7 +275,14 @@ public class RenderItem extends Render
             if (Item.itemsList[var6].requiresMultipleRenderPasses())
             {
                 GL11.glDisable(GL11.GL_LIGHTING);
-                par2RenderEngine.bindTexture(par2RenderEngine.getTexture("/gui/items.png"));
+				
+				/** Legendary Mod */
+				if(var6 >= 4000) {
+					par2RenderEngine.bindTexture(par2RenderEngine.getTexture("/legendary/items.png"));
+				} else {
+					par2RenderEngine.bindTexture(par2RenderEngine.getTexture("/gui/items.png"));
+				}
+				/** end Legendary Mod */
 
                 for (var9 = 0; var9 <= 1; ++var9)
                 {
@@ -288,11 +308,17 @@ public class RenderItem extends Render
 
                 if (var6 < 256)
                 {
-                    par2RenderEngine.bindTexture(par2RenderEngine.getTexture("/terrain.png"));
+					par2RenderEngine.bindTexture(par2RenderEngine.getTexture("/terrain.png"));
                 }
                 else
                 {
-                    par2RenderEngine.bindTexture(par2RenderEngine.getTexture("/gui/items.png"));
+                    /** Legendary Mod */
+					if(var6 >= 4000) {
+						par2RenderEngine.bindTexture(par2RenderEngine.getTexture("/legendary/items.png"));
+					} else {
+						par2RenderEngine.bindTexture(par2RenderEngine.getTexture("/gui/items.png"));
+					}
+					/** end Legendary Mod */
                 }
 
                 var9 = Item.itemsList[var6].getColorFromItemStack(par3ItemStack, 0);
