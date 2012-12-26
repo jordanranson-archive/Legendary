@@ -183,29 +183,29 @@ public class Item
     public static Item field_85180_cf = (new ItemRecord(2011, "wait")).setIconCoord(11, 15).setItemName("record");
 
 	/** Legendary Mod **/
-	public static Item roughStone = (new ItemArtifact(4000)).setIconCoord(7, 0).setItemName("roughStone").setCreativeTab(CreativeTabs.tabMaterials);
-	public static Item hugeGeode = (new ItemArtifact(4001)).setIconCoord(7, 0).setItemName("hugeGeode").setCreativeTab(CreativeTabs.tabMaterials);
-	public static Item dustyRelic = (new ItemArtifact(4002)).setIconCoord(7, 0).setItemName("dustyRelic").setCreativeTab(CreativeTabs.tabMaterials);
-    public static Item opal = (new Item(4003)).setIconCoord(7, 3).setItemName("opal").setCreativeTab(CreativeTabs.tabMaterials);
-    public static Item ruby = (new Item(4004)).setIconCoord(7, 3).setItemName("ruby").setCreativeTab(CreativeTabs.tabMaterials);
-    public static Item sapphire = (new Item(4005)).setIconCoord(7, 3).setItemName("sapphire").setCreativeTab(CreativeTabs.tabMaterials);
-    public static Item malachite = (new Item(4006)).setIconCoord(7, 3).setItemName("malachite").setCreativeTab(CreativeTabs.tabMaterials);
-    public static Item amethyst = (new Item(4007)).setIconCoord(7, 3).setItemName("amethyst").setCreativeTab(CreativeTabs.tabMaterials);
-    public static Item opalEssence = (new Item(4008)).setIconCoord(8, 3).setItemName("opalEssence").setCreativeTab(CreativeTabs.tabMaterials);
-    public static Item redstoneSprocket = (new Item(4010)).setIconCoord(7, 1).setItemName("redstoneSprocket").setCreativeTab(CreativeTabs.tabMaterials);
-    public static Item crossbow = (new ItemCrossbow(4009)).setIconCoord(5, 1).setItemName("crossbow");
-    public static Item cannonball = (new Item(4011)).setIconCoord(9, 3).setItemName("cannonball").setCreativeTab(CreativeTabs.tabCombat);
-    public static Item cannonballHeavy = (new Item(4012)).setIconCoord(9, 3).setItemName("cannonballHeavy").setCreativeTab(CreativeTabs.tabCombat);
-    public static Item cannonballExplosive = (new Item(4013)).setIconCoord(9, 3).setItemName("cannonballExplosive").setCreativeTab(CreativeTabs.tabCombat);
-	public static Item cannon = (new ItemCannon(4014)).setIconCoord(5, 1).setItemName("handheldCannon");
-	public static ItemHangGlider hangGlider = (ItemHangGlider)(new ItemHangGlider(4015)).setIconCoord(8, 1).setItemName("hangGlider");
-	public static Item meatSack = (Item)(new ItemSack(4016, "meat")).setIconCoord(7, 6).setItemName("meatSack");
-	public static Item treasureSack = (Item)(new ItemSack(4017, "treasure")).setIconCoord(7, 6).setItemName("treasureSack");
-	public static Item junkSack = (Item)(new ItemSack(4018, "junk")).setIconCoord(7, 6).setItemName("junkSack");
-	public static Item lichenSpores = (new ItemLichenSpores(4019)).setIconCoord(12, 8).setItemName("lichenSpores");
-    public static Item grapplingHook = (new ItemGrapplingHook(4020)).setIconCoord(5, 4).setItemName("grapplingHook");
-	public static Item magicRodFlame = (new ItemMagicRodFlame(4021)).setIconCoord(5, 3).setItemName("magicRodFlame");
-	public static Item magicRodFrozen = (new ItemMagicRodFrozen(4022)).setIconCoord(5, 3).setItemName("magicRodFrozen");
+	public static Item roughStone = (new ItemArtifact(4000)).setIconCoord(0, 0).setItemName("roughStone").setCreativeTab(CreativeTabs.tabMaterials);
+	public static Item hugeGeode = (new ItemArtifact(4001)).setIconCoord(1, 0).setItemName("hugeGeode").setCreativeTab(CreativeTabs.tabMaterials);
+	public static Item dustyRelic = (new ItemArtifact(4002)).setIconCoord(2, 0).setItemName("dustyRelic").setCreativeTab(CreativeTabs.tabMaterials);
+    public static Item opal = (new Item(4003)).setIconCoord(3, 0).setItemName("opal").setCreativeTab(CreativeTabs.tabMaterials);
+    public static Item ruby = (new Item(4004)).setIconCoord(5, 0).setItemName("ruby").setCreativeTab(CreativeTabs.tabMaterials);
+    public static Item sapphire = (new Item(4005)).setIconCoord(6, 0).setItemName("sapphire").setCreativeTab(CreativeTabs.tabMaterials);
+    public static Item malachite = (new Item(4006)).setIconCoord(7, 0).setItemName("malachite").setCreativeTab(CreativeTabs.tabMaterials);
+    public static Item amethyst = (new Item(4007)).setIconCoord(4, 0).setItemName("amethyst").setCreativeTab(CreativeTabs.tabMaterials);
+    public static Item opalEssence = (new Item(4008)).setIconCoord(7, 1).setItemName("opalEssence").setCreativeTab(CreativeTabs.tabMaterials);
+    public static Item redstoneSprocket = (new Item(4010)).setIconCoord(6, 1).setItemName("redstoneSprocket").setCreativeTab(CreativeTabs.tabMaterials);
+    public static Item crossbow = (new ItemCrossbow(4009)).setIconCoord(0, 2).setItemName("crossbow");
+    public static Item cannonball = (new Item(4011)).setIconCoord(3, 1).setItemName("cannonball").setCreativeTab(CreativeTabs.tabCombat);
+    public static Item cannonballHeavy = (new Item(4012)).setIconCoord(4, 1).setItemName("cannonballHeavy").setCreativeTab(CreativeTabs.tabCombat);
+    public static Item cannonballExplosive = (new Item(4013)).setIconCoord(5, 1).setItemName("cannonballExplosive").setCreativeTab(CreativeTabs.tabCombat);
+	public static Item cannon = (new ItemCannon(4014)).setIconCoord(5, 2).setItemName("handheldCannon");
+	public static ItemHangGlider hangGlider = (ItemHangGlider)(new ItemHangGlider(4015)).setIconCoord(6, 2).setItemName("hangGlider");
+	public static Item meatSack = (Item)(new ItemSack(4016, "meat")).setIconCoord(2, 1).setItemName("meatSack");
+	public static Item treasureSack = (Item)(new ItemSack(4017, "treasure")).setIconCoord(1, 1).setItemName("treasureSack");
+	public static Item junkSack = (Item)(new ItemSack(4018, "junk")).setIconCoord(0, 1).setItemName("junkSack");
+	public static Item lichenSpores = (new ItemLichenSpores(4019)).setIconCoord(8, 1).setItemName("lichenSpores");
+    public static Item grapplingHook = (new ItemGrapplingHook(4020)).setIconCoord(7, 2).setItemName("grapplingHook");
+	public static Item magicRodFlame = (new ItemMagicRodFlame(4021)).setIconCoord(1, 2).setItemName("magicRodFlame");
+	public static Item magicRodFrozen = (new ItemMagicRodFrozen(4022)).setIconCoord(3, 2).setItemName("magicRodFrozen");
 	/** end Legendary Mod **/
 	
     /** Item index + indexModifier */
