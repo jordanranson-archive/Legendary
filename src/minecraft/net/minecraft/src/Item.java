@@ -197,15 +197,17 @@ public class Item
     public static Item cannonball = (new Item(4011)).setIconCoord(3, 1).setItemName("cannonball").setCreativeTab(CreativeTabs.tabCombat);
     public static Item cannonballHeavy = (new Item(4012)).setIconCoord(4, 1).setItemName("cannonballHeavy").setCreativeTab(CreativeTabs.tabCombat);
     public static Item cannonballExplosive = (new Item(4013)).setIconCoord(5, 1).setItemName("cannonballExplosive").setCreativeTab(CreativeTabs.tabCombat);
-	public static Item cannon = (new ItemCannon(4014)).setIconCoord(5, 2).setItemName("handheldCannon");
-	public static ItemHangGlider hangGlider = (ItemHangGlider)(new ItemHangGlider(4015)).setIconCoord(6, 2).setItemName("hangGlider");
+	public static Item cannon = (new ItemCannon(4014)).setIconCoord(7, 2).setItemName("handheldCannon");
+	public static ItemHangGlider hangGlider = (ItemHangGlider)(new ItemHangGlider(4015)).setIconCoord(9, 2).setItemName("hangGlider");
 	public static Item meatSack = (Item)(new ItemSack(4016, "meat")).setIconCoord(2, 1).setItemName("meatSack");
 	public static Item treasureSack = (Item)(new ItemSack(4017, "treasure")).setIconCoord(1, 1).setItemName("treasureSack");
 	public static Item junkSack = (Item)(new ItemSack(4018, "junk")).setIconCoord(0, 1).setItemName("junkSack");
 	public static Item lichenSpores = (new ItemLichenSpores(4019)).setIconCoord(8, 1).setItemName("lichenSpores");
-    public static Item grapplingHook = (new ItemGrapplingHook(4020)).setIconCoord(7, 2).setItemName("grapplingHook");
+    public static Item grapplingHook = (new ItemGrapplingHook(4020)).setIconCoord(5, 2).setItemName("grapplingHook");
 	public static Item magicRodFlame = (new ItemMagicRodFlame(4021)).setIconCoord(1, 2).setItemName("magicRodFlame");
 	public static Item magicRodFrozen = (new ItemMagicRodFrozen(4022)).setIconCoord(3, 2).setItemName("magicRodFrozen");
+	public static Item magicRodCharged = (new ItemMagicRodFrozen(4023)).setIconCoord(2, 2).setItemName("magicRodCharged");
+	public static Item magicRodCursed = (new ItemMagicRodFrozen(4024)).setIconCoord(4, 2).setItemName("magicRodCursed");
 	/** end Legendary Mod **/
 	
     /** Item index + indexModifier */
